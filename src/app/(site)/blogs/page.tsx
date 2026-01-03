@@ -1,3 +1,7 @@
+export default function BlogsPage() {
+  return null;
+}
+
 // import SingleBlog from "@/components/Blog/SingleBlog";
 // import Breadcrumb from "@/components/Common/Breadcrumb";
 // import { getAllPosts } from "@/utils/markdown";
