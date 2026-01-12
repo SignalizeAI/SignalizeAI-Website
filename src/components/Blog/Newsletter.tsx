@@ -13,7 +13,10 @@ const Newsletter = () => {
       <form>
         <input
           type="email"
+          id="newsletter-email"
+          name="email"
           placeholder="Your email address"
+          autoComplete="email"
           className="mb-4 h-[50px] w-full rounded-md border border-transparent bg-white/10 text-center text-base text-white outline-none placeholder:text-white/60 focus:border-white focus-visible:shadow-none"
         />
         <input

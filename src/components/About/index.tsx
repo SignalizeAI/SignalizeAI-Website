@@ -45,6 +45,7 @@ const About = () => {
                       src="/images/about/about-image-01.jpg"
                       alt="about image"
                       fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -56,6 +57,7 @@ const About = () => {
                       src="/images/about/about-image-02.jpg"
                       alt="about image"
                       fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
