@@ -247,8 +247,9 @@ const MobileNav = ({
             })}
             <li className="border-t border-gray-100 pt-3 dark:border-gray-800">
               <Link
-                href="/#contact"
-                onClick={(e) => handleSmoothScroll(e, "/#contact", closeMenu)}
+                href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-primary hover:bg-opacity-90 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white transition"
               >
                 Try for free
@@ -349,8 +350,9 @@ const Header = () => {
           </div>
 
           <Link
-            href="/#contact"
-            onClick={(e) => handleSmoothScroll(e, "/#contact")}
+            href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`hidden items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
               sticky
                 ? "bg-primary hover:bg-primary/90"
