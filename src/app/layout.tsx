@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning className="!scroll-smooth" lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>
