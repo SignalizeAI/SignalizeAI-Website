@@ -22,11 +22,13 @@ export default function AuthCallbackPage() {
         refresh_token,
       });
 
-      try {
-        window.close();
-      } catch {
-        window.location.href = "/";
+      if (window.chrome?.runtime?.sendMessage) {
+        window.chrome.runtime.sendMessage("nhgeihbbpdnhcfccedpnkionaofdpaib", {
+          type: "AUTH_SUCCESS",
+        });
       }
+
+      setTimeout(() => window.close(), 600);
     }
 
     handleAuth();
