@@ -7,7 +7,7 @@ import Contact from "@/components/Contact";
 import Faq from "@/components/Faq";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-// import Pricing from "@/components/Pricing";
+import Pricing from "@/components/Pricing";
 // import Team from "@/components/Team";
 // import Testimonials from "@/components/Testimonials";
 // import { getAllPosts } from "@/utils/markdown";
@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   title: "SignalizeAI",
   description:
     "SignalizeAI is the Chrome extension that turns any business website into clear, actionable sales intelligence in seconds by analyzing website content using AI.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/images/logo/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/logo/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+       { url: '/images/logo/favicon.png' },
+    ],
+  },
 };
 
 export default function Home() {
@@ -29,7 +39,7 @@ export default function Home() {
       <Features />
       <About />
       <CallToAction />
-      {/* <Pricing /> */}
+      <Pricing />
       {/* <Testimonials /> */}
       <Faq />
       {/* <Team /> */}

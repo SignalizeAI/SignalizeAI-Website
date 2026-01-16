@@ -5,7 +5,7 @@ const SectionTitle = ({
   width = "635px",
   center,
 }: {
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   title: string;
   paragraph: string;
   width?: string;
@@ -21,7 +21,7 @@ const SectionTitle = ({
         style={{ maxWidth: width }}
       >
         {subtitle && (
-          <span className="mb-2 block text-lg font-semibold text-primary">
+          <span className="mb-2 block text-lg font-semibold text-primary dark:text-white">
             {subtitle}
           </span>
         )}

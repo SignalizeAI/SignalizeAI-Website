@@ -13,7 +13,7 @@ const About = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-12 max-w-[540px] lg:mb-0">
                 <h2 className="mb-5 text-3xl font-bold leading-tight text-dark dark:text-white sm:text-[40px] sm:leading-[1.2]">
-                  Understand any website in seconds with SignalizeAI.
+                  Understand any website in seconds with <span className="text-primary">Signalize</span><span className="text-accent">AI</span>.
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
                   Our Chrome extension reads only the public content on the page
@@ -45,6 +45,7 @@ const About = () => {
                       src="/images/about/about-image-01.jpg"
                       alt="about image"
                       fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -56,6 +57,7 @@ const About = () => {
                       src="/images/about/about-image-02.jpg"
                       alt="about image"
                       fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>

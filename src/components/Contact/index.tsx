@@ -2,7 +2,7 @@ const Contact = () => {
   return (
     <section id="contact" className="relative py-20 md:py-[120px]">
       <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
-      <div className="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-[#E9F9FF] dark:bg-dark-700 lg:h-[45%] xl:h-1/2"></div>
+      <div className="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-accent/5 dark:bg-dark-2 lg:h-[45%] xl:h-1/2"></div>
       <div className="container px-4">
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
@@ -96,8 +96,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    id="fullName"
                     name="fullName"
                     placeholder="Adam Gelius"
+                    autoComplete="name"
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
@@ -111,8 +113,10 @@ const Contact = () => {
                   <input
                     suppressHydrationWarning
                     type="email"
+                    id="email"
                     name="email"
                     placeholder="example@yourmail.com"
+                    autoComplete="email"
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
@@ -125,8 +129,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    id="phone"
                     name="phone"
                     placeholder="+885 1254 5211 552"
+                    autoComplete="tel"
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
@@ -138,7 +144,9 @@ const Contact = () => {
                     Message*
                   </label>
                   <textarea
+                    id="message"
                     name="message"
+                    autoComplete="on"
                     rows={1}
                     placeholder="type your message here"
                     className="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"

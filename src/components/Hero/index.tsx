@@ -76,6 +76,8 @@ const Hero = () => {
                     className="mx-auto max-w-full rounded-t-xl rounded-tr-xl"
                     width={845}
                     height={316}
+                    sizes="(max-width: 1023px) 100vw, 845px"
+                    style={{ height: "auto" }}
                   />
                 </div>
                 <div className="absolute -left-9 bottom-0 z-[-1]">

@@ -7,7 +7,7 @@ const Features = () => {
     <section className="pb-8 pt-20 dark:bg-dark lg:pb-[70px] lg:pt-[120px]">
       <div className="container">
         <SectionTitle
-          subtitle="SignalizeAI"
+          subtitle={<>Signalize<span className="text-accent">AI</span></>}
           title="Key Features"
           paragraph="Discover the powerful features that make SignalizeAI the ultimate tool for transforming business websites into actionable insights."
         />
