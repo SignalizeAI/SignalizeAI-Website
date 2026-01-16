@@ -22,8 +22,10 @@ export default function AuthCallbackPage() {
         refresh_token,
       });
 
-      if (window.chrome?.runtime?.sendMessage) {
-        window.chrome.runtime.sendMessage("nhgeihbbpdnhcfccedpnkionaofdpaib", {
+      const w = window as any;
+
+      if (w.chrome?.runtime?.sendMessage) {
+        w.chrome.runtime.sendMessage("nhgeihbbpdnhcfccedpnkionaofdpaib", {
           type: "AUTH_SUCCESS",
         });
       }
