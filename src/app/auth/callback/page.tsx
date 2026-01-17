@@ -56,14 +56,28 @@ export default function AuthCallbackPage() {
         }
       }
 
-      if (error) {
-        console.error("Error setting session", error);
+      const {
+        data: { session },
+        error: sessionFetchError,
+      } = await supabase.auth.getSession();
+
+      if (sessionFetchError || !session) {
+        console.error("Failed to fetch session after auth", sessionFetchError);
         setStatus("error");
         return;
       }
 
-      window.postMessage({ type: "SIGNALIZE_AUTH_SUCCESS" }, "*");
-      setStatus("success");
+      // ✅ Send session to extension
+      window.postMessage(
+        {
+          type: "SIGNALIZE_AUTH_SUCCESS",
+          session: {
+            access_token: session.access_token,
+            refresh_token: session.refresh_token,
+          },
+        },
+        "*"
+      );
 
       setTimeout(() => {
         if (window.opener) {
