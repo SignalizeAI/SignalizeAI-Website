@@ -10,14 +10,14 @@ const Pricing = () => {
   return (
     <section
       id="pricing"
-      className="relative z-20 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]"
+      className="dark:bg-dark relative z-20 overflow-hidden bg-white pt-12 pb-12 lg:pt-24 lg:pb-24"
     >
       <div className="container">
-        <div className="mb-[60px]">
+        <div className="mb-15">
           <SectionTitle
-            subtitle="Pricing"
+            // subtitle="Pricing"
             title="Plans for every sales team"
-            paragraph="Start fast with SignalizeAI. Optional Google sign-in to save and export insights—securely powered by enterprise-grade infrastructure."
+            paragraph="Start fast with SignalizeAI. Sign in securely with Google to save and export your insights backed by enterprise-grade infrastructure."
             center
           />
         </div>
