@@ -20,7 +20,7 @@ export default function PrivacyPage() {
               <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
               <span className="bg-accent relative inline-flex h-2 w-2 rounded-full"></span>
             </span>
-            Last updated: December 31, 2025
+            Last updated: January 20, 2026
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed">
             SignalizeAI (“we”, “our”, or “the extension”) is a Chrome extension
@@ -220,9 +220,9 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-3">
                 {[
-                  { title: "Tabs", desc: "Read active tab content" },
-                  { title: "Side Panel", desc: "Display analysis UI" },
-                  { title: "Storage", desc: "Save user preferences" },
+                  { title: "activeTab", desc: "Read active tab content" },
+                  { title: "sidePanel", desc: "Display analysis UI" },
+                  { title: "storage", desc: "Save user preferences" },
                 ].map((perm) => (
                   <li key={perm.title} className="flex items-start gap-3">
                     <svg
@@ -326,7 +326,7 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold text-white">
-              <span className="text-accent">9.</span> Changes to This Policy
+              <span className="text-accent">9.</span> Changes to this Policy
             </h2>
             <div className="pl-0 sm:pl-10">
               <p>

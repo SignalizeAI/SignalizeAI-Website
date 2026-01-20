@@ -13,8 +13,8 @@ const Faq = () => {
           center
         />
 
-        <div className="-mx-4 mt-[60px] flex flex-wrap lg:mt-20">
-            <div className="w-full px-4 lg:w-1/2">
+        <div className="-mx-4 mt-15 flex flex-wrap lg:mt-20">
+          <div className="w-full px-4 lg:w-1/2">
             <SingleFaq
               question="What does SignalizeAI analyze?"
               answer="Only the publicly visible text on the page you are viewing. We do not collect or send personal data or browsing history to the AI."
@@ -27,24 +27,28 @@ const Faq = () => {
               question="Is SignalizeAI free to use?"
               answer="Yes. SignalizeAI is free with a generous monthly limit. Premium plans offer higher limits and advanced features for power users."
             />
-            <SingleFaq
-              question="Do you track users or sell data?"
-              answer="No. SignalizeAI does not track you, run ads, or sell data. We respect privacy and only process public website content."
-            />
-            </div>
+          </div>
 
           <div className="w-full px-4 lg:w-1/2">
-            <SingleFaq
-              question="What is the sales readiness score?"
-              answer="A quick signal of how prepared the company appears for outreach based on clarity, maturity, and available public info on their site."
-            />
             <SingleFaq
               question="Can I export or share insights?"
               answer="Yes. You can save results, filter them, and export to CSV or Excel for your CRM or sales workspace."
             />
             <SingleFaq
               question="Do you track users or sell data?"
-              answer="No. SignalizeAI does not track you, run ads, or sell data. We respect privacy and only process public website content."
+              answer={
+                <>
+                  No. SignalizeAI does not track you, run ads, or sell data. We
+                  respect{" "}
+                  <a
+                    href="/privacy"
+                    className="text-primary underline hover:opacity-80"
+                  >
+                    privacy
+                  </a>{" "}
+                  and only process public website content.
+                </>
+              }
             />
             <SingleFaq
               question="Is SignalizeAI open source?"
@@ -55,7 +59,7 @@ const Faq = () => {
       </div>
 
       <div>
-        <span className="absolute top-4 left-4 -z-[1]">
+        <span className="absolute top-4 left-4 -z-1">
           <svg
             width="48"
             height="134"
@@ -345,7 +349,7 @@ const Faq = () => {
             />
           </svg>
         </span>
-        <span className="absolute right-4 bottom-4 -z-[1]">
+        <span className="absolute right-4 bottom-4 -z-1">
           <svg
             width="48"
             height="134"

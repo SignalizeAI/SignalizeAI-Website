@@ -21,7 +21,7 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
   return (
     <div className="w-full px-4 md:w-1/2 lg:w-1/3 flex flex-col items-stretch">
       <div
-        className={`relative z-10 mb-10 overflow-hidden rounded-xl bg-white shadow-[0px_0px_40px_0px_rgba(0,0,0,0.08)] dark:bg-dark-2 flex flex-col h-full transition duration-300 hover:shadow-2xl ${
+        className={`relative z-10 mb-10 overflow-hidden rounded-xl bg-white shadow-pricing-2 dark:bg-dark-2 flex flex-col h-full transition duration-300 hover:shadow-2xl ${
           isHighlighted
             ? "px-6 py-8 sm:p-10 lg:px-5 lg:py-8 xl:p-11 border-2 border-primary md:scale-105 lg:scale-110 relative z-20"
             : "px-6 py-8 sm:p-10 lg:px-5 lg:py-8 xl:p-11 border-2 border-transparent"
@@ -31,9 +31,14 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
         onMouseLeave={onMouseLeave}
       >
         {product.nickname === "Team" && (
-          <p className="absolute right-[-50px] top-[60px] hidden sm:inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-primary px-5 py-2 text-base font-medium text-white">
-            Recommended
-          </p>
+          <>
+            <p className="absolute right-4 top-4 inline-block sm:hidden rounded-full bg-primary px-4 py-1 text-xs font-medium text-white">
+              Recommended
+            </p>
+            <p className="absolute -right-12.5 top-15 hidden sm:inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-primary px-5 py-2 text-base font-medium text-white">
+              Recommended
+            </p>
+          </>
         )}
         <span className="mb-4 block text-lg font-medium text-dark dark:text-white">
           {product.nickname}
@@ -51,7 +56,7 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
           </span>
         </h2>
 
-        <div className="mb-[35px] flex-grow">
+        <div className="mb-8.75 grow">
           <h3 className="mb-4 text-base font-medium text-dark dark:text-white">
             Features
           </h3>
