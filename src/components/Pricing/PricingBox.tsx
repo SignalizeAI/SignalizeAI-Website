@@ -7,12 +7,13 @@ import { supabase } from "@/utils/supabaseClient";
 
 interface PricingBoxProps {
   product: Price;
+  currentPlan: string;
   isHighlighted: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
 
-const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
+const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [showSignIn, setShowSignIn] = useState(false);
@@ -32,6 +33,57 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
     } catch (error) {
       console.error("Error checking auth status:", error);
     }
+  };
+
+  const getButtonConfig = () => {
+    const planName = product.nickname?.toLowerCase() || "";
+    const currentPlanLower = currentPlan?.toLowerCase() || "free";
+
+    if (currentPlanLower === planName) {
+      return {
+        disabled: true,
+        text: "Current Plan",
+        showSignIn: false,
+      };
+    }
+
+    if (currentPlanLower === "team" && (planName === "pro" || planName === "free")) {
+      return {
+        disabled: true,
+        text: "Upgrade to Team instead",
+        showSignIn: false,
+      };
+    }
+
+    if (currentPlanLower === "pro" && planName === "free") {
+      return {
+        disabled: true,
+        text: "Already a Pro member",
+        showSignIn: false,
+      };
+    }
+
+    if (planName === "free" && currentPlanLower === "free") {
+      return {
+        disabled: true,
+        text: "Current Plan",
+        showSignIn: false,
+      };
+    }
+
+    if (planName !== "free" && !userEmail) {
+      return {
+        disabled: false,
+        text: "Sign in to Subscribe",
+        showSignIn: true,
+      };
+    }
+
+    return {
+      disabled: false,
+      text: planName === "free" ? "Try Now" : "Subscribe Now",
+      showSignIn: false,
+    };
   };
 
   const handleSubscription = async (e: any) => {
@@ -69,6 +121,8 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
       console.error("Sign-in error:", error);
     }
   };
+
+  const buttonConfig = getButtonConfig();
 
   return (
     <div className="w-full px-4 md:w-1/2 lg:w-1/3 flex flex-col items-stretch">
@@ -121,21 +175,17 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
           </div>
         </div>
         <div className="w-full">
-          {showSignIn && product.nickname !== "Free" ? (
-            <button
-              onClick={handleSignIn}
-              className="inline-block w-full rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-primary/90 cursor-pointer"
-            >
-              Sign in to Subscribe
-            </button>
-          ) : (
-            <button
-              onClick={handleSubscription}
-              className="inline-block w-full rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-primary/90 cursor-pointer"
-            >
-              {product.nickname === "Free" ? "Try Now" : "Subscribe Now"}
-            </button>
-          )}
+          <button
+            onClick={buttonConfig.showSignIn ? handleSignIn : handleSubscription}
+            disabled={buttonConfig.disabled}
+            className={`inline-block w-full rounded-md px-7 py-3 text-center text-base font-medium transition duration-300 cursor-pointer ${
+              buttonConfig.disabled
+                ? "bg-gray-300 text-gray-600 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed"
+                : "bg-primary text-white hover:bg-primary/90"
+            }`}
+          >
+            {buttonConfig.text}
+          </button>
         </div>
       </div>
     </div>
