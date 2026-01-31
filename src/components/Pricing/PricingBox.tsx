@@ -50,7 +50,7 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
     if (currentPlanLower === "team" && (planName === "pro" || planName === "free")) {
       return {
         disabled: true,
-        text: "Upgrade to Team instead",
+        text: "Already on Team plan",
         showSignIn: false,
       };
     }
