@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import OfferList from "./OfferList";
 import { Price } from "@/types/price";
+import { supabase } from "@/utils/supabaseClient";
 
 interface PricingBoxProps {
   product: Price;
@@ -10,11 +11,59 @@ interface PricingBoxProps {
 }
 
 const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
-  // Redirect to payment URL
-  const handleSubscription = (e: any) => {
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [showSignIn, setShowSignIn] = useState(false);
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
+  const checkAuthStatus = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session?.user) {
+        setUserEmail(session.user.email || null);
+        setUserId(session.user.id || null);
+      }
+    } catch (error) {
+      console.error("Error checking auth status:", error);
+    }
+  };
+
+  const handleSubscription = async (e: any) => {
     e.preventDefault();
-    if (product.url) {
+    
+    if (product.nickname === "Free") {
+      // Free tier - just open Chrome Web Store
       window.open(product.url, '_blank');
+      return;
+    }
+
+    // For paid plans, require sign-in
+    if (!userEmail || !userId) {
+      setShowSignIn(true);
+      return;
+    }
+
+    // Build checkout URL with authenticated user data
+    const baseUrl = product.url;
+    const checkoutUrl = `${baseUrl}?checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&media=0&discount=0`;
+    
+    window.open(checkoutUrl, '_blank');
+  };
+
+  const handleSignIn = async () => {
+    try {
+      await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/?redirect=pricing`
+        }
+      });
+    } catch (error) {
+      console.error("Sign-in error:", error);
     }
   };
 
@@ -69,12 +118,21 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
           </div>
         </div>
         <div className="w-full">
-          <button
-            onClick={handleSubscription}
-            className="inline-block rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-primary/90 cursor-pointer"
-          >
-            {product.nickname === "Free" ? "Try Now" : "Subscribe Now"}
-          </button>
+          {showSignIn && product.nickname !== "Free" ? (
+            <button
+              onClick={handleSignIn}
+              className="inline-block w-full rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-primary/90 cursor-pointer"
+            >
+              Sign in to Subscribe
+            </button>
+          ) : (
+            <button
+              onClick={handleSubscription}
+              className="inline-block w-full rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white transition duration-300 hover:bg-primary/90 cursor-pointer"
+            >
+              {product.nickname === "Free" ? "Try Now" : "Subscribe Now"}
+            </button>
+          )}
         </div>
       </div>
     </div>
