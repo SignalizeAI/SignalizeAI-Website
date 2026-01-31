@@ -104,11 +104,10 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
     // Build checkout URL with authenticated user data
     const baseUrl = product.url;
     const plan = product.nickname?.toLowerCase() || "pro";
-    const successUrl = `${window.location.origin}/payment-success?plan=${plan}`;
     
-    // Add user data to checkout
-    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}`;
-    
+    // Add user data and redirect to success page with plan
+    const successUrl = encodeURIComponent(`${window.location.origin}/payment-success?plan=${plan}`);
+    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&checkout[custom][success_redirect]=${successUrl}`;
     window.open(checkoutUrl, '_blank');
   };
 
