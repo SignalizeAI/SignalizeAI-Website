@@ -36,7 +36,7 @@ const DocsPage = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://discord.gg/signalizeai"
+                  href="https://discord.gg/EEkShksd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white transition"
