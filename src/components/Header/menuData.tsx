@@ -26,7 +26,7 @@ const menuData: Menu[] = [
       {
         id: 22,
         title: "Discord",
-        path: "https://discord.gg/signalizeai",
+        path: "https://discord.gg/EEkShksd",
         newTab: true,
         icon: (
           <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
