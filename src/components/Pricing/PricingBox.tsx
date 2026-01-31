@@ -51,7 +51,7 @@ const PricingBox = ({ product, isHighlighted, onMouseEnter, onMouseLeave }: Pric
 
     // Build checkout URL with authenticated user data
     const baseUrl = product.url;
-    const checkoutUrl = `${baseUrl}?checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&media=0&discount=0`;
+    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}`;
     
     window.open(checkoutUrl, '_blank');
   };
