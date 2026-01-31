@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import OfferList from "./OfferList";
 import { Price } from "@/types/price";
