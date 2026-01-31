@@ -104,7 +104,9 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
     // Build checkout URL with authenticated user data
     const baseUrl = product.url;
     const successUrl = `${window.location.origin}/payment-success`;
-    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&return_url=${encodeURIComponent(successUrl)}`;
+    
+    // Add user data and success URL to checkout
+    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}`;
     
     window.open(checkoutUrl, '_blank');
   };
