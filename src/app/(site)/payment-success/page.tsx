@@ -7,7 +7,6 @@ import { supabase } from "@/utils/supabaseClient";
 interface PaymentData {
   amount: number;
   date: string;
-  orderId: string;
   plan: string;
   email: string;
 }
@@ -49,18 +48,9 @@ const PaymentSuccessPage = () => {
 
       const userEmail = session.user.email;
       
-      // Fetch user's plan from backend
-      const response = await fetch(`https://api.signalizeai.org/quota`, {
-        headers: {
-          Authorization: `Bearer ${session.access_token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch payment details");
-      }
-
-      const data = await response.json();
+      // Get plan from URL params (passed from checkout)
+      const urlParams = new URLSearchParams(window.location.search);
+      const planParam = urlParams.get("plan")?.toLowerCase() || "pro";
       
       // Map plan to pricing
       const planPricing: Record<string, number> = {
@@ -68,32 +58,19 @@ const PaymentSuccessPage = () => {
         team: 3999,
       };
 
-      const plan = data.plan || "pro";
-      const amount = planPricing[plan.toLowerCase()] || 999;
+      const plan = planPricing[planParam] ? planParam : "pro";
+      const amount = planPricing[plan];
       
-      // Use order_id from API response or fallback to URL params
-      const urlParams = new URLSearchParams(window.location.search);
-      const orderId = data.order_id || urlParams.get("order_id") || urlParams.get("checkout_id") || "Processing...";
-      
-      // Format the date from updated_at or use current date
-      let formattedDate = new Date().toLocaleDateString("en-US", {
+      // Format the current date
+      const formattedDate = new Date().toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
         day: "numeric",
       });
-      
-      if (data.updated_at) {
-        formattedDate = new Date(data.updated_at).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        });
-      }
 
       setPaymentData({
         amount: amount / 100,
         date: formattedDate,
-        orderId: orderId,
         plan: plan.charAt(0).toUpperCase() + plan.slice(1),
         email: userEmail || "",
       });
@@ -198,12 +175,6 @@ const PaymentSuccessPage = () => {
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500 dark:text-gray-400">Date</span>
                 <span className="font-medium text-gray-900 dark:text-white">{paymentData?.date}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500 dark:text-gray-400">Order ID</span>
-                <span className="font-mono text-xs text-gray-500 bg-gray-200 dark:bg-gray-800 px-2 py-0.5 rounded truncate max-w-[200px]">
-                  {paymentData?.orderId}
-                </span>
               </div>
               {paymentData?.email && (
                 <div className="flex justify-between text-sm">
