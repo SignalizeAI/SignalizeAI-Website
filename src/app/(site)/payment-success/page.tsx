@@ -1,12 +1,23 @@
-import { Metadata } from "next";
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Payment Successful | SignalizeAI",
-  description: "Your payment has been processed successfully.",
-};
-
 const PaymentSuccessPage = () => {
+  useEffect(() => {
+    if (window.opener) {
+      window.opener.postMessage({ type: "PAYMENT_SUCCESS" }, "*");
+    }
+
+    if (typeof (window as any).chrome !== "undefined" && (window as any).chrome.runtime) {
+      try {
+        (window as any).chrome.runtime.sendMessage({ type: "PAYMENT_SUCCESS" }, () => {
+          void (window as any).chrome.runtime.lastError;
+        });
+      } catch (e) {
+      }
+    }
+  }, []);
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white dark:bg-black font-sans">
       
