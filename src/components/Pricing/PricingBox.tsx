@@ -107,7 +107,7 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
     
     // Add user data and redirect to success page with plan
     const successUrl = encodeURIComponent(`${window.location.origin}/payment-success?plan=${plan}`);
-    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&checkout[custom][success_redirect]=${successUrl}`;
+    const checkoutUrl = `${baseUrl}&checkout[email]=${encodeURIComponent(userEmail)}&checkout[custom][user_id]=${encodeURIComponent(userId)}&checkout[success_url]=${successUrl}`;
     window.open(checkoutUrl, '_blank');
   };
 
