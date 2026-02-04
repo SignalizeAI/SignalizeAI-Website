@@ -50,7 +50,7 @@ const PaymentSuccessPage = () => {
       
       // Get plan from URL params (passed from checkout)
       const urlParams = new URLSearchParams(window.location.search);
-      const planParam = urlParams.get("plan")?.toLowerCase() || "pro";
+      const planParam = urlParams.get("plan")?.toLowerCase();
       
       // Map plan to pricing
       const planPricing: Record<string, number> = {
@@ -58,7 +58,8 @@ const PaymentSuccessPage = () => {
         team: 3999,
       };
 
-      const plan = planPricing[planParam] ? planParam : "pro";
+      // Validate plan is one of the known plans, default to team if not specified
+      const plan = (planParam && planPricing[planParam]) ? planParam : "team";
       const amount = planPricing[plan];
       
       // Format the current date
