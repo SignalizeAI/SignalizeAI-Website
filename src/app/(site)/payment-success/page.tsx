@@ -47,6 +47,7 @@ const PaymentSuccessPage = () => {
       }
 
       const userEmail = session.user.email;
+      const accessToken = session.access_token;
       
       // Get plan from URL params (passed from checkout)
       const urlParams = new URLSearchParams(window.location.search);
@@ -70,7 +71,25 @@ const PaymentSuccessPage = () => {
       else if (planParam.includes("pro")) normalizedPlan = "pro";
       else if (planParam && planPricing[planParam]) normalizedPlan = planParam;
 
-      const plan = normalizedPlan || "pro";
+      // Fallback to API quota plan if URL param is missing or ambiguous
+      let quotaPlan = "";
+      try {
+        const quotaRes = await fetch("https://api.signalizeai.org/quota", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        if (quotaRes.ok) {
+          const quotaData = await quotaRes.json();
+          if (quotaData?.plan && planPricing[quotaData.plan]) {
+            quotaPlan = quotaData.plan;
+          }
+        }
+      } catch (e) {
+        // Ignore quota lookup failures
+      }
+
+      const plan = normalizedPlan || quotaPlan || "pro";
       const amount = planPricing[plan];
       
       // Format the current date
