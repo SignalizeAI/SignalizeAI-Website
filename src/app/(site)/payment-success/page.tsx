@@ -58,8 +58,8 @@ const PaymentSuccessPage = () => {
         team: 3999,
       };
 
-      // Validate plan is one of the known plans, default to team if not specified
-      const plan = (planParam && planPricing[planParam]) ? planParam : "team";
+      // Validate plan is one of the known plans, default to pro if not specified
+      const plan = (planParam && planPricing[planParam]) ? planParam : "pro";
       const amount = planPricing[plan];
       
       // Format the current date
