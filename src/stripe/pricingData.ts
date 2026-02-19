@@ -29,7 +29,7 @@ export const pricingData: Price[] = [
       "CSV & Excel export",
       "Priority email support",
     ],
-    url: "https://signalizeaipay.lemonsqueezy.com/checkout/buy/88e4933d-9fae-4a7a-8c3f-ee72d78018b0?checkout[custom][plan]=team&media=0&discount=0",
+    url: "https://signalizeaipay.lemonsqueezy.com/checkout/buy/56ab66c1-587f-453a-8d51-4cd2c3e61849?media=0&desc=0&discount=0",
   },
   {
     id: "price_1NQk55LtGdPVhGLefU8AHqHr",
@@ -42,6 +42,6 @@ export const pricingData: Price[] = [
       "CSV & Excel export",
       "Priority email support",
     ],
-    url: "https://signalizeaipay.lemonsqueezy.com/checkout/buy/a124318b-c077-4f54-b714-cc77811af78b?checkout[custom][plan]=pro&media=0&discount=0",
+    url: "https://signalizeaipay.lemonsqueezy.com/checkout/buy/9abd3513-c941-45dc-9d2f-18124ef12e9a?media=0&desc=0&discount=0",
   },
 ];
