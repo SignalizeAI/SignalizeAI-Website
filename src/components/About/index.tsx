@@ -16,7 +16,7 @@ const About = () => {
                   Understand any website in seconds with <span className="text-dark dark:text-white">Signalize</span><span className="text-primary dark:text-accent">AI</span>.
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Our Chrome extension reads only the public content on the page
+                  Our Chrome and Firefox extension reads only the public content on the page
                   you are viewing, then distills it into sales-ready context:
                   what the company does, who they target, the value proposition,
                   and how ready they are for outreach. We keep API keys server

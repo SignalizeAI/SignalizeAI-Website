@@ -22,7 +22,7 @@ const Footer = () => {
                 />
               </Link>
               <p className="mb-8 max-w-[500px] text-sm leading-relaxed font-medium text-gray-200">
-                The Chrome extension that turns any business website into clear,
+                The Chrome and Firefox extension that turns any business website into clear,
                 actionable insights. Empower your sales team with data-driven
                 decisions.
               </p>

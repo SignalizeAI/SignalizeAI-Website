@@ -40,6 +40,15 @@ const Hero = () => {
                       See how it works
                     </Link>
                   </li>
+                  <li>
+                    <button
+                      disabled
+                      className="inline-flex items-center justify-center rounded-md bg-white/30 px-7 py-[14px] text-center text-base font-medium text-white cursor-not-allowed"
+                      title="Firefox version coming soon"
+                    >
+                      Firefox (Coming Soon)
+                    </button>
+                  </li>
                 </ul>
 
                 <div>

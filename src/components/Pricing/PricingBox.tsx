@@ -90,7 +90,7 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
     e.preventDefault();
     
     if (product.nickname === "Free") {
-      // Free tier - just open Chrome Web Store
+      // Free tier - just open extension store (Chrome/Firefox)
       window.open(product.url, '_blank');
       return;
     }

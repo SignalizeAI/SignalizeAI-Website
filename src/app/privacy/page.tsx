@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | SignalizeAI",
-  description: "Privacy Policy for the SignalizeAI Chrome Extension",
+  description: "Privacy Policy for the SignalizeAI Chrome and Firefox Extension",
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
             Last updated: January 20, 2026
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed">
-            SignalizeAI (“we”, “our”, or “the extension”) is a Chrome extension
+            SignalizeAI (&quot;we&quot;, &quot;our&quot;, or &quot;the extension&quot;) is a Chrome and Firefox extension
             designed to help users analyze publicly available business websites
             and generate sales-related insights.
           </p>

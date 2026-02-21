@@ -16,7 +16,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "SignalizeAI",
   description:
-    "SignalizeAI is the Chrome extension that turns any business website into clear, actionable sales intelligence in seconds by analyzing website content using AI.",
+    "SignalizeAI is the Chrome and Firefox extension that turns any business website into clear, actionable sales intelligence in seconds by analyzing website content using AI.",
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -60,7 +60,7 @@ export default function Home() {
         <h1>SignalizeAI</h1>
 
         <p>
-          SignalizeAI is an AI-powered Chrome extension that analyzes business
+          SignalizeAI is an AI-powered Chrome and Firefox extension that analyzes business
           websites to understand what a company does, who it is built for, and
           how effectively it communicates its value.
         </p>

@@ -20,14 +20,23 @@ const CallToAction = () => {
                   summary, readiness score, and recommended persona without
                   leaving your browser.
                 </p>
-                <Link
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
-                  className="inline-block rounded-md border border-transparent bg-accent px-7 py-3 text-base font-medium text-dark transition hover:bg-accent/90 hover:text-dark"
-                >
-                  Add SignalizeAI to Chrome
-                </Link>
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
+                    className="inline-block rounded-md border border-transparent bg-accent px-7 py-3 text-base font-medium text-dark transition hover:bg-accent/90 hover:text-dark"
+                  >
+                    Add to Chrome
+                  </Link>
+                  <button
+                    disabled
+                    className="inline-block rounded-md border border-white/30 bg-white/10 px-7 py-3 text-base font-medium text-white/60 cursor-not-allowed"
+                    title="Firefox version coming soon"
+                  >
+                    Firefox (Coming Soon)
+                  </button>
+                </div>
               </div>
             </div>
           </div>
