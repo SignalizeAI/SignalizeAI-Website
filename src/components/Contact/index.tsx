@@ -1,4 +1,90 @@
+"use client";
+
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
+import { validateEmail } from "@/utils/validateEmail";
+
+const initialFormState = {
+  fullName: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 const Contact = () => {
+  const [formData, setFormData] = useState(initialFormState);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const apiBaseUrl = (
+    process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.signalizeai.org"
+  ).replace(/\/$/, "");
+  const contactUrl = `${apiBaseUrl}/api/contact`;
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrorMessage(null);
+
+    const fullName = formData.fullName.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const message = formData.message.trim();
+
+    if (!fullName || !email || !message) {
+      setStatus("error");
+      setErrorMessage("Please complete all required fields.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("loading");
+
+    try {
+      const response = await fetch(contactUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          phone: phone.length ? phone : null,
+          message,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload?.error || "Unable to send your message.");
+      }
+
+      setStatus("success");
+      setFormData(initialFormState);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your message.",
+      );
+    }
+  };
+
   return (
     <section id="contact" className="relative py-16 md:py-20 lg:py-[120px]">
       <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
@@ -86,7 +172,7 @@ const Contact = () => {
               <h3 className="mb-8 text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
                 Send us a Message
               </h3>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-[22px]">
                   <label
                     htmlFor="fullName"
@@ -98,8 +184,11 @@ const Contact = () => {
                     type="text"
                     id="fullName"
                     name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
                     placeholder="Adam Gelius"
                     autoComplete="name"
+                    required
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
@@ -115,8 +204,11 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="example@yourmail.com"
                     autoComplete="email"
+                    required
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
@@ -125,12 +217,14 @@ const Contact = () => {
                     htmlFor="phone"
                     className="mb-4 block text-sm text-body-color dark:text-dark-6"
                   >
-                    Phone*
+                    Phone
                   </label>
                   <input
                     type="text"
                     id="phone"
                     name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="+885 1254 5211 552"
                     autoComplete="tel"
                     className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
@@ -147,19 +241,37 @@ const Contact = () => {
                     id="message"
                     name="message"
                     autoComplete="on"
-                    rows={1}
+                    rows={3}
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="type your message here"
+                    required
                     className="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
                   ></textarea>
                 </div>
                 <div className="mb-0">
                   <button
                     type="submit"
+                    disabled={status === "loading"}
                     className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-primary/90"
                   >
-                    Send
+                    {status === "loading" ? "Sending..." : "Send"}
                   </button>
                 </div>
+                {status === "success" && (
+                  <p
+                    className="mt-4 text-sm text-emerald-500"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Thanks! We received your message and will get back to you.
+                  </p>
+                )}
+                {status === "error" && errorMessage && (
+                  <p className="mt-4 text-sm text-red-500" role="alert">
+                    {errorMessage}
+                  </p>
+                )}
               </form>
             </div>
           </div>
