@@ -29,13 +29,14 @@ const CallToAction = () => {
                   >
                     Add to Chrome
                   </Link>
-                  <button
-                    disabled
-                    className="inline-block rounded-md border border-white/30 bg-white/10 px-7 py-3 text-base font-medium text-white/60 cursor-not-allowed"
-                    title="Firefox version coming soon"
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://addons.mozilla.org/en-US/firefox/addon/signalizeai/"
+                    className="inline-block rounded-md border border-white/30 bg-white px-7 py-3 text-base font-medium text-dark transition hover:bg-white/90"
                   >
-                    Firefox (Coming Soon)
-                  </button>
+                    Add to Firefox
+                  </Link>
                 </div>
               </div>
             </div>

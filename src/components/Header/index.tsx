@@ -6,6 +6,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import BrowserModal from "@/components/BrowserModal";
 
 // --- 1. UTILITY HOOKS & HELPERS ---
 
@@ -166,10 +167,12 @@ const MobileNav = ({
   isOpen,
   closeMenu,
   isHomePage,
+  openModal,
 }: {
   isOpen: boolean;
   closeMenu: () => void;
   isHomePage: boolean;
+  openModal: () => void;
 }) => {
   const [submenuOpen, setSubmenuOpen] = useState<number>(-1);
 
@@ -246,14 +249,15 @@ const MobileNav = ({
               );
             })}
             <li className="border-t border-gray-100 pt-3 dark:border-gray-800">
-              <Link
-                href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => {
+                  closeMenu();
+                  openModal();
+                }}
                 className="bg-primary hover:bg-opacity-90 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white transition"
               >
                 Try for free
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
@@ -286,6 +290,7 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const sticky = useStickyHeader(50);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -349,10 +354,8 @@ const Header = () => {
             <ThemeToggler />
           </div>
 
-          <Link
-            href="https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setModalOpen(true)}
             className={`hidden items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
               sticky
                 ? "bg-primary hover:bg-primary/90"
@@ -360,7 +363,7 @@ const Header = () => {
             }`}
           >
             Try for free
-          </Link>
+          </button>
 
           <div className="lg:hidden">
             <ThemeToggler />
@@ -386,8 +389,10 @@ const Header = () => {
           </button>
         </div>
 
-        <MobileNav isOpen={navbarOpen} closeMenu={() => setNavbarOpen(false)} isHomePage={isHomePage} />
+        <MobileNav isOpen={navbarOpen} closeMenu={() => setNavbarOpen(false)} isHomePage={isHomePage} openModal={() => setModalOpen(true)} />
       </header>
+
+      <BrowserModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 };
