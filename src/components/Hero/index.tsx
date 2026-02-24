@@ -34,20 +34,21 @@ const Hero = () => {
                   </li>
                   <li>
                     <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://addons.mozilla.org/en-US/firefox/addon/signalizeai/"
+                      className="inline-flex items-center justify-center rounded-md bg-white px-7 py-[14px] text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:bg-gray-2"
+                    >
+                      Add to Firefox
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="#about"
                       className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
                     >
                       See how it works
                     </Link>
-                  </li>
-                  <li>
-                    <button
-                      disabled
-                      className="inline-flex items-center justify-center rounded-md bg-white/30 px-7 py-[14px] text-center text-base font-medium text-white cursor-not-allowed"
-                      title="Firefox version coming soon"
-                    >
-                      Firefox (Coming Soon)
-                    </button>
                   </li>
                 </ul>
 
