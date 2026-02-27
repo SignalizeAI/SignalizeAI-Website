@@ -20,7 +20,7 @@ export default function PrivacyPage() {
               <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
               <span className="bg-accent relative inline-flex h-2 w-2 rounded-full"></span>
             </span>
-            Last updated: January 20, 2026
+            Last updated: February 27, 2026
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed">
             SignalizeAI (&quot;we&quot;, &quot;our&quot;, or &quot;the extension&quot;) is a Chrome and Firefox extension
@@ -46,7 +46,8 @@ export default function PrivacyPage() {
                   SignalizeAI processes publicly available content from the
                   active browser tab, including page titles, meta descriptions,
                   headings, and visible text. This data is used only to generate
-                  on-screen analysis for the user.
+                  on-screen analysis for the user and may require injecting a
+                  content script into the active tab on demand.
                 </p>
                 <div>
                   <span className="mb-2 block text-sm font-semibold text-white">
@@ -220,9 +221,27 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-3">
                 {[
-                  { title: "activeTab", desc: "Read active tab content" },
-                  { title: "sidePanel", desc: "Display analysis UI" },
+                  {
+                    title: "activeTab",
+                    desc: "Access the active tab when the user runs an analysis",
+                  },
+                  {
+                    title: "tabs",
+                    desc: "Identify the active tab and read its URL for context",
+                  },
+                  {
+                    title: "scripting",
+                    desc: "Inject the content extraction script into the active tab",
+                  },
                   { title: "storage", desc: "Save user preferences" },
+                  {
+                    title: "sidePanel / sidebar_action",
+                    desc: "Display analysis UI (Chrome side panel, Firefox sidebar)",
+                  },
+                  {
+                    title: "host permissions",
+                    desc: "Allow requests to Supabase and the SignalizeAI API",
+                  },
                 ].map((perm) => (
                   <li key={perm.title} className="flex items-start gap-3">
                     <svg
