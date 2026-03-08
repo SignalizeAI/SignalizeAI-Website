@@ -80,7 +80,7 @@ The website serves as the main landing page, marketing material, documentation h
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 20+
 - npm or yarn
 - Git
 - Supabase account (for database)
@@ -177,9 +177,7 @@ src/
 │   ├── Pricing/
 │   ├── Team/
 │   ├── Testimonials/
-│   └── ui/                  # UI library components
 │
-├── functions/               # Utility functions
 ├── stripe/                  # Stripe configuration
 ├── styles/                  # Global styles
 ├── types/                   # TypeScript type definitions
@@ -269,7 +267,7 @@ EMAIL_SERVER_HOST=your_email_host
 EMAIL_SERVER_PORT=your_port
 EMAIL_SERVER_USER=your_email
 EMAIL_SERVER_PASSWORD=your_password
-EMAIL_FROM=noreply@signalizeai.com
+EMAIL_FROM=noreply@signalizeai.org
 
 # Database
 DATABASE_URL=your_database_url
@@ -307,8 +305,8 @@ Copyright (c) 2025 SignalizeAI
 ## 📞 Contact
 
 For questions, support, or inquiries:
-- Website: [SignalizeAI](https://signalizeai.com)
-- Email: support@signalizeai.com
+- Website: [SignalizeAI](https://signalizeai.org)
+- Email: support@signalizeai.org
 - Contact Form: Available on the website
 
 ---

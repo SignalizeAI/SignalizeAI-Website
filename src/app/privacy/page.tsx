@@ -20,7 +20,7 @@ export default function PrivacyPage() {
               <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
               <span className="bg-accent relative inline-flex h-2 w-2 rounded-full"></span>
             </span>
-            Last updated: February 27, 2026
+            Last updated: March 9, 2026
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed">
             SignalizeAI (&quot;we&quot;, &quot;our&quot;, or &quot;the extension&quot;) is a Chrome and Firefox extension
@@ -44,10 +44,12 @@ export default function PrivacyPage() {
                 </h3>
                 <p className="mb-3 leading-7">
                   SignalizeAI processes publicly available content from the
-                  active browser tab, including page titles, meta descriptions,
-                  headings, and visible text. This data is used only to generate
-                  on-screen analysis for the user and may require injecting a
-                  content script into the active tab on demand.
+                  active browser tab (single analysis) and from user-submitted
+                  URLs in batch mode (CSV upload or pasted URL list), including
+                  page titles, meta descriptions, headings, and visible text.
+                  This data is used only to generate on-screen analysis for the
+                  user and may require injecting a content script into the
+                  active tab on demand.
                 </p>
                 <div>
                   <span className="mb-2 block text-sm font-semibold text-white">
@@ -82,7 +84,18 @@ export default function PrivacyPage() {
 
               <div>
                 <h3 className="mb-2 text-lg font-medium text-white">
-                  1.2 User Account Information
+                  1.2 URL Inputs for Batch Analysis
+                </h3>
+                <p className="leading-7">
+                  If a user runs batch analysis, SignalizeAI processes the URL
+                  list they provide (via CSV or pasted text) to fetch publicly
+                  available website content and generate analyses.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="mb-2 text-lg font-medium text-white">
+                  1.3 User Account Information
                 </h3>
                 <p className="leading-7">
                   If a user chooses to sign in using Google, we receive their
@@ -93,7 +106,7 @@ export default function PrivacyPage() {
 
               <div>
                 <h3 className="mb-2 text-lg font-medium text-white">
-                  1.3 Saved Analyses (Optional)
+                  1.4 Saved Analyses (Optional)
                 </h3>
                 <p className="leading-7">
                   If enabled by the user, saved analyses may include the domain
@@ -114,6 +127,7 @@ export default function PrivacyPage() {
                 {[
                   "Generate AI-based business insights",
                   "Display results within the extension",
+                  "Run user-requested batch analyses",
                   "Save user-requested analyses",
                   "Improving extension functionality and user experience",
                 ].map((item) => (
@@ -240,7 +254,7 @@ export default function PrivacyPage() {
                   },
                   {
                     title: "host permissions",
-                    desc: "Allow requests to Supabase and the SignalizeAI API",
+                    desc: "Allow requests to Supabase, SignalizeAI API environments, and user-requested analysis targets across domains",
                   },
                 ].map((perm) => (
                   <li key={perm.title} className="flex items-start gap-3">
