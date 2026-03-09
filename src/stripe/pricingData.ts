@@ -7,6 +7,7 @@ export const pricingData: Price[] = [
     nickname: "Free",
     offers: [
       "AI analysis 5/day",
+      { text: "Batch analysis", available: false },
       "Save up to 3 analyses",
       {
         text: "Detailed save, search & filter analyses",
@@ -24,6 +25,7 @@ export const pricingData: Price[] = [
     offers: [
       "All Pro features",
       "AI analysis 500/day",
+      "Batch analysis up to 50 URLs/run",
       "Save up to 5000 analyses",
       "Detailed save, search & filter analyses",
       "CSV & Excel export",
@@ -37,6 +39,7 @@ export const pricingData: Price[] = [
     nickname: "Pro",
     offers: [
       "AI analysis 50/day",
+      "Batch analysis up to 10 URLs/run",
       "Save up to 200 analyses",
       "Detailed save, search & filter analyses",
       "CSV & Excel export",
