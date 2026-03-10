@@ -6,7 +6,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]"
+        className="relative overflow-hidden bg-primary pb-12 pt-[120px] sm:pb-0 md:pt-[130px] lg:pt-[160px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
@@ -22,7 +22,7 @@ const Hero = () => {
                   Analyze the page you’re on to understand what a business does,who it’s for, and how ready it is for sales instantly.
                 </p>
                 <ul className="mb-10 flex flex-wrap items-center justify-center gap-5">
-                  <li>
+                  <li className="order-2 sm:order-1">
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
@@ -32,7 +32,15 @@ const Hero = () => {
                       Add to Chrome
                     </Link>
                   </li>
-                  <li>
+                  <li className="order-1 sm:order-2">
+                    <Link
+                      href="#about"
+                      className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
+                    >
+                      See how it works
+                    </Link>
+                  </li>
+                  <li className="order-3 sm:order-3">
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
@@ -42,15 +50,34 @@ const Hero = () => {
                       Add to Firefox
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="#about"
-                      className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
-                    >
-                      See how it works
-                    </Link>
-                  </li>
                 </ul>
+
+                <div className="mb-10 flex justify-center">
+                  <Link
+                    href="https://www.producthunt.com/products/signalizeai/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_campaign=product_review-badge-signalizeai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Review SignalizeAI on Product Hunt"
+                    className="inline-flex rounded-md transition-opacity duration-300 hover:opacity-90"
+                  >
+                    <Image
+                      src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1147484&theme=light"
+                      alt="SignalizeAI on Product Hunt"
+                      width={250}
+                      height={54}
+                      className="block h-[54px] w-[250px] dark:hidden"
+                      unoptimized
+                    />
+                    <Image
+                      src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1147484&theme=dark"
+                      alt="SignalizeAI on Product Hunt"
+                      width={250}
+                      height={54}
+                      className="hidden h-[54px] w-[250px] dark:block"
+                      unoptimized
+                    />
+                  </Link>
+                </div>
 
                 <div>
                   <p className="mb-4 text-center text-base font-medium text-white/60">
@@ -74,21 +101,34 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="w-full px-4">
+            <div className="hidden w-full px-4 sm:block">
               <div
-                className="wow fadeInUp relative z-10 mx-auto max-w-[845px]"
+                className="wow fadeInUp relative z-10 mx-auto max-w-[920px]"
                 data-wow-delay=".25s"
               >
-                <div className="mt-16">
-                  <Image
-                    src="/images/hero/hero-image.jpg"
-                    alt="hero"
-                    className="mx-auto max-w-full rounded-t-xl rounded-tr-xl"
-                    width={845}
-                    height={316}
-                    sizes="(max-width: 1023px) 100vw, 845px"
-                    style={{ height: "auto" }}
-                  />
+                <div className="absolute inset-x-12 top-10 z-[-1] h-40 rounded-full bg-white/10 blur-3xl" />
+                <div className="mt-12 hidden rounded-[30px] border border-white/15 bg-white/[0.08] p-2 shadow-[0_30px_90px_rgba(5,10,40,0.45)] backdrop-blur-sm sm:block lg:mt-14 lg:p-3">
+                  <div className="hidden overflow-hidden rounded-[24px] border border-slate-200/70 bg-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] sm:block">
+                    <div className="flex items-center border-b border-slate-300/80 bg-gradient-to-b from-white to-slate-100 px-4 py-2.5">
+                      <div className="flex items-center gap-2">
+                        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+                        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+                        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+                      </div>
+                    </div>
+
+                    <div className="relative h-[280px] sm:h-[340px] md:h-[400px] lg:h-[450px]">
+                      <Image
+                        src="/images/hero/hero-image.jpeg"
+                        alt="SignalizeAI extension preview"
+                        fill
+                        className="object-cover"
+                        style={{ objectPosition: "center 2%" }}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 920px"
+                        priority
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="absolute -left-9 bottom-0 z-[-1]">
                   <svg
