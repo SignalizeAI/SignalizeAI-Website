@@ -22,7 +22,7 @@ const Hero = () => {
                   Analyze the page you’re on to understand what a business does,who it’s for, and how ready it is for sales instantly.
                 </p>
                 <ul className="mb-10 flex flex-wrap items-center justify-center gap-5">
-                  <li>
+                  <li className="order-2 sm:order-1">
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
@@ -32,7 +32,7 @@ const Hero = () => {
                       Add to Chrome
                     </Link>
                   </li>
-                  <li>
+                  <li className="order-1 sm:order-2">
                     <Link
                       href="#about"
                       className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
@@ -40,7 +40,7 @@ const Hero = () => {
                       See how it works
                     </Link>
                   </li>
-                  <li>
+                  <li className="order-3 sm:order-3">
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
