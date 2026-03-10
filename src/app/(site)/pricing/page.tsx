@@ -3,15 +3,18 @@ import Pricing from "@/components/Pricing";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Pricing Page | SignalizeAI",
-  description: "This is pricing page description",
+  title: "Pricing | SignalizeAI",
+  description:
+    "Compare SignalizeAI plans for analysis volume, batch runs, saved analyses, search, filtering, and export.",
 };
 
 const PricingPage = () => {
   return (
     <>
-      <Breadcrumb pageName="Subscription" />
+      <Breadcrumb
+        pageName="Pricing"
+        pageDescription="Choose the right plan for analysis volume, batch workflows, saved research, and export needs."
+      />
       <Pricing />
     </>
   );

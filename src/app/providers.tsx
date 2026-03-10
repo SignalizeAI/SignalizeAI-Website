@@ -28,8 +28,8 @@ export default function Providers({ children }: PropsWithChildren) {
   return (
     <ThemeProvider
       attribute="class"
-      enableSystem={false}
-      defaultTheme="light"
+      enableSystem={true}
+      defaultTheme="dark"
     >
       <Toaster />
       {children}

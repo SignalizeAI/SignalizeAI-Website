@@ -9,12 +9,36 @@ const menuData: Menu[] = [
   },
   {
     id: 2,
-    title: "Developers",
+    title: "Docs",
+    path: "/docs",
+    newTab: false,
+  },
+  {
+    id: 3,
+    title: "Pricing",
+    path: "/pricing",
+    newTab: false,
+  },
+  {
+    id: 4,
+    title: "About",
+    path: "/about",
+    newTab: false,
+  },
+  {
+    id: 5,
+    title: "Contact",
+    path: "/contact",
+    newTab: false,
+  },
+  {
+    id: 6,
+    title: "Resources",
     newTab: false,
     submenu: [
       {
-        id: 21,
-        title: "Github",
+        id: 61,
+        title: "GitHub",
         path: "https://github.com/SignalizeAI",
         newTab: true,
         icon: (
@@ -24,7 +48,7 @@ const menuData: Menu[] = [
         ),
       },
       {
-        id: 22,
+        id: 62,
         title: "Discord",
         path: "https://discord.gg/eCvhD6WZhX",
         newTab: true,
@@ -35,90 +59,17 @@ const menuData: Menu[] = [
         ),
       },
       {
-        id: 23,
-        title: "Documentation",
-        path: "/docs",
+        id: 63,
+        title: "Privacy",
+        path: "/privacy",
         newTab: false,
         icon: (
           <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+            <path d="M12 2l7 3v6c0 5-3.438 9.594-7 11-3.562-1.406-7-6-7-11V5l7-3zm0 5a3 3 0 100 6a3 3 0 000-6z" />
           </svg>
         ),
       },
     ],
   },
-  // {
-  //   id: 2,
-  //   title: "About",
-  //   path: "/about",
-  //   newTab: false,
-  // },
-  {
-    id: 3,
-    title: "Pricing",
-    path: "/pricing",
-    newTab: false,
-  },
-  // {
-  //   id: 5,
-  //   title: "Contact",
-  //   path: "/contact",
-  //   newTab: false,
-  // },
-  // {
-  //   id: 5,
-  //   title: "Blog",
-  //   path: "/blogs",
-  //   newTab: false,
-  // },
-  // {
-  //   id: 6,
-  //   title: "Pages",
-  //   newTab: false,
-  //   submenu: [
-  //     {
-  //       id: 61,
-  //       title: "About Page",
-  //       path: "/about",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 62,
-  //       title: "Pricing Page",
-  //       path: "/pricing",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 63,
-  //       title: "Contact Page",
-  //       path: "/contact",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 64,
-  //       title: "Blog Grid Page",
-  //       path: "/blogs",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 66,
-  //       title: "Sign Up Page",
-  //       path: "/signup",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 67,
-  //       title: "Sign In Page",
-  //       path: "/signin",
-  //       newTab: false,
-  //     },
-  //     {
-  //       id: 68,
-  //       title: "Error Page",
-  //       path: "/error",
-  //       newTab: false,
-  //     },
-  //   ],
-  // },
 ];
 export default menuData;

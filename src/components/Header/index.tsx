@@ -67,13 +67,36 @@ const Logo = () => (
         className="hidden object-contain dark:block"
       />
     </div>
-    <span className="text-lg font-bold tracking-tight text-black transition-all duration-300 dark:text-white">
+    <span className="text-lg font-bold tracking-tight text-slate-900 transition-all duration-300 dark:text-white">
       Signalize<span className="text-primary dark:text-accent">AI</span>
     </span>
   </Link>
 );
 
-const DesktopNav = ({ sticky, isHomePage }: { sticky: boolean; isHomePage: boolean }) => {
+const isPathActive = (pathname: string, path?: string) => {
+  if (!path) return false;
+  if (path === "/") return pathname === "/";
+  return pathname === path || pathname.startsWith(`${path}/`);
+};
+
+const isMenuActive = (pathname: string, menuItem: (typeof menuData)[number]) => {
+  if (isPathActive(pathname, menuItem.path)) return true;
+  return (
+    menuItem.submenu?.some(
+      (sub) => !!sub.path && sub.path.startsWith("/") && isPathActive(pathname, sub.path),
+    ) ?? false
+  );
+};
+
+const DesktopNav = ({
+  sticky,
+  isHomePage,
+  pathname,
+}: {
+  sticky: boolean;
+  isHomePage: boolean;
+  pathname: string;
+}) => {
   const [markerStyle, setMarkerStyle] = useState({
     left: 0,
     width: 0,
@@ -81,7 +104,9 @@ const DesktopNav = ({ sticky, isHomePage }: { sticky: boolean; isHomePage: boole
   });
   const navRef = useRef<HTMLUListElement>(null);
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseEnter = (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  ) => {
     if (!navRef.current) return;
     const parentRect = navRef.current.getBoundingClientRect();
     const targetRect = e.currentTarget.getBoundingClientRect();
@@ -95,67 +120,74 @@ const DesktopNav = ({ sticky, isHomePage }: { sticky: boolean; isHomePage: boole
   const handleMouseLeave = () =>
     setMarkerStyle((prev) => ({ ...prev, opacity: 0 }));
 
-  const linkClass = `px-5 py-1.5 text-sm font-medium transition-colors duration-200 ${
-    sticky
-      ? "text-slate-600 dark:text-slate-300"
-      : "text-slate-800 dark:text-slate-200"
-  } hover:text-black dark:hover:text-white group-hover:text-black dark:group-hover:text-white`;
-
   return (
     <nav className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
       <ul
         ref={navRef}
-        className="relative flex items-center rounded-full border border-gray-400 p-1 dark:border-gray-700"
+        className="relative flex items-center rounded-full border border-gray-200 bg-white p-1 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none"
         onMouseLeave={handleMouseLeave}
       >
         {/* Floating Marker */}
         <div
-          className="marker-transition marker-glow pointer-events-none absolute top-1 bottom-1 rounded-full bg-gray-200/50 dark:bg-white/10"
+          className="marker-transition marker-glow pointer-events-none absolute top-1 bottom-1 rounded-full bg-gray-100 dark:bg-white/10"
           style={{ ...markerStyle }}
         />
 
         {menuData.map((menuItem, index) => {
           if (menuItem.title === "Home" && isHomePage) return null;
+          const active = isMenuActive(pathname, menuItem);
           return (
-          <li key={index} className="group relative z-10">
-            {menuItem.submenu ? (
-              <>
+            <li key={index} className="group relative z-10">
+              {menuItem.submenu ? (
+                <>
+                  <button
+                    type="button"
+                    onMouseEnter={handleMouseEnter}
+                    className={`flex cursor-pointer items-center gap-1 rounded-full px-5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+                      active
+                        ? "text-slate-950 dark:text-white"
+                        : sticky
+                          ? "text-slate-600 hover:text-black dark:text-white/70 dark:hover:text-white"
+                          : "text-slate-800 hover:text-black dark:text-white/80 dark:hover:text-white"
+                    }`}
+                  >
+                    {menuItem.title}
+                    <ChevronIcon className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                  </button>
+                  {/* Dropdown */}
+                  <div className="invisible absolute top-full left-0 mt-2 w-[200px] rounded-2xl border border-gray-100 bg-white dark:border-white/10 dark:bg-[#111111] p-3 opacity-0 shadow-lg dark:shadow-2xl transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100 backdrop-blur-xl">
+                    {menuItem.submenu.map((sub, idx) => (
+                      <Link
+                        key={idx}
+                        href={sub.path || "#"}
+                        target={sub.newTab ? "_blank" : "_self"}
+                        className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 dark:text-white/70 transition hover:bg-slate-50 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
+                      >
+                        {sub.icon && (
+                          <span className="h-5 w-5 fill-current text-[#3b82f6] dark:text-[#00e5ff]">{sub.icon}</span>
+                        )}
+                        {sub.title}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
                 <Link
                   href={menuItem.path || "#"}
+                  onClick={(e) => handleSmoothScroll(e, menuItem.path || "")}
                   onMouseEnter={handleMouseEnter}
-                  className={`flex cursor-pointer items-center gap-1 ${linkClass}`}
+                  className={`block rounded-full px-5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+                    active
+                      ? "bg-gray-100 text-slate-950 dark:bg-white/10 dark:text-white"
+                      : sticky
+                        ? "text-slate-600 hover:text-black dark:text-white/70 dark:hover:text-white"
+                        : "text-slate-800 hover:text-black dark:text-white/80 dark:hover:text-white"
+                  }`}
                 >
                   {menuItem.title}
-                  <ChevronIcon className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                 </Link>
-                {/* Dropdown */}
-                <div className="invisible absolute top-full left-0 mt-2 w-[200px] rounded-lg border border-gray-100 bg-white p-3 opacity-0 shadow-lg transition-all duration-300 group-hover:visible group-hover:top-full group-hover:opacity-100 dark:border-gray-800 dark:bg-[#1e1e24]">
-                  {menuItem.submenu.map((sub, idx) => (
-                    <Link
-                      key={idx}
-                      href={sub.path || "#"}
-                      target={sub.newTab ? "_blank" : "_self"}
-                      className="flex items-center gap-4 rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-black dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
-                    >
-                      {sub.icon && (
-                        <span className="h-5 w-5 fill-current">{sub.icon}</span>
-                      )}
-                      {sub.title}
-                    </Link>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <Link
-                href={menuItem.path || "#"}
-                onClick={(e) => handleSmoothScroll(e, menuItem.path || "")}
-                onMouseEnter={handleMouseEnter}
-                className={`block ${linkClass}`}
-              >
-                {menuItem.title}
-              </Link>
-            )}
-          </li>
+              )}
+            </li>
           );
         })}
       </ul>
@@ -168,95 +200,104 @@ const MobileNav = ({
   closeMenu,
   isHomePage,
   openModal,
+  pathname,
 }: {
   isOpen: boolean;
   closeMenu: () => void;
   isHomePage: boolean;
   openModal: () => void;
+  pathname: string;
 }) => {
   const [submenuOpen, setSubmenuOpen] = useState<number>(-1);
 
   return (
     <>
       <div
-        className={`absolute top-full left-0 mt-4 w-full px-4 transition-all duration-300 lg:hidden ${
-          isOpen
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-4 opacity-0"
-        }`}
+        className={`absolute top-full left-0 mt-4 w-full px-4 transition-all duration-300 lg:hidden ${isOpen
+          ? "visible translate-y-0 opacity-100"
+          : "invisible -translate-y-4 opacity-0"
+          }`}
       >
-        <div className="w-full rounded-2xl border border-gray-100 bg-white p-4 shadow-xl dark:border-gray-800 dark:bg-slate-950">
+        <div className="w-full rounded-2xl border border-gray-100 bg-white dark:border-white/10 dark:bg-[#111111] p-4 shadow-xl dark:shadow-2xl">
           <ul className="flex flex-col gap-2">
             {menuData.map((menuItem, index) => {
               if (menuItem.title === "Home" && isHomePage) return null;
+              const active = isMenuActive(pathname, menuItem);
               return (
-              <li
-                key={index}
-                className={menuItem.submenu ? "group relative" : ""}
-              >
-                {menuItem.submenu ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        setSubmenuOpen(submenuOpen === index ? -1 : index)
-                      }
-                      className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-white/5"
-                    >
-                      {menuItem.title}
-                      <ChevronIcon
-                        className={`h-4 w-4 transition-transform ${submenuOpen === index ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        submenuOpen === index
+                <li
+                  key={index}
+                  className={menuItem.submenu ? "group relative" : ""}
+                >
+                  {menuItem.submenu ? (
+                    <>
+                      <button
+                        onClick={() =>
+                          setSubmenuOpen(submenuOpen === index ? -1 : index)
+                        }
+                        className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition ${
+                          active
+                            ? "bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white"
+                            : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white"
+                        }`}
+                      >
+                        {menuItem.title}
+                        <ChevronIcon
+                          className={`h-4 w-4 transition-transform ${submenuOpen === index ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${submenuOpen === index
                           ? "max-h-[400px] opacity-100"
                           : "max-h-0 opacity-0"
+                          }`}
+                      >
+                        <ul className="ml-4 flex flex-col gap-2">
+                          {menuItem.submenu.map((sub, idx) => (
+                            <li key={idx}>
+                              <Link
+                                href={sub.path || "#"}
+                                target={sub.newTab ? "_blank" : "_self"}
+                                className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#3b82f6] dark:hover:text-[#00e5ff] transition"
+                              >
+                                {sub.icon && (
+                                  <span className="h-5 w-5 fill-current">
+                                    {sub.icon}
+                                  </span>
+                                )}
+                                {sub.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={menuItem.path || "#"}
+                      onClick={(e) =>
+                        handleSmoothScroll(e, menuItem.path || "", closeMenu)
+                      }
+                      className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
+                        active
+                          ? "bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white"
+                          : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white"
                       }`}
                     >
-                      <ul className="ml-4 flex flex-col gap-2">
-                        {menuItem.submenu.map((sub, idx) => (
-                          <li key={idx}>
-                            <Link
-                              href={sub.path || "#"}
-                              target={sub.newTab ? "_blank" : "_self"}
-                              className="flex items-center gap-4 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 hover:bg-gray-50 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
-                            >
-                              {sub.icon && (
-                                <span className="h-5 w-5 fill-current">
-                                  {sub.icon}
-                                </span>
-                              )}
-                              {sub.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={menuItem.path || "#"}
-                    onClick={(e) =>
-                      handleSmoothScroll(e, menuItem.path || "", closeMenu)
-                    }
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-slate-600 hover:bg-gray-50 dark:text-slate-300 dark:hover:bg-white/5"
-                  >
-                    {menuItem.title}
-                  </Link>
-                )}
-              </li>
+                      {menuItem.title}
+                    </Link>
+                  )}
+                </li>
               );
             })}
-            <li className="border-t border-gray-100 pt-3 dark:border-gray-800">
+            <li className="border-t border-gray-100 dark:border-white/10 pt-3">
               <button
                 onClick={() => {
                   closeMenu();
                   openModal();
                 }}
-                className="bg-primary hover:bg-opacity-90 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-bold text-white transition"
+                className="bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:scale-[1.02]"
               >
-                Try for free
+                Install extension
               </button>
             </li>
           </ul>
@@ -329,7 +370,7 @@ const Header = () => {
           left: 15%;
           width: 70%;
           height: 8px;
-          background: rgba(255, 80, 80, 0.4);
+          background: linear-gradient(90deg, rgba(26, 35, 126, 0.32), rgba(0, 229, 255, 0.32));
           filter: blur(8px);
           opacity: 0.6;
           z-index: -1;
@@ -337,17 +378,16 @@ const Header = () => {
       `}</style>
 
       <header
-        className={`nav-morph fixed left-1/2 z-[999] flex w-full -translate-x-1/2 items-center justify-between border border-transparent bg-white/80 backdrop-blur-md dark:bg-slate-950/80 ${
-          sticky
-            ? "top-0 border-b border-gray-200 px-4 py-4 lg:top-6 lg:max-w-5xl lg:rounded-full lg:border-white/10 lg:px-6 lg:py-2.5 lg:shadow-2xl dark:border-gray-800 lg:dark:bg-slate-900/80"
-            : "top-0 max-w-full rounded-none border-b border-gray-100 px-4 py-4 lg:px-8 dark:border-white/5"
-        }`}
+        className={`nav-morph fixed left-1/2 z-[999] flex w-full -translate-x-1/2 items-center justify-between border border-transparent bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl ${sticky
+          ? "top-0 border-b border-gray-200 dark:border-white/10 px-4 py-4 lg:top-6 lg:max-w-5xl lg:rounded-full lg:px-6 lg:py-2.5 shadow-md lg:shadow-xl dark:lg:shadow-[0_0_30px_rgba(0,0,0,0.5)] bg-white/95 dark:bg-[#111111]/80"
+          : "top-0 max-w-full rounded-none border-b border-gray-100 dark:border-white/5 px-4 py-4 lg:px-8 bg-white/50 dark:bg-transparent"
+          }`}
       >
         <div className="flex shrink-0 items-center gap-3">
           <Logo />
         </div>
 
-        <DesktopNav sticky={sticky} isHomePage={isHomePage} />
+        <DesktopNav sticky={sticky} isHomePage={isHomePage} pathname={pathname} />
 
         <div className="flex shrink-0 items-center gap-3">
           <div className="hidden gap-2 lg:flex">
@@ -358,14 +398,14 @@ const Header = () => {
             onClick={() => setModalOpen(true)}
             className={`hidden items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
               sticky
-                ? "bg-primary hover:bg-primary/90"
-                : "bg-black hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
+                ? "bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] shadow-md dark:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+                : "border border-transparent bg-slate-900 hover:bg-slate-800 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20"
             }`}
           >
-            Try for free
+            Install
           </button>
 
-          <div className="lg:hidden">
+          <div className="lg:hidden text-slate-800 dark:text-white">
             <ThemeToggler />
           </div>
 
@@ -373,7 +413,7 @@ const Header = () => {
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
             aria-label="Toggle Mobile Menu"
-            className="p-2 text-slate-800 lg:hidden dark:text-white"
+            className="p-2 text-slate-800 dark:text-white lg:hidden"
           >
             <span className="relative block h-5 w-5">
               <span
@@ -389,7 +429,13 @@ const Header = () => {
           </button>
         </div>
 
-        <MobileNav isOpen={navbarOpen} closeMenu={() => setNavbarOpen(false)} isHomePage={isHomePage} openModal={() => setModalOpen(true)} />
+        <MobileNav
+          isOpen={navbarOpen}
+          closeMenu={() => setNavbarOpen(false)}
+          isHomePage={isHomePage}
+          openModal={() => setModalOpen(true)}
+          pathname={pathname}
+        />
       </header>
 
       <BrowserModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />

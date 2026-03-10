@@ -1,191 +1,172 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const workflowSteps = [
+  {
+    label: "1",
+    title: "Open a company website",
+    description:
+      "Start on any public business page where the company explains its offer, positioning, or customer segment.",
+  },
+  {
+    label: "2",
+    title: "Run SignalizeAI",
+    description:
+      "The extension reads visible page content on demand and converts it into a structured sales brief.",
+  },
+  {
+    label: "3",
+    title: "Move from insight to action",
+    description:
+      "Use quick checks, batch analysis, saved analyses, and exportable output to support outreach workflows.",
+  },
+];
+
+const guardrails = [
+  "Public website content only",
+  "API keys stay server-side",
+  "No form inputs, cookies, or private pages",
+];
+
 const About = () => {
   return (
     <section
       id="about"
-      className="bg-gray-1 pb-8 pt-20 dark:bg-dark-2 lg:pb-[70px] lg:pt-[120px]"
+      className="relative z-10 overflow-hidden bg-white py-16 dark:bg-[#0a0a0a] md:py-20 lg:py-28"
     >
-      <div className="container">
-        <div className="wow fadeInUp" data-wow-delay=".2s">
-          <div className="-mx-4 flex flex-wrap items-center">
-            <div className="w-full px-4 lg:w-1/2">
-              <div className="mb-12 max-w-[540px] lg:mb-0">
-                <h2 className="mb-5 text-3xl font-bold leading-tight text-dark dark:text-white sm:text-[40px] sm:leading-[1.2]">
-                  Understand any website in seconds with <span className="text-dark dark:text-white">Signalize</span><span className="text-primary dark:text-accent">AI</span>.
-                </h2>
-                <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Our Chrome and Firefox extension reads only the public content on the page
-                  you are viewing, then distills it into sales-ready context:
-                  what the company does, who they target, the value proposition,
-                  and how ready they are for outreach. We keep API keys server
-                  side, rate-limit requests, and never ship personal browsing
-                  data to the AI.
-                </p>
+      <div className="absolute right-0 top-0 h-72 w-72 translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full bg-accent/10 blur-[120px]" />
 
-                <Link
-                  href="https://signalizeai.org/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90"
+      <div className="container relative z-10">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div>
+            <span className="inline-flex rounded-full border border-primary/15 bg-primary/8 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
+              How it works
+            </span>
+
+            <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-[42px] sm:leading-[1.1]">
+              Research faster without turning your workflow into tab chaos.
+            </h2>
+
+            <p className="mt-6 max-w-[620px] text-base leading-8 text-slate-600 dark:text-white/65">
+              SignalizeAI is built for sales and growth teams that need useful
+              context quickly. Instead of manually piecing together website
+              copy, positioning, and buyer signals, the extension gives you a
+              structured read on the business in a few seconds.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {workflowSteps.map((step) => (
+                <div
+                  key={step.title}
+                  className="rounded-[1.75rem] border border-gray-200 bg-gray-50/90 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
                 >
-                  See everything we analyze
-                </Link>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent text-sm font-bold text-white dark:text-black">
+                      {step.label}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-white/65">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/docs"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base font-semibold text-white shadow-[0_0_20px_rgba(26,35,126,0.25)] transition hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(26,35,126,0.35)] dark:text-black"
+              >
+                Read the docs
+              </Link>
+              <Link
+                href="/privacy"
+                className="inline-flex items-center justify-center rounded-full border border-gray-300 px-8 py-4 text-base font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-gray-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+              >
+                Privacy details
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[420px] overflow-hidden rounded-[2.25rem] border border-gray-200 shadow-2xl dark:border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent z-10" />
+              <Image
+                src="/images/about/about-image-01.jpg"
+                alt="SignalizeAI workflow preview"
+                fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+              <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
+                  Built for live research
+                </p>
+                <p className="mt-3 max-w-[320px] text-sm leading-7 text-white/80">
+                  Use quick website checks when you are evaluating one account,
+                  or scale into batch analysis when the list is bigger.
+                </p>
               </div>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2">
-              <div className="-mx-2 flex flex-wrap sm:-mx-4 lg:-mx-2 xl:-mx-4">
-                <div className="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                  <div
-                    className={`relative mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px] `}
-                  >
-                    <Image
-                      src="/images/about/about-image-01.jpg"
-                      alt="about image"
-                      fill
-                      sizes="(max-width: 1023px) 100vw, 50vw"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                </div>
+            <div className="grid gap-4">
+              <div className="rounded-[2rem] border border-gray-200 bg-gray-50 p-6 shadow-xl dark:border-white/10 dark:bg-[#101010]">
+                <span className="block text-5xl font-extrabold text-slate-900 dark:text-white">
+                  &lt;5s
+                </span>
+                <span className="mt-2 block text-base font-semibold text-primary dark:text-accent">
+                  Typical time to insight
+                </span>
+                <span className="mt-2 block text-sm font-medium text-slate-500 dark:text-white/50">
+                  From active page to sales-ready context
+                </span>
+              </div>
 
-                <div className="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                  <div className="relative mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px]">
-                    <Image
-                      src="/images/about/about-image-02.jpg"
-                      alt="about image"
-                      fill
-                      sizes="(max-width: 1023px) 100vw, 50vw"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-
-                  <div className="relative z-10 mb-4 flex items-center justify-center overflow-hidden bg-primary px-6 py-12 sm:mb-8 sm:h-[160px] sm:p-5 lg:mb-4 xl:mb-8">
-                    <div>
-                      <span className="block text-5xl font-extrabold text-white">
-                        30
+              <div className="rounded-[2rem] border border-gray-200 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-[#111111]">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">
+                  Guardrails
+                </p>
+                <div className="mt-4 space-y-3">
+                  {guardrails.map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent">
+                        <svg
+                          className="h-3.5 w-3.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2.5}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
                       </span>
-                      <span className="block text-base font-semibold text-white">
-                        Seconds to insight
-                      </span>
-                      <span className="block text-base font-medium text-white/70">
-                        From page load to sales brief
-                      </span>
+                      <p className="text-sm leading-7 text-slate-600 dark:text-white/65">
+                        {item}
+                      </p>
                     </div>
-                    <div>
-                      <span className="absolute left-0 top-0 -z-10">
-                        <svg
-                          width="106"
-                          height="144"
-                          viewBox="0 0 106 144"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            opacity="0.1"
-                            x="-67"
-                            y="47.127"
-                            width="113.378"
-                            height="131.304"
-                            transform="rotate(-42.8643 -67 47.127)"
-                            fill="url(#paint0_linear_1416_214)"
-                          />
-                          <defs>
-                            <linearGradient
-                              id="paint0_linear_1416_214"
-                              x1="-10.3111"
-                              y1="47.127"
-                              x2="-10.3111"
-                              y2="178.431"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="white" />
-                              <stop
-                                offset="1"
-                                stopColor="white"
-                                stopOpacity="0"
-                              />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </span>
-                      <span className="absolute right-0 top-0 -z-10">
-                        <svg
-                          width="130"
-                          height="97"
-                          viewBox="0 0 130 97"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            opacity="0.1"
-                            x="0.86792"
-                            y="-6.67725"
-                            width="155.563"
-                            height="140.614"
-                            transform="rotate(-42.8643 0.86792 -6.67725)"
-                            fill="url(#paint0_linear_1416_215)"
-                          />
-                          <defs>
-                            <linearGradient
-                              id="paint0_linear_1416_215"
-                              x1="78.6495"
-                              y1="-6.67725"
-                              x2="78.6495"
-                              y2="133.937"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="white" />
-                              <stop
-                                offset="1"
-                                stopColor="white"
-                                stopOpacity="0"
-                              />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </span>
-                      <span className="absolute bottom-0 right-0 -z-10">
-                        <svg
-                          width="175"
-                          height="104"
-                          viewBox="0 0 175 104"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            opacity="0.1"
-                            x="175.011"
-                            y="108.611"
-                            width="101.246"
-                            height="148.179"
-                            transform="rotate(137.136 175.011 108.611)"
-                            fill="url(#paint0_linear_1416_216)"
-                          />
-                          <defs>
-                            <linearGradient
-                              id="paint0_linear_1416_216"
-                              x1="225.634"
-                              y1="108.611"
-                              x2="225.634"
-                              y2="256.79"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="white" />
-                              <stop
-                                offset="1"
-                                stopColor="white"
-                                stopOpacity="0"
-                              />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
+                  ))}
                 </div>
+              </div>
+
+              <div className="relative min-h-[180px] overflow-hidden rounded-[2rem] border border-gray-200 shadow-xl dark:border-white/10">
+                <Image
+                  src="/images/about/about-image-02.jpg"
+                  alt="SignalizeAI research workflow"
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 33vw"
+                  className="object-cover object-center opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-accent/20" />
               </div>
             </div>
           </div>

@@ -36,10 +36,10 @@ export default function Home() {
     <main>
       <ScrollUp />
       <Hero />
-      <Features />
       <About />
+      <Features />
+      <Pricing mode="teaser" />
       <CallToAction />
-      <Pricing />
       {/* <Testimonials /> */}
       <Faq />
       {/* <Team /> */}

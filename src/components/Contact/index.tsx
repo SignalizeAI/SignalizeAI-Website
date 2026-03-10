@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
+import Link from "next/link";
 import { validateEmail } from "@/utils/validateEmail";
 
 const initialFormState = {
@@ -11,9 +12,24 @@ const initialFormState = {
   message: "",
 };
 
+const supportTopics = [
+  {
+    title: "Product support",
+    body: "Questions about setup, quick website checks, batch analysis, or saved analyses.",
+  },
+  {
+    title: "Privacy and permissions",
+    body: "Clarify what SignalizeAI reads, what it stores, and how browser permissions are used.",
+  },
+  {
+    title: "Teams and partnerships",
+    body: "Reach out if your team needs higher-volume usage, rollout help, or partnership discussion.",
+  },
+];
+
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
-const Contact = () => {
+const Contact = ({ variant = "home" }: { variant?: "home" | "page" }) => {
   const [formData, setFormData] = useState(initialFormState);
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -22,6 +38,7 @@ const Contact = () => {
     process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.signalizeai.org"
   ).replace(/\/$/, "");
   const contactUrl = `${apiBaseUrl}/api/contact`;
+  const isPageVariant = variant === "page";
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -86,24 +103,73 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-16 md:py-20 lg:py-[120px]">
-      <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
-      <div className="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-accent/5 dark:bg-dark-2 lg:h-[45%] xl:h-1/2"></div>
-      <div className="container px-4">
+    <section
+      id="contact"
+      className={`relative ${isPageVariant ? "py-0" : "py-16 md:py-20 lg:py-[120px]"} bg-gray-50 dark:bg-[#000000]`}
+    >
+      {!isPageVariant && (
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-gray-50 dark:from-[#000000] dark:to-[#0a0a0a] z-0 pointer-events-none"></div>
+      )}
+
+      <div className="container relative z-10 px-4">
+        {!isPageVariant && (
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-8 shadow-2xl dark:border-white/10 dark:bg-[#0a0a0a] sm:p-10 lg:p-12">
+            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div>
+                <span className="inline-flex rounded-full border border-primary/15 bg-primary/8 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
+                  Contact
+                </span>
+                <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                  Need help? Open the real contact page.
+                </h2>
+                <p className="mt-5 max-w-[560px] text-base leading-8 text-slate-600 dark:text-white/65">
+                  The homepage should not try to be a support desk. Use the
+                  dedicated contact page for the form, support lanes, and
+                  product-specific questions.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                  >
+                    Open contact page
+                  </Link>
+                  <Link
+                    href="/docs"
+                    className="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-gray-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+                  >
+                    Check docs first
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                {supportTopics.map((topic) => (
+                  <div
+                    key={topic.title}
+                    className="rounded-[1.75rem] border border-gray-200 bg-gray-50/90 p-5 dark:border-white/10 dark:bg-white/5"
+                  >
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {topic.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-white/65">
+                      {topic.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isPageVariant && (
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
             <div className="ud-contact-content-wrapper">
-              <div className="ud-contact-title mb-12 lg:mb-[150px]">
-                <span className="mb-6 block text-base font-medium text-dark dark:text-white">
-                  CONTACT SIGNALIZEAI
-                </span>
-                <h2 className="mb-2 text-3xl font-semibold leading-[1.14] text-dark dark:text-white sm:text-[35px] lg:max-w-[260px]">
-                  Let&#39;s talk about your sales workflow.
-                </h2>
-              </div>
               <div className="mb-12 flex flex-wrap justify-between lg:mb-0">
                 <div className="mb-8 flex w-[330px] max-w-full">
-                  <div className="mr-6 text-[32px] text-primary">
+                  <div className="mr-6 text-[32px] text-primary dark:text-accent">
                     <svg
                       width="29"
                       height="35"
@@ -115,16 +181,16 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-[18px] text-lg font-semibold text-dark dark:text-white">
-                      Our Location
+                    <h3 className="mb-[14px] text-xl font-semibold text-slate-900 dark:text-white">
+                      Team setup
                     </h3>
-                    <p className="text-base text-body-color dark:text-dark-6">
+                    <p className="text-base text-slate-600 dark:text-white/60">
                       Remote-first with a distributed team
                     </p>
                   </div>
                 </div>
                 <div className="mb-8 flex w-[330px] max-w-full">
-                  <div className="mr-6 text-[32px] text-primary">
+                  <div className="mr-6 text-[32px] text-primary dark:text-accent">
                     <svg
                       width="34"
                       height="25"
@@ -135,26 +201,26 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-[18px] text-lg font-semibold text-dark dark:text-white">
-                      How Can We Help?
+                    <h3 className="mb-[14px] text-xl font-semibold text-slate-900 dark:text-white">
+                      Direct email
                     </h3>
-                    <p className="text-base text-body-color dark:text-dark-6">
+                    <p className="text-base text-primary dark:text-accent">
                       <a
                         href="mailto:support@signalizeai.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:underline"
+                        className="hover:underline transition-all"
                       >
                         support@signalizeai.org
                       </a>
                     </p>
 
-                    <p className="mt-1 text-base text-body-color dark:text-dark-6">
+                    <p className="mt-2 text-base text-primary dark:text-accent">
                       <a
                         href="mailto:privacy@signalizeai.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:underline"
+                        className="hover:underline transition-all"
                       >
                         privacy@signalizeai.org
                       </a>
@@ -166,17 +232,22 @@ const Contact = () => {
           </div>
           <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
             <div
-              className="wow fadeInUp rounded-lg bg-white px-6 py-8 shadow-testimonial dark:bg-dark-2 dark:shadow-none sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]"
+              className="wow fadeInUp rounded-[2rem] bg-white dark:bg-[#111111] border border-gray-200 dark:border-white/10 px-6 py-8 shadow-xl dark:shadow-2xl sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]"
               data-wow-delay=".2s"
             >
-              <h3 className="mb-8 text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
-                Send us a Message
+              <h3 className="mb-3 text-2xl font-semibold text-slate-900 dark:text-white md:text-[28px] md:leading-[1.42]">
+                {isPageVariant ? "Contact the team" : "Send a message"}
               </h3>
+              <p className="mb-8 text-sm leading-7 text-slate-600 dark:text-white/60">
+                {isPageVariant
+                  ? "Include your browser, the kind of page you were analyzing, and what you expected to happen."
+                  : "We usually reply fastest when the request includes the browser, URL type, and the exact issue or workflow you are asking about."}
+              </p>
               <form onSubmit={handleSubmit}>
                 <div className="mb-[22px]">
                   <label
                     htmlFor="fullName"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
+                    className="mb-4 block text-sm font-medium text-slate-700 dark:text-white/70"
                   >
                     Full Name*
                   </label>
@@ -189,13 +260,13 @@ const Contact = () => {
                     placeholder="Adam Gelius"
                     autoComplete="name"
                     required
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    className="w-full border-0 border-b border-gray-300 dark:border-white/20 bg-transparent pb-3 text-slate-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-primary dark:focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
                 <div className="mb-[22px]">
                   <label
                     htmlFor="email"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
+                    className="mb-4 block text-sm font-medium text-slate-700 dark:text-white/70"
                   >
                     Email*
                   </label>
@@ -209,13 +280,13 @@ const Contact = () => {
                     placeholder="example@yourmail.com"
                     autoComplete="email"
                     required
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    className="w-full border-0 border-b border-gray-300 dark:border-white/20 bg-transparent pb-3 text-slate-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-primary dark:focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
                 <div className="mb-[22px]">
                   <label
                     htmlFor="phone"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
+                    className="mb-4 block text-sm font-medium text-slate-700 dark:text-white/70"
                   >
                     Phone
                   </label>
@@ -227,13 +298,13 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="+885 1254 5211 552"
                     autoComplete="tel"
-                    className="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    className="w-full border-0 border-b border-gray-300 dark:border-white/20 bg-transparent pb-3 text-slate-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-primary dark:focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
                 <div className="mb-[30px]">
                   <label
                     htmlFor="message"
-                    className="mb-4 block text-sm text-body-color dark:text-dark-6"
+                    className="mb-4 block text-sm font-medium text-slate-700 dark:text-white/70"
                   >
                     Message*
                   </label>
@@ -246,21 +317,21 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="type your message here"
                     required
-                    className="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-dark placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-white"
+                    className="w-full resize-none border-0 border-b border-gray-300 dark:border-white/20 bg-transparent pb-3 text-slate-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:border-primary dark:focus:border-accent focus:outline-none transition-colors"
                   ></textarea>
                 </div>
                 <div className="mb-0">
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-primary/90"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent px-10 py-3.5 text-base font-semibold text-white dark:text-black transition duration-300 ease-in-out hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 disabled:hover:shadow-none"
                   >
-                    {status === "loading" ? "Sending..." : "Send"}
+                    {status === "loading" ? "Sending..." : "Send Message"}
                   </button>
                 </div>
                 {status === "success" && (
                   <p
-                    className="mt-4 text-sm text-emerald-500"
+                    className="mt-4 text-sm text-primary dark:text-accent text-center"
                     role="status"
                     aria-live="polite"
                   >
@@ -268,7 +339,7 @@ const Contact = () => {
                   </p>
                 )}
                 {status === "error" && errorMessage && (
-                  <p className="mt-4 text-sm text-red-500" role="alert">
+                  <p className="mt-4 text-sm text-red-500 text-center" role="alert">
                     {errorMessage}
                   </p>
                 )}
@@ -276,6 +347,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        )}
       </div>
     </section>
   );

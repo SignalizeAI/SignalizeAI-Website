@@ -37,7 +37,7 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
 
       {/* Modal */}
       <div className="relative z-10 w-full max-w-md mx-4 animate-in fade-in zoom-in duration-200">
-        <div className="rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900 dark:border dark:border-white/10">
+        <div className="rounded-2xl bg-white p-6 shadow-2xl dark:bg-[#111111] border border-gray-100 dark:border-white/10">
           {/* Close Button */}
           <button
             onClick={onClose}
@@ -77,7 +77,7 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
-              className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-gray-700 dark:bg-slate-800 dark:hover:border-primary"
+              className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:hover:border-accent"
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
                 <Image
@@ -89,10 +89,10 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
                 />
               </div>
               <div className="flex-1 text-left">
-                <h4 className="font-semibold text-black dark:text-white group-hover:text-primary">
+                <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent">
                   Google Chrome
                 </h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-slate-500 dark:text-white/40">
                   Install from Chrome Web Store
                 </p>
               </div>
@@ -117,7 +117,7 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={onClose}
-              className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-gray-700 dark:bg-slate-800 dark:hover:border-primary"
+              className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:hover:border-accent"
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
                 <Image
@@ -129,10 +129,10 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
                 />
               </div>
               <div className="flex-1 text-left">
-                <h4 className="font-semibold text-black dark:text-white group-hover:text-primary">
+                <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent">
                   Mozilla Firefox
                 </h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-slate-500 dark:text-white/40">
                   Install from Firefox Add-ons
                 </p>
               </div>
