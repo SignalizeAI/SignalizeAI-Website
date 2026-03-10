@@ -6,7 +6,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]"
+        className="relative overflow-hidden bg-primary pb-12 pt-[120px] sm:pb-0 md:pt-[130px] lg:pt-[160px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
@@ -101,13 +101,13 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="w-full px-4">
+            <div className="hidden w-full px-4 sm:block">
               <div
                 className="wow fadeInUp relative z-10 mx-auto max-w-[920px]"
                 data-wow-delay=".25s"
               >
                 <div className="absolute inset-x-12 top-10 z-[-1] h-40 rounded-full bg-white/10 blur-3xl" />
-                <div className="mt-12 rounded-[30px] border border-white/15 bg-white/[0.08] p-2 shadow-[0_30px_90px_rgba(5,10,40,0.45)] backdrop-blur-sm lg:mt-14 lg:p-3">
+                <div className="mt-12 hidden rounded-[30px] border border-white/15 bg-white/[0.08] p-2 shadow-[0_30px_90px_rgba(5,10,40,0.45)] backdrop-blur-sm sm:block lg:mt-14 lg:p-3">
                   <div className="hidden overflow-hidden rounded-[24px] border border-slate-200/70 bg-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] sm:block">
                     <div className="flex items-center border-b border-slate-300/80 bg-gradient-to-b from-white to-slate-100 px-4 py-2.5">
                       <div className="flex items-center gap-2">
