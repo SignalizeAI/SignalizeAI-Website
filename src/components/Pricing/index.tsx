@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { Price } from "@/types/price";
 import SectionTitle from "../Common/SectionTitle";
 import PricingBox from "./PricingBox";
 import PricingTeaser from "./PricingTeaser";
@@ -15,6 +16,9 @@ const Pricing = ({ mode = "full" }: PricingProps) => {
   const [hoveredOffer, setHoveredOffer] = useState<string | null>(null);
   const isTeaser = mode === "teaser";
   const userPlan = useUserPlan(!isTeaser);
+  const orderedPricingData = ["Free", "Pro", "Team"]
+    .map((plan) => pricingData.find((product) => product.nickname === plan))
+    .filter((product): product is Price => Boolean(product));
 
   return (
     <section
@@ -40,12 +44,12 @@ const Pricing = ({ mode = "full" }: PricingProps) => {
           <PricingTeaser />
         ) : (
           <div className="-mx-4 flex flex-wrap justify-center">
-            {pricingData.map((product, index) => (
+            {orderedPricingData.map((product, index) => (
               <PricingBox
                 key={index}
                 product={product}
                 currentPlan={userPlan}
-                isHighlighted={hoveredOffer === product.nickname || (hoveredOffer === null && product.nickname === "Team")}
+                isHighlighted={hoveredOffer === product.nickname || (hoveredOffer === null && product.nickname === "Pro")}
                 onMouseEnter={() => setHoveredOffer(product.nickname)}
                 onMouseLeave={() => setHoveredOffer(null)}
               />

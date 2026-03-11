@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { browserLinks, heroFacts } from "./content";
 
@@ -24,15 +25,22 @@ const DocsHero = () => (
           <p className="mt-8 max-w-[720px] text-lg leading-8 text-slate-600 dark:text-white/68 sm:text-xl">
             This guide explains how SignalizeAI works in practice: how to get started, when to use single-page analysis versus batch workflows, what the output means, and how privacy and access are handled.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            {browserLinks.map((browser) => (
-              <Link key={browser.label} href={browser.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-7 py-4 text-base font-bold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
-                {browser.label}
-              </Link>
-            ))}
-            <Link href="/privacy" className="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-7 py-4 text-base font-bold text-slate-900 transition hover:border-slate-500 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5">
-              Privacy details
-            </Link>
+          <div className="mt-10 max-w-md sm:max-w-none">
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+              {browserLinks.map((browser) => (
+                <Link
+                  key={browser.label}
+                  href={browser.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:px-7 sm:py-4 sm:text-base"
+                >
+                  <Image src={browser.icon} alt={browser.mobileLabel} width={18} height={18} className="h-[18px] w-[18px]" />
+                  <span className="sm:hidden">{browser.mobileLabel}</span>
+                  <span className="hidden sm:inline">{browser.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -44,7 +52,7 @@ const DocsHero = () => (
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary dark:text-accent">Guide coverage</p>
                   <h2 className="mt-3 max-w-[12ch] text-[2rem] font-black leading-[1.05] tracking-tight text-slate-900 dark:text-white sm:max-w-none sm:text-3xl">
-                    One documentation surface, not six disconnected cards
+                    What you can find in the docs
                   </h2>
                 </div>
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-[0_20px_40px_-20px_rgba(26,35,126,0.45)] dark:text-black sm:h-14 sm:w-14">
@@ -58,18 +66,6 @@ const DocsHero = () => (
                     <p className="mt-2 text-sm font-bold text-slate-900 dark:text-white">{fact.value}</p>
                   </div>
                 ))}
-              </div>
-              <div className="mt-6 rounded-[1.5rem] border border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                <p className="text-sm leading-7 text-slate-600 dark:text-white/65">
-                  Use this page to understand how SignalizeAI behaves. Use the pricing page only when you need billing or plan comparison. Use privacy when the question is about data handling or permissions.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {browserLinks.map((browser) => (
-                    <Link key={browser.label} href={browser.href} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-gray-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5">
-                      {browser.label}
-                    </Link>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

@@ -19,7 +19,6 @@ export const footerLinkGroups = [
     title: "Support",
     links: [
       { label: "Discord", href: "https://discord.gg/eCvhD6WZhX", external: true },
-      { label: "Contact", href: "/contact" },
       {
         label: "support@signalizeai.org",
         href: "mailto:support@signalizeai.org",

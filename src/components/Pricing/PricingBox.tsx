@@ -23,6 +23,7 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
   const { buttonConfig, handleAction, installModalOpen, setInstallModalOpen } = usePricingBoxState(product, currentPlan);
   const planName = product.nickname?.toLowerCase() || "free";
   const priceDisplay = planName === "free" ? "Free" : `₹${(product.unit_amount / 100).toLocaleString("en-IN")}/mo`;
+  const planBadge = product.nickname === "Pro" ? "Popular" : null;
 
   return (
     <>
@@ -37,13 +38,13 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
           onMouseLeave={onMouseLeave}
         >
           {isHighlighted && <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />}
-          {product.nickname === "Team" && (
+          {planBadge && (
             <>
               <p className="absolute right-4 top-4 inline-block rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1 text-xs font-semibold text-white dark:text-black sm:hidden">
-                Recommended
+                {planBadge}
               </p>
               <p className="absolute -right-8 top-[60px] hidden rotate-45 rounded-md bg-gradient-to-r from-primary to-accent px-8 py-1.5 text-xs font-semibold text-white shadow-lg dark:text-black sm:inline-block">
-                Recommended
+                {planBadge}
               </p>
             </>
           )}

@@ -80,7 +80,7 @@ const Header = () => {
                 : "border border-transparent bg-slate-900 hover:bg-slate-800 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20"
             }`}
           >
-            Install
+            Get Extension
           </button>
           <div className="text-slate-800 dark:text-white lg:hidden">
             <ThemeToggler />

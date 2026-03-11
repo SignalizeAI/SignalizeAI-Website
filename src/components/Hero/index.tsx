@@ -27,15 +27,15 @@ const Hero = () => {
               </div>
 
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
-                Know what any business <br className="hidden sm:block" />
+                Understand any company <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-accent">
-                  sells in seconds.
+                  in seconds.
                 </span>
               </h1>
 
               <p className="mx-auto mb-10 max-w-[650px] text-lg font-normal text-slate-600 dark:text-white/70 sm:text-xl sm:leading-relaxed">
-                Turn any website into clear, actionable sales intelligence instantly.
-                Understand positioning, target audience, and market fit with a single click.
+                Analyze any website and instantly see positioning, products,
+                audience, and outreach insights.
               </p>
 
               <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
@@ -100,7 +100,7 @@ const Hero = () => {
                   ))}
                 </div>
                 <div className="text-base lg:text-lg font-medium tracking-wide text-gray-500 dark:text-white/40">
-                  <strong className="text-gray-900 dark:text-white/80">Built for</strong> modern sales prospecting
+                  <strong className="text-gray-900 dark:text-white/80">Used by</strong> founders, SDRs, and GTM teams
                 </div>
               </div>
             </div>

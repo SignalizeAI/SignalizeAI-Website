@@ -37,6 +37,7 @@ export const privacySections = [
           "Private/Password-protected pages",
           "User form inputs",
           "Cookies or session data",
+          "Browsing history",
         ],
       },
       {
@@ -71,7 +72,7 @@ export const privacySections = [
       "Save user-requested analyses",
       "Improve extension functionality and user experience",
     ],
-    note: "We do not sell, share, or use data for advertising or tracking.",
+    note: "SignalizeAI does not track browsing history, and we do not sell, share, or use data for advertising or tracking.",
   },
   {
     id: "ai-processing",
