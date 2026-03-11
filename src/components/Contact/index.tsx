@@ -120,12 +120,11 @@ const Contact = ({ variant = "home" }: { variant?: "home" | "page" }) => {
                   Contact
                 </span>
                 <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                  Need help? Open the real contact page.
+                  Need product help or a direct answer?
                 </h2>
                 <p className="mt-5 max-w-[560px] text-base leading-8 text-slate-600 dark:text-white/65">
-                  The homepage should not try to be a support desk. Use the
-                  dedicated contact page for the form, support lanes, and
-                  product-specific questions.
+                  Use the contact page for the full support form, product
+                  questions, privacy clarifications, and team-level requests.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4">

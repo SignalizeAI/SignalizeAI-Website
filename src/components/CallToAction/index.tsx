@@ -19,8 +19,8 @@ const resourceCards = [
     title: "Support channels",
     description:
       "Use Discord, email, or privacy resources when you need product help or answers.",
-    href: "/#contact",
-    cta: "Contact us",
+    href: "/contact",
+    cta: "Get support",
   },
 ];
 
@@ -41,20 +41,20 @@ const CallToAction = () => {
           <div className="relative z-10 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div>
               <span className="inline-flex rounded-full border border-primary/15 bg-primary/8 px-4 py-2 text-sm font-semibold tracking-[0.18em] text-primary uppercase dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
-                Next steps
+                Resources
               </span>
 
-              <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                Use the rest of the site
+              <h2 className="mt-6 max-w-[12ch] text-3xl font-extrabold leading-[1.02] tracking-tight text-slate-900 dark:text-white sm:max-w-[15ch] sm:text-4xl lg:max-w-[11ch] lg:text-5xl">
+                Go deeper with the right
                 <span className="mt-2 block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  without hitting the same message twice.
+                  docs, pricing, and support.
                 </span>
               </h2>
 
               <p className="mt-6 max-w-[540px] text-lg leading-8 text-slate-600 dark:text-white/65">
-                The homepage should explain the product. Everything after that
-                should help you go deeper. Use docs for guidance, pricing for
-                limits, and support when you need help or policy clarity.
+                Open the docs when you need workflow guidance, check pricing
+                when you want plan limits, and use support when you need direct
+                help with the product.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
