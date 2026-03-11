@@ -1,3 +1,38 @@
+const dotPattern = [
+  [1.39737, 44.6026],
+  [1.39737, 7.9913],
+  [13.6943, 44.6026],
+  [13.6943, 7.9913],
+  [25.9911, 44.6026],
+  [25.9911, 7.9913],
+  [38.288, 44.6026],
+  [38.288, 7.9913],
+  [1.39737, 32.3058],
+  [13.6943, 32.3058],
+  [25.9911, 32.3058],
+  [38.288, 32.3058],
+  [1.39737, 20.0086],
+  [13.6943, 20.0086],
+  [25.9911, 20.0086],
+  [38.288, 20.0086],
+];
+
+const Dots = () => (
+  <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+    {dotPattern.map(([cx, cy]) => (
+      <circle
+        key={`${cx}-${cy}`}
+        cx={cx}
+        cy={cy}
+        r="1.39737"
+        transform={`rotate(-90 ${cx} ${cy})`}
+        fill="white"
+        fillOpacity="0.44"
+      />
+    ))}
+  </svg>
+);
+
 const Newsletter = () => {
   return (
     <div
@@ -7,9 +42,7 @@ const Newsletter = () => {
       <h3 className="mb-[6px] text-[28px] font-semibold leading-[40px] text-white">
         Join our newsletter!
       </h3>
-      <p className="mb-5 text-base text-white">
-        Enter your email to receive our latest newsletter.
-      </p>
+      <p className="mb-5 text-base text-white">Enter your email to receive our latest newsletter.</p>
       <form>
         <input
           type="email"
@@ -25,288 +58,9 @@ const Newsletter = () => {
           className="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-[#0BB489] hover:bg-opacity-90"
         />
       </form>
-      <p className="text-sm font-medium text-white">
-        Don&#39;t worry, we don&#39;t spam
-      </p>
-
-      <div>
-        <span className="absolute right-0 top-0">
-          <svg
-            width="46"
-            height="46"
-            viewBox="0 0 46 46"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="1.39737"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 1.39737 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 1.39737 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 13.6943 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 13.6943 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 25.9911 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 25.9911 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 38.288 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 38.288 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 1.39737 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 13.6943 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 25.9911 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 38.288 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 1.39737 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 13.6943 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 25.9911 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 38.288 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-          </svg>
-        </span>
-        <span className="absolute bottom-0 left-0">
-          <svg
-            width="46"
-            height="46"
-            viewBox="0 0 46 46"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="1.39737"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 1.39737 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 1.39737 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 13.6943 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 13.6943 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 25.9911 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 25.9911 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="44.6026"
-              r="1.39737"
-              transform="rotate(-90 38.288 44.6026)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="7.9913"
-              r="1.39737"
-              transform="rotate(-90 38.288 7.9913)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 1.39737 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 13.6943 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 25.9911 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="32.3058"
-              r="1.39737"
-              transform="rotate(-90 38.288 32.3058)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="1.39737"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 1.39737 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="13.6943"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 13.6943 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="25.9911"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 25.9911 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-            <circle
-              cx="38.288"
-              cy="20.0086"
-              r="1.39737"
-              transform="rotate(-90 38.288 20.0086)"
-              fill="white"
-              fillOpacity="0.44"
-            />
-          </svg>
-        </span>
-      </div>
+      <p className="text-sm font-medium text-white">Don&#39;t worry, we don&#39;t spam</p>
+      <span className="absolute right-0 top-0"><Dots /></span>
+      <span className="absolute bottom-0 left-0"><Dots /></span>
     </div>
   );
 };

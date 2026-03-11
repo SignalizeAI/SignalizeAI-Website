@@ -1,32 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const workflowSteps = [
-  {
-    label: "1",
-    title: "Open a company website",
-    description:
-      "Start on any public business page where the company explains its offer, positioning, or customer segment.",
-  },
-  {
-    label: "2",
-    title: "Run SignalizeAI",
-    description:
-      "The extension reads visible page content on demand and converts it into a structured sales brief.",
-  },
-  {
-    label: "3",
-    title: "Move from insight to action",
-    description:
-      "Use quick checks, batch analysis, saved analyses, and exportable output to support outreach workflows.",
-  },
-];
-
-const guardrails = [
-  "Public website content only",
-  "API keys stay server-side",
-  "No form inputs, cookies, or private pages",
-];
+import { guardrails, workflowSteps } from "./content";
 
 const About = () => {
   return (
@@ -57,10 +31,7 @@ const About = () => {
 
             <div className="mt-8 space-y-4">
               {workflowSteps.map((step) => (
-                <div
-                  key={step.title}
-                  className="rounded-[1.75rem] border border-gray-200 bg-gray-50/90 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
-                >
+                <div key={step.title} className="rounded-[1.75rem] border border-gray-200 bg-gray-50/90 p-5 shadow-sm dark:border-white/10 dark:bg-white/5">
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-primary to-accent text-sm font-bold text-white dark:text-black">
                       {step.label}
@@ -129,9 +100,7 @@ const About = () => {
               </div>
 
               <div className="rounded-[2rem] border border-gray-200 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-[#111111]">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">
-                  Guardrails
-                </p>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">Guardrails</p>
                 <div className="mt-4 space-y-3">
                   {guardrails.map((item) => (
                     <div key={item} className="flex items-start gap-3">

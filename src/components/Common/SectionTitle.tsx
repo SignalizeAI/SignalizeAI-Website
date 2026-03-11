@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 const SectionTitle = ({
   subtitle,
   title,
@@ -5,7 +7,7 @@ const SectionTitle = ({
   width = "635px",
   center,
 }: {
-  subtitle?: React.ReactNode;
+  subtitle?: ReactNode;
   title: string;
   paragraph: string;
   width?: string;

@@ -1,11 +1,12 @@
 import "../styles/index.css";
 import "../styles/prism-vsc-dark-plus.css";
 import Providers from "./providers";
+import type { ReactNode } from "react";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html
