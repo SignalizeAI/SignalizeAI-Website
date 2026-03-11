@@ -1,5 +1,57 @@
+import Link from "next/link";
 import SectionTitle from "../Common/SectionTitle";
 import SingleFaq from "./SingleFaq";
+
+const faqItems = [
+  {
+    question: "What does SignalizeAI analyze?",
+    answer:
+      "Only the publicly visible text on the page you are viewing. We do not collect or send personal data or browsing history to the AI.",
+  },
+  {
+    question: "Which plans include batch analysis and export?",
+    answer:
+      "Free is designed for lightweight single-site usage. Paid plans unlock batch analysis and larger saved-analysis capacity, and export is available where the plan includes it.",
+  },
+  {
+    question: "When should I use quick website check versus batch analysis?",
+    answer:
+      "Use quick website check when you want context on the page in front of you. Use batch analysis when you need to process a pasted URL list or CSV across multiple companies.",
+  },
+  {
+    question: "Do you track users or sell data?",
+    answer: (
+      <>
+        No. SignalizeAI does not track you, run ads, or sell data. We respect{" "}
+        <a
+          href="/privacy"
+          className="text-[#00e5ff] underline hover:opacity-80"
+        >
+          privacy
+        </a>{" "}
+        and only process public website content.
+      </>
+    ),
+  },
+  {
+    question: "What gets saved in a saved analysis?",
+    answer:
+      "Saved analyses can include the analyzed domain, generated insights, and timestamps so you can revisit, filter, and export the work later on supported plans.",
+  },
+  {
+    question: "Where should I go if I need help?",
+    answer: (
+      <>
+        Start with the{" "}
+        <Link href="/docs" className="text-[#00e5ff] underline hover:opacity-80">
+          documentation
+        </Link>{" "}
+        for setup and workflow details, then use Discord or email support if
+        you need direct help.
+      </>
+    ),
+  },
+];
 
 const Faq = () => {
   return (
@@ -13,48 +65,12 @@ const Faq = () => {
           center
         />
 
-        <div className="-mx-4 mt-15 flex flex-wrap lg:mt-20">
-          <div className="w-full px-4 lg:w-1/2">
-            <SingleFaq
-              question="What does SignalizeAI analyze?"
-              answer="Only the publicly visible text on the page you are viewing. We do not collect or send personal data or browsing history to the AI."
-            />
-            <SingleFaq
-              question="When should I use quick website check versus batch analysis?"
-              answer="Use quick website check when you want context on the page in front of you. Use batch analysis when you need to process a pasted URL list or CSV across multiple companies."
-            />
-            <SingleFaq
-              question="What gets saved in a saved analysis?"
-              answer="Saved analyses can include the analyzed domain, generated insights, and timestamps so you can revisit, filter, and export the work later on supported plans."
-            />
-          </div>
-
-          <div className="w-full px-4 lg:w-1/2">
-            <SingleFaq
-              question="Which plans include batch analysis and export?"
-              answer="Free is designed for lightweight single-site usage. Paid plans unlock batch analysis and larger saved-analysis capacity, and export is available where the plan includes it."
-            />
-            <SingleFaq
-              question="Do you track users or sell data?"
-              answer={
-                <>
-                  No. SignalizeAI does not track you, run ads, or sell data. We
-                  respect{" "}
-                  <a
-                    href="/privacy"
-                    className="text-[#00e5ff] underline hover:opacity-80"
-                  >
-                    privacy
-                  </a>{" "}
-                  and only process public website content.
-                </>
-              }
-            />
-            <SingleFaq
-              question="Where should I go if I need help?"
-              answer="Start with the documentation for setup and workflow details, then use Discord or email support if you need direct help."
-            />
-          </div>
+        <div className="-mx-4 mt-15 grid gap-y-2 lg:mt-20 lg:grid-cols-2">
+          {faqItems.map((item) => (
+            <div key={item.question} className="px-4">
+              <SingleFaq question={item.question} answer={item.answer} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

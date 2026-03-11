@@ -15,8 +15,8 @@ const companyLinks = [
 
 const supportLinks = [
   { label: "Discord", href: "https://discord.gg/eCvhD6WZhX", external: true },
+  { label: "Contact", href: "/contact" },
   { label: "support@signalizeai.org", href: "mailto:support@signalizeai.org", external: true },
-  { label: "privacy@signalizeai.org", href: "mailto:privacy@signalizeai.org", external: true },
 ];
 
 const Footer = () => {
