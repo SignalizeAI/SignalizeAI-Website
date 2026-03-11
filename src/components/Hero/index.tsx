@@ -105,7 +105,7 @@ const Hero = () => {
                   ))}
                 </div>
                 <div className="text-base lg:text-lg font-medium tracking-wide text-gray-500 dark:text-white/40">
-                  Join <strong className="text-gray-900 dark:text-white/80">5,000+</strong> sales professionals
+                  <strong className="text-gray-900 dark:text-white/80">Built for</strong> modern sales prospecting
                 </div>
               </div>
             </div>
