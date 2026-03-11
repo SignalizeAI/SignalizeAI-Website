@@ -96,7 +96,7 @@ const Hero = () => {
               </div>
 
               {/* Social Proof */}
-              <div className="flex flex-col items-center justify-center gap-6 mt-4 mb-24 lg:mb-32">
+              <div className="mt-4 mb-12 flex flex-col items-center justify-center gap-6 lg:mb-16">
                 <div className="flex -space-x-4">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <div key={i} className="h-16 w-16 lg:h-20 lg:w-20 overflow-hidden rounded-full border-4 border-white dark:border-[#000000] bg-gray-100 dark:bg-gray-800 shadow-2xl relative z-0 hover:z-10 transition-all hover:scale-110 cursor-pointer">
@@ -113,7 +113,7 @@ const Hero = () => {
         </div>
 
         {/* Dashboard Mockup */}
-        <div className="hidden lg:block pt-20 lg:pt-24 mt-10">
+        <div className="mt-4 hidden lg:block pt-8 lg:pt-10">
           <div className="relative mx-auto max-w-[1000px]">
             {/* Glow under image */}
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-primary to-accent opacity-20 blur-2xl" />
@@ -132,6 +132,7 @@ const Hero = () => {
                     src="/images/hero/hero-image.jpeg"
                     alt="SignalizeAI Dashboard"
                     fill
+                    sizes="(max-width: 1023px) 100vw, 1000px"
                     className="object-cover object-top opacity-90 transition-opacity hover:opacity-100"
                     priority
                   />

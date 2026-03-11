@@ -13,12 +13,14 @@ const NotFound = () => {
                 src="/images/404.svg"
                 alt="image"
                 fill
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 42vw, 357px"
                 className="mx-auto max-w-full dark:hidden"
               />
               <Image
                 src="/images/404-dark.svg"
                 alt="image"
                 fill
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 42vw, 357px"
                 className="mx-auto hidden max-w-full dark:block"
               />
             </div>

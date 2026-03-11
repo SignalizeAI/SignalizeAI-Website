@@ -34,12 +34,14 @@ const Footer = () => {
                   src="/images/logo/logo-dark.png"
                   alt="SignalizeAI"
                   fill
+                  sizes="36px"
                   className="object-contain dark:hidden"
                 />
                 <Image
                   src="/images/logo/logo-white.png"
                   alt="SignalizeAI"
                   fill
+                  sizes="36px"
                   className="hidden object-contain dark:block"
                 />
               </div>

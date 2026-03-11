@@ -173,7 +173,7 @@ const Pricing = ({ mode = "full" }: PricingProps) => {
           <div className="relative overflow-hidden rounded-[2.8rem] border border-slate-200/80 bg-white/75 px-4 py-6 shadow-[0_35px_90px_-50px_rgba(15,23,42,0.22)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_35px_90px_-50px_rgba(0,0,0,0.75)] sm:px-6 sm:py-8 lg:px-8 lg:py-10">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.1),transparent_28%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.14),transparent_28%)]" />
             <div className="relative">
-              <div className="-mx-4 flex flex-wrap justify-center">
+              <div className="grid gap-4 lg:gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {teaserPlans.map((product, i) => {
                   const planName = product.nickname?.toLowerCase() || "free";
                   const meta = teaserMeta[planName];
@@ -183,9 +183,9 @@ const Pricing = ({ mode = "full" }: PricingProps) => {
                       : `From ₹${(product.unit_amount / 100).toLocaleString("en-IN")}/mo`;
 
                   return (
-                    <div key={i} className="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div key={i}>
                       <div
-                        className={`relative mb-8 h-full overflow-hidden rounded-[2rem] border p-8 shadow-lg transition duration-300 hover:-translate-y-1 ${meta.cardClassName}`}
+                        className={`relative h-full overflow-hidden rounded-[2rem] border p-8 shadow-lg transition duration-300 hover:-translate-y-1 ${meta.cardClassName}`}
                       >
                         {planName === "team" && (
                           <>

@@ -58,12 +58,14 @@ const Logo = () => (
         src="/images/logo/logo-dark.png"
         alt="SignalizeAI Logo"
         fill
+        sizes="28px"
         className="object-contain dark:hidden"
       />
       <Image
         src="/images/logo/logo-white.png"
         alt="SignalizeAI Logo"
         fill
+        sizes="28px"
         className="hidden object-contain dark:block"
       />
     </div>
@@ -209,6 +211,15 @@ const MobileNav = ({
   pathname: string;
 }) => {
   const [submenuOpen, setSubmenuOpen] = useState<number>(-1);
+  const handleMobileLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string,
+  ) => {
+    handleSmoothScroll(e, path, closeMenu);
+    if (!path.startsWith("/#")) {
+      closeMenu();
+    }
+  };
 
   return (
     <>
@@ -257,6 +268,9 @@ const MobileNav = ({
                               <Link
                                 href={sub.path || "#"}
                                 target={sub.newTab ? "_blank" : "_self"}
+                                onClick={(e) =>
+                                  handleMobileLinkClick(e, sub.path || "")
+                                }
                                 className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 dark:text-white/60 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#3b82f6] dark:hover:text-[#00e5ff] transition"
                               >
                                 {sub.icon && (
@@ -275,7 +289,7 @@ const MobileNav = ({
                     <Link
                       href={menuItem.path || "#"}
                       onClick={(e) =>
-                        handleSmoothScroll(e, menuItem.path || "", closeMenu)
+                        handleMobileLinkClick(e, menuItem.path || "")
                       }
                       className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${
                         active

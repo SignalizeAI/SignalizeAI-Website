@@ -45,9 +45,9 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white text-slate-800 dark:from-[#020202] dark:via-[#060606] dark:to-[#020202] dark:text-white">
-        <div className="pointer-events-none fixed left-1/2 top-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px] dark:bg-primary/15" />
-        <div className="pointer-events-none fixed bottom-0 right-0 h-72 w-72 translate-x-1/4 translate-y-1/4 rounded-full bg-accent/10 blur-[140px]" />
+      <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white text-slate-800 dark:from-[#020202] dark:via-[#060606] dark:to-[#020202] dark:text-white">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px] dark:bg-primary/15" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 translate-x-1/4 translate-y-1/4 rounded-full bg-accent/10 blur-[140px]" />
 
         <section className="relative z-10 px-6 pt-32 pb-14 sm:pt-40 sm:pb-18">
           <div className="mx-auto max-w-6xl">
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                   entries, cookies, or session data.
                 </p>
 
-                <div className="mt-8 grid gap-3 md:grid-cols-3">
+                <div className="mt-8 grid gap-3 md:grid-cols-2">
                   <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50/90 px-5 py-4 dark:border-white/10 dark:bg-white/[0.04]">
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">
                       Scope
@@ -96,17 +96,6 @@ export default function PrivacyPage() {
                     </p>
                   </div>
 
-                  <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50/90 px-5 py-4 dark:border-white/10 dark:bg-white/[0.04]">
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">
-                      Contact
-                    </p>
-                    <a
-                      href="mailto:privacy@signalizeai.org"
-                      className="mt-2 inline-flex text-sm font-semibold text-primary transition hover:underline dark:text-accent"
-                    >
-                      privacy@signalizeai.org
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>

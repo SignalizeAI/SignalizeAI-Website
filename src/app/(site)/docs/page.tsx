@@ -278,18 +278,18 @@ const DocsPage = () => {
               <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary to-accent opacity-20 blur-2xl" />
               <div className="relative overflow-hidden rounded-[2.25rem] border border-gray-200 bg-white/90 p-6 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0a]/90 sm:p-8">
                 <div className="rounded-[1.75rem] border border-gray-200 bg-gray-50/90 p-6 dark:border-white/10 dark:bg-[#101010]">
-                  <div className="flex items-center justify-between gap-4">
+                  <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary dark:text-accent">
                         Guide coverage
                       </p>
-                      <h2 className="mt-3 text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+                      <h2 className="mt-3 max-w-[12ch] text-[2rem] font-black leading-[1.05] tracking-tight text-slate-900 dark:text-white sm:max-w-none sm:text-3xl">
                         One documentation surface, not six disconnected cards
                       </h2>
                     </div>
-                    <div className="hidden h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-[0_20px_40px_-20px_rgba(26,35,126,0.45)] dark:text-black sm:flex">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-[0_20px_40px_-20px_rgba(26,35,126,0.45)] dark:text-black sm:h-14 sm:w-14">
                       <svg
-                        className="h-7 w-7"
+                        className="h-6 w-6 sm:h-7 sm:w-7"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -304,7 +304,7 @@ const DocsPage = () => {
                     </div>
                   </div>
 
-                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                  <div className="mt-6 grid gap-3 md:grid-cols-3">
                     {heroFacts.map((fact) => (
                       <div
                         key={fact.label}
@@ -494,8 +494,8 @@ const DocsPage = () => {
                 id="outputs"
                 className="overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white shadow-xl dark:border-white/10 dark:bg-[#0a0a0a]"
               >
-                <div className="grid gap-0 lg:grid-cols-[0.85fr_1.15fr]">
-                  <div className="border-b border-gray-200 bg-gray-50/80 px-8 py-8 dark:border-white/10 dark:bg-white/5 md:px-10 lg:border-b-0 lg:border-r">
+                <div className="grid gap-0 xl:grid-cols-[0.85fr_1.15fr]">
+                  <div className="border-b border-gray-200 bg-gray-50/80 px-8 py-8 dark:border-white/10 dark:bg-white/5 md:px-10 xl:border-b-0 xl:border-r">
                     <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
                       Output reference
                     </span>
@@ -509,7 +509,7 @@ const DocsPage = () => {
                     </p>
                   </div>
 
-                  <div className="grid gap-4 px-8 py-8 md:px-10 md:grid-cols-2">
+                  <div className="grid gap-4 px-8 py-8 md:px-10 lg:grid-cols-2">
                     {outputCards.map((item) => (
                       <div
                         key={item.title}
@@ -545,17 +545,17 @@ const DocsPage = () => {
                   </p>
                 </div>
 
-                <div className="grid gap-4 px-8 pb-8 md:px-10 md:grid-cols-3">
+                <div className="grid gap-4 px-8 pb-8 md:px-10 md:grid-cols-2 xl:grid-cols-3">
                   {accessCards.map((card) => (
                     <div
                       key={card.title}
                       className="rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-[#0d0d0d]"
                     >
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                           {card.title}
                         </h3>
-                        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary dark:bg-accent/10 dark:text-accent">
+                        <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary dark:bg-accent/10 dark:text-accent">
                           {card.availability}
                         </span>
                       </div>
