@@ -41,9 +41,14 @@ const MobileNav = ({
             {menuData.map((menuItem, index) => {
               if (menuItem.title === "Home" && isHomePage) return null;
               const active = isMenuActive(pathname, menuItem);
+              const highlightClass = menuItem.highlight
+                ? "border border-amber-200/80 bg-amber-50 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-100 dark:border-amber-400/20 dark:bg-amber-300/10 dark:text-amber-100 dark:hover:border-amber-300/30 dark:hover:bg-amber-300/15"
+                : "";
               const itemClass = active
                 ? "bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white"
-                : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white";
+                : menuItem.highlight
+                  ? highlightClass
+                  : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white";
 
               return (
                 <li key={index}>

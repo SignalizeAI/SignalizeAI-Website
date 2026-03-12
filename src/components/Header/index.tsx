@@ -46,22 +46,22 @@ const Header = () => {
         .marker-glow::after {
           content: "";
           position: absolute;
-          bottom: -4px;
-          left: 15%;
-          width: 70%;
-          height: 8px;
-          background: linear-gradient(90deg, rgba(26, 35, 126, 0.32), rgba(0, 229, 255, 0.32));
-          filter: blur(8px);
-          opacity: 0.6;
+          bottom: -3px;
+          left: 18%;
+          width: 64%;
+          height: 6px;
+          background: linear-gradient(90deg, rgba(26, 35, 126, 0.2), rgba(0, 229, 255, 0.2));
+          filter: blur(5px);
+          opacity: 0.35;
           z-index: -1;
         }
       `}</style>
 
       <header
-        className={`nav-morph fixed left-1/2 z-[999] flex w-full -translate-x-1/2 items-center justify-between border border-transparent bg-white/80 backdrop-blur-xl dark:bg-[#0a0a0a]/80 ${
+        className={`nav-morph fixed left-1/2 z-[999] flex w-full -translate-x-1/2 items-center justify-between border border-transparent bg-white/80 backdrop-blur-[10px] dark:bg-[#0a0a0a]/80 ${
           sticky
-            ? "top-0 border-b border-gray-200 bg-white/95 px-4 py-4 shadow-md dark:border-white/10 dark:bg-[#111111]/80 lg:top-6 lg:max-w-5xl lg:rounded-full lg:px-6 lg:py-2.5 lg:shadow-xl dark:lg:shadow-[0_0_30px_rgba(0,0,0,0.5)]"
-            : "top-0 max-w-full rounded-none border-b border-gray-100 bg-white/50 px-4 py-4 dark:border-white/5 dark:bg-transparent lg:px-8"
+            ? "top-0 border-b border-gray-200 bg-white/95 px-4 py-4 shadow-sm dark:border-white/10 dark:bg-[#111111]/80 lg:top-6 lg:max-w-5xl lg:rounded-full lg:px-6 lg:py-4.5 lg:shadow-lg dark:lg:shadow-[0_0_18px_rgba(0,0,0,0.32)]"
+            : "top-0 max-w-full rounded-none border-b border-gray-100 bg-white/50 px-4 py-4 dark:border-white/5 dark:bg-transparent lg:px-8 lg:py-5"
         }`}
       >
         <div className="flex shrink-0 items-center gap-3">
@@ -74,9 +74,9 @@ const Header = () => {
           </div>
           <button
             onClick={() => setModalOpen(true)}
-            className={`hidden items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
+            className={`hidden items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
               sticky
-                ? "bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] shadow-md dark:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+                ? "bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-md dark:shadow-[0_0_12px_rgba(6,182,212,0.2)]"
                 : "border border-transparent bg-slate-900 hover:bg-slate-800 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20"
             }`}
           >

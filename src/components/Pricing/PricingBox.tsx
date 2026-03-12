@@ -2,6 +2,7 @@
 
 import BrowserModal from "@/components/BrowserModal";
 import type { Price } from "@/types/price";
+import { formatMonthlyPrice } from "./formatPrice";
 import OfferList from "./OfferList";
 import usePricingBoxState from "./usePricingBoxState";
 
@@ -19,10 +20,10 @@ const planDescriptions: Record<string, string> = {
   team: "For higher-volume teams running larger research lists with broader saved-analysis capacity.",
 };
 
-const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
+  const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
   const { buttonConfig, handleAction, installModalOpen, setInstallModalOpen } = usePricingBoxState(product, currentPlan);
   const planName = product.nickname?.toLowerCase() || "free";
-  const priceDisplay = planName === "free" ? "Free" : `₹${(product.unit_amount / 100).toLocaleString("en-IN")}/mo`;
+  const priceDisplay = formatMonthlyPrice(product);
   const planBadge = product.nickname === "Pro" ? "Popular" : null;
 
   return (

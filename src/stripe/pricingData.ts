@@ -20,7 +20,7 @@ export const pricingData: Price[] = [
   },
   {
     id: "price_1NQk55LtGdPVhGLefU8AHqH3",
-    unit_amount: 3999 * 100,
+    unit_amount: 4000,
     nickname: "Team",
     offers: [
       "All Pro features",
@@ -35,7 +35,7 @@ export const pricingData: Price[] = [
   },
   {
     id: "price_1NQk55LtGdPVhGLefU8AHqHr",
-    unit_amount: 999 * 100,
+    unit_amount: 1500,
     nickname: "Pro",
     offers: [
       "AI analysis 50/day",
