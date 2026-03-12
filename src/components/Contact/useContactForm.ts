@@ -17,7 +17,7 @@ const useContactForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -29,7 +29,7 @@ const useContactForm = () => {
 
     const fullName = formData.fullName.trim();
     const email = formData.email.trim();
-    const phone = formData.phone.trim();
+    const topic = formData.topic.trim();
     const message = formData.message.trim();
 
     if (!fullName || !email || !message) {
@@ -53,7 +53,8 @@ const useContactForm = () => {
         body: JSON.stringify({
           fullName,
           email,
-          phone: phone.length ? phone : null,
+          topic,
+          phone: null,
           message,
         }),
       });

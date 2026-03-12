@@ -19,15 +19,15 @@ export default function PrivacyPage() {
         <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px] dark:bg-primary/15" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 translate-x-1/4 translate-y-1/4 rounded-full bg-accent/10 blur-[140px]" />
 
-        <section className="relative z-10 px-6 pb-14 pt-32 sm:pb-18 sm:pt-40">
-          <div className="mx-auto max-w-6xl rounded-[2.25rem] border border-slate-200 bg-white/85 p-8 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.28)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)] sm:p-10 lg:p-12">
+        <section className="relative z-10 px-4 pb-12 pt-28 sm:px-6 sm:pb-18 sm:pt-40">
+          <div className="mx-auto max-w-6xl rounded-[2rem] border border-slate-200 bg-white/85 p-5 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.28)] backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)] sm:rounded-[2.25rem] sm:p-10 lg:p-12">
             <div className="max-w-4xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-semibold text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
                 <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-current" /></span>
                 Last updated: March 9, 2026
               </div>
-              <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Privacy Policy</h1>
-              <p className="mt-6 max-w-3xl text-lg leading-9 text-slate-600 dark:text-white/68">
+              <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Privacy Policy</h1>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 dark:text-white/68 sm:text-lg sm:leading-9">
                 This page explains what SignalizeAI processes, what can be stored in your account, and how permissions are used across Chrome and Firefox.
               </p>
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-500 dark:text-white/52">
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
           </div>
         </section>
 
-        <section className="relative z-10 px-6 pb-20">
+        <section className="relative z-10 px-4 pb-16 sm:px-6 sm:pb-20">
           <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
             <aside className="hidden lg:block">
               <div className="sticky top-28 rounded-[1.75rem] border border-slate-200 bg-white/90 p-5 shadow-xl backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
               </div>
             </aside>
 
-            <div className="rounded-[2rem] border border-slate-200 bg-white/92 p-8 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.28)] backdrop-blur-sm dark:border-white/10 dark:bg-[#0b0b0b]/92 dark:shadow-[0_24px_60px_-40px_rgba(0,0,0,0.7)] sm:p-10">
+            <div className="rounded-[1.75rem] border border-slate-200 bg-white/92 p-5 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.28)] backdrop-blur-sm dark:border-white/10 dark:bg-[#0b0b0b]/92 dark:shadow-[0_24px_60px_-40px_rgba(0,0,0,0.7)] sm:rounded-[2rem] sm:p-10">
               <div className="space-y-12">{privacySections.map((section) => <PrivacySection key={section.id} section={section} />)}</div>
               <div className="mt-12 rounded-[1.75rem] border border-slate-200 bg-slate-50 px-6 py-6 dark:border-white/10 dark:bg-white/5">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

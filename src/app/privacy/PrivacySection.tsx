@@ -19,17 +19,17 @@ const negativeIcon = (
 
 const PrivacySection = ({ section }: PrivacySectionProps) => (
   <section id={section.id}>
-    <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold text-slate-950 dark:text-white">
-      <span className="text-primary dark:text-accent">{section.number}</span>
-      {section.title}
+    <h2 className="mb-5 flex items-start text-xl font-semibold text-slate-950 dark:text-white sm:mb-6 sm:text-2xl">
+      <span className="mt-0.5 w-9 shrink-0 text-primary dark:text-accent sm:w-12">{section.number}</span>
+      <span>{section.title}</span>
     </h2>
-    <div className={`${section.subsections ? "border-l-2 border-primary/20 pl-0 sm:pl-8 dark:border-accent/20" : "sm:pl-8"} space-y-6`}>
+    <div className={`${section.subsections ? "ml-9 border-l-2 border-primary/20 pl-5 sm:ml-12 sm:pl-6 dark:border-accent/20" : "ml-9 sm:ml-12"} space-y-6`}>
       {section.intro && <p className="text-slate-700 dark:text-white/70">{section.intro}</p>}
       {section.subsections?.map((subsection) => (
         <div key={subsection.title}>
-          <h3 className="mb-2 text-lg font-medium text-slate-950 dark:text-white">{subsection.title}</h3>
+          <h3 className="mb-2 text-base font-medium text-slate-950 dark:text-white sm:text-lg">{subsection.title}</h3>
           {subsection.paragraphs?.map((paragraph) => (
-            <p key={paragraph} className="mb-3 leading-8 text-slate-700 dark:text-white/70">{paragraph}</p>
+            <p key={paragraph} className="mb-3 leading-7 text-slate-700 dark:text-white/70 sm:leading-8">{paragraph}</p>
           ))}
           {subsection.negativeItems && (
             <div>
