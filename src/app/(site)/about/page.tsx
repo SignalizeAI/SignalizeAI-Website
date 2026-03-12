@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Breadcrumb from "@/components/Common/Breadcrumb";
 import { audienceCards, principles } from "./content";
 
 export const metadata: Metadata = {
@@ -12,12 +11,7 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <main>
-      <Breadcrumb
-        pageName="About"
-        pageDescription="See how SignalizeAI fits into fast research, outreach preparation, and team workflows."
-      />
-
-      <section className="relative overflow-hidden bg-white py-16 dark:bg-[#000000] md:py-20 lg:py-24">
+      <section className="relative overflow-hidden bg-white pb-16 pt-28 dark:bg-[#000000] md:pb-20 md:pt-32 lg:pb-24 lg:pt-36">
         <div className="absolute left-0 top-0 h-72 w-72 -translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-[120px]" />
         <div className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 translate-y-1/3 rounded-full bg-accent/10 blur-[120px]" />
         <div className="container relative z-10">

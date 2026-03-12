@@ -1,4 +1,3 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
 import Pricing from "@/components/Pricing";
 import { Metadata } from "next";
 
@@ -11,10 +10,6 @@ export const metadata: Metadata = {
 const PricingPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="Pricing"
-        pageDescription="Choose the right plan for analysis volume, batch workflows, saved research, and export needs."
-      />
       <Pricing />
     </>
   );
