@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { pricingData } from "@/stripe/pricingData";
 import type { Price } from "@/types/price";
+import { formatMonthlyPrice } from "./formatPrice";
 import {
   pricingHighlights,
   teaserDescriptions,
@@ -29,10 +30,7 @@ const PricingTeaser = () => (
         {teaserPlans.map((product, index) => {
           const planName = product.nickname?.toLowerCase() || "free";
           const meta = teaserMeta[planName as keyof typeof teaserMeta];
-          const priceDisplay =
-            planName === "free"
-              ? "Free"
-              : `From ₹${(product.unit_amount / 100).toLocaleString("en-IN")}/mo`;
+          const priceDisplay = formatMonthlyPrice(product, true);
 
           return (
             <div key={index} className={`relative h-full overflow-hidden rounded-[2rem] border p-8 shadow-lg transition duration-300 hover:-translate-y-1 ${meta.cardClassName}`}>

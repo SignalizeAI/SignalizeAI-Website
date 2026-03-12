@@ -34,7 +34,7 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
     <nav className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
       <ul
         ref={navRef}
-        className="relative flex items-center rounded-full border border-gray-200 bg-white p-1 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none"
+        className="relative flex items-center rounded-full border border-gray-200 bg-white p-1.5 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none"
         onMouseLeave={() => setMarkerStyle((prev) => ({ ...prev, opacity: 0 }))}
       >
         <div
@@ -44,10 +44,15 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
         {menuData.map((menuItem, index) => {
           if (menuItem.title === "Home" && isHomePage) return null;
           const active = isMenuActive(pathname, menuItem);
+          const highlightClass = menuItem.highlight
+            ? "border border-amber-200/80 bg-amber-50 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-100 dark:border-amber-400/20 dark:bg-amber-300/10 dark:text-amber-100 dark:hover:border-amber-300/30 dark:hover:bg-amber-300/15"
+            : "";
           const idleClass = sticky
             ? "text-slate-600 hover:text-black dark:text-white/70 dark:hover:text-white"
             : "text-slate-800 hover:text-black dark:text-white/80 dark:hover:text-white";
-          const textClass = active ? "text-slate-950 dark:text-white" : idleClass;
+          const textClass = active
+            ? "text-slate-950 dark:text-white"
+            : `${idleClass} ${highlightClass}`.trim();
 
           return (
             <li key={index} className="group relative z-10">
@@ -56,7 +61,7 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                   <button
                     type="button"
                     onMouseEnter={handleMouseEnter}
-                    className={`flex items-center gap-1 rounded-full px-5 py-1.5 text-sm font-medium transition-colors duration-200 ${textClass}`}
+                    className={`flex items-center gap-1 rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${menuItem.highlight ? highlightClass : textClass}`}
                   >
                     {menuItem.title}
                     <ChevronIcon className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
@@ -84,10 +89,12 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                   href={menuItem.path || "#"}
                   onClick={(event) => handleSmoothScroll(event, menuItem.path || "")}
                   onMouseEnter={handleMouseEnter}
-                  className={`block rounded-full px-5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+                  className={`block rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${
                     active
                       ? "bg-gray-100 text-slate-950 dark:bg-white/10 dark:text-white"
-                      : textClass
+                      : menuItem.highlight
+                        ? highlightClass
+                        : textClass
                   }`}
                 >
                   {menuItem.title}
