@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 const PricingPage = () => {
   return (
-    <>
+    <main>
       <Pricing />
-    </>
+    </main>
   );
 };
 

@@ -10,5 +10,5 @@ export default function AuthLayout({
 }: {
   children: ReactNode;
 }) {
-  return <>{children}</>;
+  return <main>{children}</main>;
 }

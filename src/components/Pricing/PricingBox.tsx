@@ -49,7 +49,7 @@ const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouse
               </p>
             </>
           )}
-          <span className="mb-3 block text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">{product.nickname}</span>
+          <span className="mb-3 block text-sm font-bold uppercase tracking-[0.22em] text-slate-700 dark:text-cyan-300">{product.nickname}</span>
           <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white xl:text-[40px] xl:leading-[1.1]">{priceDisplay}</h2>
           <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-white/65">{planDescriptions[planName]}</p>
           <div className="mb-8 mt-8 grow">

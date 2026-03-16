@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogsPage() {
-  return null;
+  return <main aria-label="Blogs" />;
 }
 
 // import SingleBlog from "@/components/Blog/SingleBlog";

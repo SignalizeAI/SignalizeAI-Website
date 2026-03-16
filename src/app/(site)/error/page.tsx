@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 
 const ErrorPage = () => {
   return (
-    <>
+    <main>
       <Breadcrumb pageName="404 Page" />
 
       <NotFound />
-    </>
+    </main>
   );
 };
 
