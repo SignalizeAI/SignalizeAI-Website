@@ -56,33 +56,33 @@ export const workflowCards = [
     eyebrow: "Single analysis",
     title: "Quick website check",
     description:
-      "Use SignalizeAI on the active tab when you need fast context on one account without leaving the page.",
+      "Use this when you need a fast read on one account before outreach, discovery, or qualification.",
     points: [
-      "Runs on the page you are currently viewing",
-      "Uses public visible website content only",
-      "Best for quick qualification and outreach prep",
+      "Use when: you are evaluating a single company page in real time",
+      "Expect: a short brief in seconds from public, visible page content",
+      "Output: summary, target customer signal, value proposition, and readiness cues",
     ],
   },
   {
     eyebrow: "Scaled research",
     title: "Batch analysis",
     description:
-      "Run research across multiple companies from a pasted URL list or CSV when one-by-one review is too slow.",
+      "Use this when manual tab-by-tab review is too slow and you need consistent analysis across a list.",
     points: [
-      "Useful for prospecting sprints and market sweeps",
-      "Supports user-submitted URL lists",
-      "Availability depends on plan capabilities",
+      "Use when: running prospecting sprints, territory sweeps, or list validation",
+      "Expect: queue-style processing from pasted URLs or CSV inputs",
+      "Output: standardized per-domain briefs for fast comparison and triage",
     ],
   },
   {
     eyebrow: "Ongoing workflow",
     title: "Saved analyses",
     description:
-      "Keep important results accessible so you can return later, filter what matters, and export when the workflow requires it.",
+      "Use this when research spans multiple sessions and you need continuity across follow-up work.",
     points: [
-      "Useful when research spans more than one session",
-      "Supports revisiting and organizing useful accounts",
-      "Search, filtering, and export depend on plan access",
+      "Use when: tracking accounts over days or handing context to teammates",
+      "Expect: stored runs with search, filtering, and optional export",
+      "Output: a reusable working set for follow-up, reporting, and prioritization",
     ],
   },
 ];

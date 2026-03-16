@@ -40,10 +40,6 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
-        headers: [{ key: 'X-Robots-Tag', value: 'index, follow' }],
-      },
-      {
         source: '/images/:path*',
         headers: [{ key: 'Cache-Control', value: ONE_YEAR_CACHE }],
       },
