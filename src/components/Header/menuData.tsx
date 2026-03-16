@@ -13,6 +13,7 @@ const menuData: Menu[] = [
     path: "/pricing",
     newTab: false,
     highlight: true,
+    prefetch: false,
   },
   {
     id: 3,

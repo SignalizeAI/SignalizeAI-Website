@@ -37,14 +37,14 @@ const Footer = () => {
               <div className="relative h-9 w-9">
                 <Image
                   src="/images/logo/logo-dark.png"
-                  alt="SignalizeAI"
+                  alt=""
                   fill
                   sizes="36px"
                   className="object-contain dark:hidden"
                 />
                 <Image
                   src="/images/logo/logo-white.png"
-                  alt="SignalizeAI"
+                  alt=""
                   fill
                   sizes="36px"
                   className="hidden object-contain dark:block"
@@ -93,6 +93,7 @@ const Footer = () => {
                   <Link
                     key={link.label}
                     href={link.href}
+                    prefetch={link.href === "/pricing" ? false : undefined}
                     target={link.external ? "_blank" : "_self"}
                     rel={link.external ? "noopener noreferrer" : undefined}
                     className="text-sm text-slate-600 transition hover:text-slate-950 dark:text-white/65 dark:hover:text-white"
@@ -106,7 +107,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-gray-200 pt-6 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-500 dark:text-white/40">
+          <p className="text-xs text-slate-500 dark:text-white/60">
             &copy; {new Date().getFullYear()} SignalizeAI. All rights reserved.
           </p>
 
@@ -115,7 +116,8 @@ const Footer = () => {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-xs text-slate-500 transition hover:text-slate-900 dark:text-white/40 dark:hover:text-white"
+                prefetch={link.href === "/pricing" ? false : undefined}
+                className="text-xs text-slate-500 transition hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
               >
                 {link.label}
               </Link>

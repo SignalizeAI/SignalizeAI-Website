@@ -49,5 +49,18 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "browserslist": {
+    "production": [
+      "chrome >= 109",
+      "edge >= 109",
+      "firefox >= 109",
+      "safari >= 15.6"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

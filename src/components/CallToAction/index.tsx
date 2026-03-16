@@ -37,6 +37,7 @@ const CallToAction = () => {
                 </Link>
                 <Link
                   href="/pricing"
+                  prefetch={false}
                   className="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5"
                 >
                   Compare plans
@@ -74,6 +75,7 @@ const CallToAction = () => {
                 <Link
                   key={card.title}
                   href={card.href}
+                  prefetch={card.href === "/pricing" ? false : undefined}
                   className="group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl dark:border-white/10 dark:bg-[#111111]"
                 >
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent dark:via-accent/60" />

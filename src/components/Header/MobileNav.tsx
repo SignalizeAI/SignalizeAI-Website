@@ -74,6 +74,7 @@ const MobileNav = ({
                             <li key={subIndex}>
                               <Link
                                 href={subItem.path || "#"}
+                                prefetch={subItem.prefetch}
                                 target={subItem.newTab ? "_blank" : "_self"}
                                 onClick={(event) => handleLinkClick(event, subItem.path || "")}
                                 className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-[#3b82f6] dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-[#00e5ff]"
@@ -89,6 +90,7 @@ const MobileNav = ({
                   ) : (
                     <Link
                       href={menuItem.path || "#"}
+                      prefetch={menuItem.prefetch}
                       onClick={(event) => handleLinkClick(event, menuItem.path || "")}
                       className={`block rounded-xl px-4 py-3 text-sm font-medium transition ${itemClass}`}
                     >

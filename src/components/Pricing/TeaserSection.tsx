@@ -1,7 +1,7 @@
 import SectionTitle from "../Common/SectionTitle";
-import PricingFull from "./PricingFull";
+import PricingTeaser from "./PricingTeaser";
 
-const Pricing = () => (
+const TeaserSection = () => (
   <section
     id="pricing"
     className="relative z-20 overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white pb-16 pt-16 dark:from-[#000000] dark:via-[#02060b] dark:to-[#000000] lg:pb-28 lg:pt-28"
@@ -11,14 +11,14 @@ const Pricing = () => (
       <div className="mb-15">
         <SectionTitle
           subtitle="Pricing"
-          title="Plans for every sales team"
-          paragraph="Choose based on analysis volume, batch capacity, saved-analysis limits, and whether your team needs search, filtering, and export."
+          title="Simple plans that scale with your research volume"
+          paragraph="Start with quick website checks for free, then move into batch analysis, saved research, and export as your workflow gets heavier."
           center
         />
       </div>
-      <PricingFull />
+      <PricingTeaser />
     </div>
   </section>
 );
 
-export default Pricing;
+export default TeaserSection;

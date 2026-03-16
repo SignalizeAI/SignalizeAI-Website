@@ -4,6 +4,7 @@ export type Menu = {
   path?: string;
   newTab: boolean;
   highlight?: boolean;
+  prefetch?: boolean;
   submenu?: Menu[];
   icon?: any;
 };

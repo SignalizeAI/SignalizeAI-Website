@@ -97,7 +97,7 @@ const PricingTeaser = () => (
           </div>
 
           <div className="border-t border-slate-200 bg-slate-950 px-8 py-8 text-white dark:border-white/10 dark:bg-white dark:text-slate-950 lg:border-l lg:border-t-0 sm:px-10 sm:py-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60 dark:text-slate-500">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 dark:text-slate-600">
               Next step
             </p>
             <h4 className="mt-4 text-2xl font-black tracking-tight">Open pricing and choose with confidence</h4>
@@ -106,6 +106,7 @@ const PricingTeaser = () => (
             </p>
             <Link
               href="/pricing"
+              prefetch={false}
               className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:scale-[1.02] hover:bg-slate-200 dark:bg-slate-950 dark:text-white dark:hover:bg-slate-800"
             >
               View all plans

@@ -18,13 +18,13 @@ export const browserLinks = [
     label: "Install on Chrome",
     mobileLabel: "Chrome",
     href: "https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg",
+    icon: "/images/browser/chrome.svg",
   },
   {
     label: "Install on Firefox",
     mobileLabel: "Firefox",
     href: "https://addons.mozilla.org/en-US/firefox/addon/signalizeai/",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
+    icon: "/images/browser/firefox.svg",
   },
 ] as const;
 

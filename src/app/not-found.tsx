@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "404 Page | SignalizeAI",
+  description: "The page could not be found on SignalizeAI.",
 };
 
 const ErrorPage = () => {

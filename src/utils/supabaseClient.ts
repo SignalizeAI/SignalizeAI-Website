@@ -1,29 +1,52 @@
-import { createClient } from "@supabase/supabase-js";
+import { AuthClient } from "@supabase/auth-js";
 
-let supabaseInstance: any = null;
+let authClientInstance: InstanceType<typeof AuthClient> | null = null;
 
-function getSupabaseClient() {
-  if (typeof window === "undefined") {
-    // Server-side
+const getSupabaseConfig = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
     return null;
   }
 
-  if (!supabaseInstance) {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const baseUrl = new URL(url);
+  return {
+    authUrl: new URL("auth/v1", baseUrl).href,
+    headers: {
+      Authorization: `Bearer ${key}`,
+      apikey: key,
+    },
+    storageKey: `sb-${baseUrl.hostname.split(".")[0]}-auth-token`,
+  };
+};
 
-    if (url && key) {
-      supabaseInstance = createClient(url, key);
+function getSupabaseClient() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  if (!authClientInstance) {
+    const config = getSupabaseConfig();
+
+    if (config) {
+      authClientInstance = new AuthClient({
+        url: config.authUrl,
+        headers: config.headers,
+        storageKey: config.storageKey,
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true,
+      });
     }
   }
 
-  return supabaseInstance;
+  return authClientInstance;
 }
 
-// Export as getter to ensure lazy initialization
 export const supabase = {
   get auth() {
-    return getSupabaseClient()?.auth || {
+    return getSupabaseClient() || {
       getSession: async () => ({ data: { session: null } }),
       signInWithOAuth: async () => ({ data: null, error: null }),
     };
