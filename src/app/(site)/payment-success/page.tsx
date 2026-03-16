@@ -6,13 +6,13 @@ import Link from "next/link";
 import { fetchPaymentData, notifyPaymentSuccess, type PaymentData } from "./paymentUtils";
 
 const PageShell = ({ children }: { children: ReactNode }) => (
-  <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white font-sans dark:bg-[#000000]">
+  <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white font-sans dark:bg-[#000000]">
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-600 opacity-20 blur-[100px] dark:bg-[#3b82f6]" />
     </div>
     {children}
-  </div>
+  </main>
 );
 
 const PaymentSuccessPage = () => {

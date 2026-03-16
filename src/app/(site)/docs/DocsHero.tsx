@@ -35,7 +35,7 @@ const DocsHero = () => (
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:px-7 sm:py-4 sm:text-base"
                 >
-                  <Image src={browser.icon} alt={browser.mobileLabel} width={18} height={18} className="h-[18px] w-[18px]" />
+                  <Image src={browser.icon} alt="" width={18} height={18} className="h-[18px] w-[18px]" />
                   <span className="sm:hidden">{browser.mobileLabel}</span>
                   <span className="hidden sm:inline">{browser.label}</span>
                 </Link>
@@ -62,7 +62,7 @@ const DocsHero = () => (
               <div className="mt-6 grid gap-3 md:grid-cols-3">
                 {heroFacts.map((fact) => (
                   <div key={fact.label} className="rounded-2xl border border-gray-200 bg-white px-4 py-4 dark:border-white/10 dark:bg-white/5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400 dark:text-white/35">{fact.label}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-white/60">{fact.label}</p>
                     <p className="mt-2 text-sm font-bold text-slate-900 dark:text-white">{fact.value}</p>
                   </div>
                 ))}

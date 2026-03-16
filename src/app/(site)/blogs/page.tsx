@@ -1,5 +1,12 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs | SignalizeAI",
+  description: "SignalizeAI blog updates and upcoming deep dives on sales intelligence.",
+};
+
 export default function BlogsPage() {
-  return null;
+  return <main aria-label="Blogs" />;
 }
 
 // import SingleBlog from "@/components/Blog/SingleBlog";

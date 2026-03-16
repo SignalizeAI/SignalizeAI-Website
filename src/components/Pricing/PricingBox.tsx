@@ -1,6 +1,6 @@
 "use client";
 
-import BrowserModal from "@/components/BrowserModal";
+import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
 import type { Price } from "@/types/price";
 import { formatMonthlyPrice } from "./formatPrice";
 import OfferList from "./OfferList";
@@ -20,7 +20,7 @@ const planDescriptions: Record<string, string> = {
   team: "For higher-volume teams running larger research lists with broader saved-analysis capacity.",
 };
 
-  const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
+const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {
   const { buttonConfig, handleAction, installModalOpen, setInstallModalOpen } = usePricingBoxState(product, currentPlan);
   const planName = product.nickname?.toLowerCase() || "free";
   const priceDisplay = formatMonthlyPrice(product);
@@ -49,7 +49,7 @@ const planDescriptions: Record<string, string> = {
               </p>
             </>
           )}
-          <span className="mb-3 block text-sm font-semibold uppercase tracking-[0.22em] text-primary dark:text-accent">{product.nickname}</span>
+          <span className="mb-3 block text-sm font-bold uppercase tracking-[0.22em] text-slate-700 dark:text-cyan-300">{product.nickname}</span>
           <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white xl:text-[40px] xl:leading-[1.1]">{priceDisplay}</h2>
           <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-white/65">{planDescriptions[planName]}</p>
           <div className="mb-8 mt-8 grow">
@@ -79,7 +79,7 @@ const planDescriptions: Record<string, string> = {
           </button>
         </div>
       </div>
-      <BrowserModal isOpen={installModalOpen} onClose={() => setInstallModalOpen(false)} />
+      <LazyBrowserModal isOpen={installModalOpen} onClose={() => setInstallModalOpen(false)} />
     </>
   );
 };

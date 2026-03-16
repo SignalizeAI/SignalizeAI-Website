@@ -31,8 +31,8 @@ export const DocsWorkflowSection = () => (
   <section id="workflows" className="overflow-hidden rounded-[2.5rem] border border-gray-200 bg-gray-50/80 shadow-xl dark:border-white/10 dark:bg-[#060606]">
     <div className="px-8 py-7 md:px-10">
       <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">Workflows</span>
-      <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">The product has three main workflow modes</h2>
-      <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600 dark:text-white/65">The goal here is not to repeat the homepage. It is to show when each mode is appropriate and what users should expect from it.</p>
+      <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Choose the right mode for the job</h2>
+      <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600 dark:text-white/65">Each workflow fits a different stage of research. Use the cues below to decide when to run one-off checks, when to scale with batches, and when to keep results for ongoing follow-up.</p>
     </div>
     <div className="grid gap-4 px-8 pb-8 md:px-10 lg:grid-cols-3">
       {workflowCards.map((card, index) => (
@@ -69,7 +69,7 @@ export const DocsAccessSection = () => (
       <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600 dark:text-white/65">This section explains which product capabilities exist and how they generally fit. Billing, subscription changes, and live plan comparison belong on the pricing page.</p>
     </div>
     <div className="grid gap-4 px-8 pb-8 md:grid-cols-2 md:px-10 xl:grid-cols-3">{accessCards.map((card) => <div key={card.title} className="rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-[#0d0d0d]"><div className="flex flex-col items-start gap-3 sm:flex-row sm:items-start sm:justify-between"><h3 className="text-xl font-bold text-slate-900 dark:text-white">{card.title}</h3><span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary dark:bg-accent/10 dark:text-accent">{card.availability}</span></div><p className="mt-4 text-sm leading-7 text-slate-600 dark:text-white/65">{card.description}</p></div>)}</div>
-    <div className="px-8 pb-8 md:px-10"><Link href="/pricing" className="inline-flex items-center rounded-2xl border border-gray-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5">View pricing separately</Link></div>
+    <div className="px-8 pb-8 md:px-10"><Link href="/pricing" prefetch={false} className="inline-flex items-center rounded-2xl border border-gray-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5">View pricing separately</Link></div>
   </section>
 );
 

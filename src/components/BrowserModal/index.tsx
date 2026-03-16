@@ -14,13 +14,13 @@ const browserOptions = [
     name: "Google Chrome",
     storeLabel: "Install from Chrome Web Store",
     href: "https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib?utm_source=item-share-cb",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg",
+    icon: "/images/browser/chrome.svg",
   },
   {
     name: "Mozilla Firefox",
     storeLabel: "Install from Firefox Add-ons",
     href: "https://addons.mozilla.org/en-US/firefox/addon/signalizeai/",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
+    icon: "/images/browser/firefox.svg",
   },
 ];
 
@@ -74,13 +74,13 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
                 className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:hover:border-accent"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
-                  <Image src={browser.icon} alt={browser.name} width={48} height={48} className="h-12 w-12" />
+                  <Image src={browser.icon} alt="" width={48} height={48} className="h-12 w-12" />
                 </div>
                 <div className="flex-1 text-left">
                   <h4 className="font-semibold text-slate-900 group-hover:text-primary dark:text-white dark:group-hover:text-accent">
                     {browser.name}
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-white/40">{browser.storeLabel}</p>
+                  <p className="text-xs text-slate-500 dark:text-white/65">{browser.storeLabel}</p>
                 </div>
                 <svg
                   className="h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import BrowserModal from "@/components/BrowserModal";
+import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
 import DesktopNav from "./DesktopNav";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
@@ -118,7 +118,7 @@ const Header = () => {
         />
       </header>
 
-      <BrowserModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <LazyBrowserModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 };

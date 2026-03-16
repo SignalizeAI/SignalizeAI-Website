@@ -1,10 +1,24 @@
-import { createClient } from "@supabase/supabase-js";
+import { AuthClient } from "@supabase/auth-js";
 
-const createSupabaseClient = () =>
-  createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
+const createSupabaseClient = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const baseUrl = new URL(url);
+
+  return {
+    auth: new AuthClient({
+      url: new URL("auth/v1", baseUrl).href,
+      headers: {
+        Authorization: `Bearer ${key}`,
+        apikey: key,
+      },
+      storageKey: `sb-${baseUrl.hostname.split(".")[0]}-auth-token`,
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: false,
+    }),
+  };
+};
 
 export const completeAuthCallback = async () => {
   const supabase = createSupabaseClient();

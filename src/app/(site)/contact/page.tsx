@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <Contact variant="page" />
+    <main>
+      <Contact variant="page" />
+    </main>
   );
 };
 

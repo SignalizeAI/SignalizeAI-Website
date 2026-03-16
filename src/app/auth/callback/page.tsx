@@ -42,7 +42,7 @@ export default function AuthCallbackPage() {
   }, []);
 
   return (
-    <div className="bg-dark relative flex min-h-screen flex-col items-center justify-center overflow-hidden font-sans text-white">
+    <main className="bg-dark relative flex min-h-screen flex-col items-center justify-center overflow-hidden font-sans text-white">
       <div className="relative z-10 flex w-full max-w-md flex-col items-center space-y-6 p-8 text-center">
         <div className="relative flex items-center justify-center">
           {status === "loading" && (
@@ -70,6 +70,6 @@ export default function AuthCallbackPage() {
           <p className="text-sm text-gray-400">{statusCopy[status].description}</p>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

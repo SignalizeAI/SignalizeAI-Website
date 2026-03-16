@@ -50,7 +50,7 @@ const Hero = () => {
                     >
                       <Image
                         src={browser.icon}
-                        alt={browser.label}
+                        alt=""
                         width={22}
                         height={22}
                         className="h-5 w-5 transition-transform group-hover:rotate-12 sm:h-5.5 sm:w-5.5"
@@ -68,25 +68,10 @@ const Hero = () => {
                     href="https://www.producthunt.com/products/signalizeai/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_campaign=product_review-badge-signalizeai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Review SignalizeAI on Product Hunt"
-                    className="inline-flex rounded-md transition-all duration-300 hover:opacity-80 hover:scale-105"
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition-all duration-300 hover:scale-105 hover:border-slate-400 hover:bg-slate-50 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-white/30 dark:hover:bg-white/10"
                   >
-                    <Image
-                      src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1147484&theme=light"
-                      alt="SignalizeAI on Product Hunt"
-                      width={250}
-                      height={54}
-                      className="block h-[54px] w-[250px] dark:hidden"
-                      unoptimized
-                    />
-                    <Image
-                      src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1147484&theme=dark"
-                      alt="SignalizeAI on Product Hunt"
-                      width={250}
-                      height={54}
-                      className="hidden h-[54px] w-[250px] dark:block"
-                      unoptimized
-                    />
+                    <span>Review us on Product Hunt</span>
+                    <span aria-hidden="true">↗</span>
                   </Link>
                 </div>
               </div>
@@ -95,11 +80,19 @@ const Hero = () => {
                 <div className="flex -space-x-4">
                   {heroUsers.map((i) => (
                     <div key={i} className="h-16 w-16 lg:h-20 lg:w-20 overflow-hidden rounded-full border-4 border-white dark:border-[#000000] bg-gray-100 dark:bg-gray-800 shadow-2xl relative z-0 hover:z-10 transition-all hover:scale-110 cursor-pointer">
-                      <Image src={`/images/users/user-0${i}.png`} alt="User" width={80} height={80} className="h-full w-full object-cover" unoptimized />
+                      <Image
+                        src={`/images/users/user-0${i}.png`}
+                        alt="User"
+                        width={80}
+                        height={80}
+                        sizes="80px"
+                        quality={70}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                   ))}
                 </div>
-                <div className="text-base lg:text-lg font-medium tracking-wide text-gray-500 dark:text-white/40">
+                <div className="text-base lg:text-lg font-medium tracking-wide text-gray-500 dark:text-white/70">
                   <strong className="text-gray-900 dark:text-white/80">Used by</strong> founders, SDRs, and GTM teams
                 </div>
               </div>
@@ -126,6 +119,7 @@ const Hero = () => {
                     alt="SignalizeAI Dashboard"
                     fill
                     sizes="(max-width: 1023px) 100vw, 1000px"
+                    quality={80}
                     className="object-cover object-top opacity-90 transition-opacity hover:opacity-100"
                     priority
                   />

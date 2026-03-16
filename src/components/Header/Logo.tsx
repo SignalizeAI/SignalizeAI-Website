@@ -6,14 +6,14 @@ const Logo = () => (
     <div className="relative h-7 w-7 transition-transform duration-300 group-hover:scale-110">
       <Image
         src="/images/logo/logo-dark.png"
-        alt="SignalizeAI Logo"
+        alt=""
         fill
         sizes="28px"
         className="object-contain dark:hidden"
       />
       <Image
         src="/images/logo/logo-white.png"
-        alt="SignalizeAI Logo"
+        alt=""
         fill
         sizes="28px"
         className="hidden object-contain dark:block"
