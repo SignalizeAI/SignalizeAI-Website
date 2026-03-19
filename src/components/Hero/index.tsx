@@ -29,7 +29,7 @@ const Hero = () => {
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
                 Sell to any company <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-accent">
-                  in seconds.
+                  in seconds
                 </span>
               </h1>
 
