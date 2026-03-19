@@ -56,9 +56,8 @@ const Footer = () => {
             </Link>
 
             <p className="mt-5 max-w-[460px] text-sm leading-7 text-slate-600 dark:text-white/65">
-              SignalizeAI helps teams understand what a company sells, who it is
-              for, and how ready it looks for outreach by turning public website
-              content into clear sales context.
+              Sell to any company. SignalizeAI gives teams sales-ready insights
+              and outreach in seconds from public website content.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

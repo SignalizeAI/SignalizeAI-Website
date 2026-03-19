@@ -5,7 +5,7 @@ import { audienceCards, principles } from "./content";
 export const metadata: Metadata = {
   title: "About | SignalizeAI",
   description:
-    "Learn how SignalizeAI turns public website content into structured sales intelligence.",
+    "Learn how SignalizeAI helps teams sell to any company with sales-ready insights and outreach.",
 };
 
 const AboutPage = () => {
@@ -21,10 +21,10 @@ const AboutPage = () => {
                 Why SignalizeAI exists
               </span>
               <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                The product is built to remove the slow part of website research.
+                The product is built to remove the slow part of selling.
               </h2>
               <p className="mt-6 max-w-[640px] text-lg leading-8 text-slate-600 dark:text-white/65">
-                SignalizeAI turns public business websites into usable sales context. Instead of stitching together copy, positioning, audience clues, and readiness signals by hand, the extension generates a structured read that is easier to act on.
+                SignalizeAI turns public business websites into fast sales context. Instead of stitching together copy, buyer cues, and outreach direction by hand, the extension gives you a sharper read you can act on.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/docs" className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
@@ -64,7 +64,7 @@ const AboutPage = () => {
               Different teams use the product differently
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600 dark:text-white/65">
-              The core product is the same, but the reason people reach for it changes depending on whether they are selling, operating, or researching.
+              The core product is the same, but teams use it differently depending on who they want to target and how they decide where to sell next.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">

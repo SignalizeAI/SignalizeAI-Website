@@ -16,7 +16,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "SignalizeAI",
   description:
-    "SignalizeAI is the Chrome and Firefox extension that turns any business website into clear, actionable sales intelligence in seconds by analyzing website content using AI.",
+    "Sell to any company. SignalizeAI gives you sales-ready insights and outreach in seconds.",
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -60,36 +60,31 @@ export default function Home() {
         <h1>SignalizeAI</h1>
 
         <p>
-          SignalizeAI is an AI-powered Chrome and Firefox extension that analyzes business
-          websites to understand what a company does, who it is built for, and
-          how effectively it communicates its value.
+          SignalizeAI helps reps and GTM teams turn any business website into a
+          fast, sales-ready brief.
         </p>
 
         <p>
-          By reading page content, headings, and structure, SignalizeAI generates
-          clear summaries, identifies target customers, and evaluates whether a
-          business is ready for sales conversations.
+          It surfaces who to target, how to frame outreach, and what matters
+          before you send the first message.
         </p>
 
         <h2>Key Capabilities</h2>
 
         <p>
-          SignalizeAI transforms raw website content into actionable sales
-          intelligence, including value propositions, audience insights, and
-          positioning clarity.
+          SignalizeAI gives you sales-ready insights and outreach in seconds.
         </p>
 
         <p>
-          This helps founders, marketers, and sales teams quickly assess market
-          fit and improve messaging without manual research.
+          That means faster targeting, sharper messaging, and less manual prep
+          before outreach.
         </p>
 
         <h2>Who It Is For</h2>
 
         <p>
-          SignalizeAI is designed for professionals who need fast and accurate
-          insights into business websites, including sales teams, consultants,
-          and growth-focused founders.
+          SignalizeAI is built for reps, founders, and GTM teams who need to
+          decide fast who to target and how to sell.
         </p>
       </section>
     </main>

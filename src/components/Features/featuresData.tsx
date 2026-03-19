@@ -17,9 +17,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Instant on-page analysis",
+    title: "Sales-ready page brief",
     paragraph:
-      "Detects the site you are viewing, reads public content only, and returns a clean summary of what the business offers and who they serve.",
+      "Turn any company page into a sharp sales brief with positioning, buyer cues, and outreach context.",
     btn: "",
     btnLink: "",
   },
@@ -39,9 +39,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Target customer + value prop",
+    title: "Targeting and pitch angle",
     paragraph:
-      "Uncovers the likely buyer profile and crafts a tailored value proposition and sales angle so outreach feels relevant from message one.",
+      "See who to target and how to frame your pitch so outreach lands faster.",
     btn: "",
     btnLink: "",
   },
@@ -93,9 +93,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Readiness score and persona",
+    title: "Who to target next",
     paragraph:
-      "Scores sales readiness, recommends the best persona to approach, and highlights why now is the right time to connect.",
+      "Spot sales readiness, best-fit persona, and the strongest reason to reach out now.",
     btn: "",
     btnLink: "",
   },
@@ -129,7 +129,7 @@ const featuresData: Feature[] = [
     ),
     title: "Save, filter, and export",
     paragraph:
-      "Optional Google sign-in with secure cloud storage to store analyses, filter by what matters, and export to CSV or Excel when you are ready to act.",
+      "Save high-fit accounts, filter fast, and export what your team needs to act.",
     btn: "",
     btnLink: "",
   },

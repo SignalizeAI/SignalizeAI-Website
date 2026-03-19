@@ -1,6 +1,6 @@
 # SignalizeAI Website
 
-A modern, responsive website for **SignalizeAI** — a Chrome and Firefox extension that transforms any business website into clear, actionable sales intelligence using AI-powered analysis.
+A modern, responsive website for **SignalizeAI** — a Chrome and Firefox extension built to help teams sell to any company with sales-ready insights and outreach.
 
 ## 📋 Table of Contents
 
@@ -24,7 +24,7 @@ A modern, responsive website for **SignalizeAI** — a Chrome and Firefox extens
 
 ## 🎯 About the Project
 
-SignalizeAI is a Chrome and Firefox extension that enables businesses to extract valuable sales intelligence from website content in seconds. This repository contains the official website and documentation portal for the SignalizeAI product.
+SignalizeAI is a Chrome and Firefox extension that helps teams turn company websites into sales-ready insights and outreach in seconds. This repository contains the official website and documentation portal for the product.
 
 The website serves as the main landing page, marketing material, documentation hub, and user authentication gateway for the SignalizeAI platform.
 

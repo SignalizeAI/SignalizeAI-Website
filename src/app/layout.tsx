@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     template: "%s | SignalizeAI",
   },
   description:
-    "SignalizeAI is a Chrome and Firefox extension that turns public website content into clear, actionable sales intelligence in seconds.",
+    "Sell to any company. Get sales-ready insights and outreach in seconds.",
   openGraph: {
     title: "SignalizeAI",
     description:
-      "Turn any business website into clear, actionable sales intelligence in seconds.",
+      "Sell to any company. Get sales-ready insights and outreach in seconds.",
     url: "https://signalizeai.org",
     siteName: "SignalizeAI",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SignalizeAI",
     description:
-      "Turn any business website into clear, actionable sales intelligence in seconds.",
+      "Sell to any company. Get sales-ready insights and outreach in seconds.",
   },
   robots: {
     index: true,

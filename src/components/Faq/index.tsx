@@ -4,7 +4,7 @@ import SingleFaq from "./SingleFaq";
 
 const faqItems = [
   {
-    question: "What does SignalizeAI analyze?",
+    question: "What does SignalizeAI scan?",
     answer:
       "Only the publicly visible text on the page you are viewing. We do not collect or send personal data or browsing history to the AI.",
   },
@@ -16,7 +16,7 @@ const faqItems = [
   {
     question: "When should I use quick website check versus batch analysis?",
     answer:
-      "Use quick website check when you want context on the page in front of you. Use batch analysis when you need to process a pasted URL list or CSV across multiple companies.",
+      "Use quick website check when you want fast selling context on one account. Use batch analysis when you need to score and prioritize a larger target list.",
   },
   {
     question: "Do you track users or sell data?",
@@ -36,7 +36,7 @@ const faqItems = [
   {
     question: "What gets saved in a saved analysis?",
     answer:
-      "Saved analyses can include the analyzed domain, generated insights, and timestamps so you can revisit, filter, and export the work later on supported plans.",
+      "Saved analyses can include the target domain, generated sales insights, and timestamps so you can revisit, filter, and export later on supported plans.",
   },
   {
     question: "Where should I go if I need help?",

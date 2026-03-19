@@ -2,7 +2,7 @@ export const principles = [
   {
     title: "Fast context over manual tab-hopping",
     description:
-      "SignalizeAI exists to cut down the time it takes to understand what a company sells, who it serves, and how ready it looks for outreach.",
+      "SignalizeAI exists to cut down the time it takes to decide who to target, how to pitch, and whether an account deserves the next step.",
   },
   {
     title: "Public content only",
@@ -12,7 +12,7 @@ export const principles = [
   {
     title: "Useful in real workflows",
     description:
-      "Single-page checks, batch analysis, saved analyses, and export support are all designed to fit actual prospecting and research work.",
+      "Single-page checks, batch analysis, saved analyses, and export support are all designed to fit real prospecting and outbound work.",
   },
 ];
 
@@ -20,16 +20,16 @@ export const audienceCards = [
   {
     title: "Sales teams",
     description:
-      "Use SignalizeAI to qualify accounts faster and arrive at outreach with more context than a generic company summary.",
+      "Use SignalizeAI to qualify accounts faster and show up to outreach with sharper context than a generic company summary.",
   },
   {
     title: "Founders and operators",
     description:
-      "Use the product to understand messaging quality, target audience clarity, and how a company frames its offer.",
+      "Use the product to sharpen positioning, pressure-test targeting, and see how companies frame what they sell.",
   },
   {
     title: "Researchers and agencies",
     description:
-      "Batch analysis and saved results help when reviewing multiple accounts across a campaign, list, or market segment.",
+      "Batch analysis and saved results help when prioritizing multiple accounts across a campaign, list, or segment.",
   },
 ];

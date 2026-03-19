@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <meta
         name="description"
-        content="SignalizeAI helps teams analyze public website content and turn it into clear, actionable sales intelligence."
+        content="Sell to any company. Get sales-ready insights and outreach in seconds."
       />
     </>
   );

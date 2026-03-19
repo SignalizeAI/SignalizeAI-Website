@@ -3,19 +3,19 @@ export const workflowSteps = [
     label: "1",
     title: "Open a company website",
     description:
-      "Start on any public business page where the company explains its offer, positioning, or customer segment.",
+      "Start on any public business page you want to target.",
   },
   {
     label: "2",
     title: "Run SignalizeAI",
     description:
-      "The extension reads visible page content on demand and converts it into a structured sales brief.",
+      "Get sales-ready insights and outreach in seconds.",
   },
   {
     label: "3",
-    title: "Move from insight to action",
+    title: "Move from target to outreach",
     description:
-      "Use quick checks, batch analysis, saved analyses, and exportable output to support outreach workflows.",
+      "Use quick checks, batch runs, saved targets, and exports to move faster.",
   },
 ];
 
