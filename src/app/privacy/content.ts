@@ -18,7 +18,7 @@ export const heroCards = [
   },
   {
     label: "Storage",
-    description: "Saved analyses are optional and tied to your account.",
+    description: "Saved prospects are optional and tied to your account.",
   },
 ];
 
@@ -31,7 +31,7 @@ export const privacySections = [
       {
         title: "1.1 Website Content",
         paragraphs: [
-          "SignalizeAI processes publicly available content from the active browser tab (single analysis) and from user-submitted URLs in batch mode (CSV upload or pasted URL list), including page titles, meta descriptions, headings, and visible text. This data is used only to generate on-screen analysis for the user and may require injecting a content script into the active tab on demand.",
+          "SignalizeAI processes publicly available content from the active browser tab (single prospecting run) and from user-submitted URLs in batch mode (CSV upload or pasted URL list), including page titles, meta descriptions, headings, and visible text. This data is used only to generate on-screen prospect data for the user and may require injecting a content script into the active tab on demand.",
         ],
         negativeItems: [
           "Private/Password-protected pages",
@@ -41,9 +41,9 @@ export const privacySections = [
         ],
       },
       {
-        title: "1.2 URL Inputs for Batch Analysis",
+        title: "1.2 URL Inputs for Batch Prospecting",
         paragraphs: [
-          "If a user runs batch analysis, SignalizeAI processes the URL list they provide (via CSV or pasted text) to fetch publicly available website content and generate analyses.",
+          "If a user runs batch prospecting, SignalizeAI processes the URL list they provide (via CSV or pasted text) to fetch publicly available website content and generate prospect data.",
         ],
       },
       {
@@ -53,9 +53,9 @@ export const privacySections = [
         ],
       },
       {
-        title: "1.4 Saved Analyses (Optional)",
+        title: "1.4 Saved Prospects (Optional)",
         paragraphs: [
-          "If enabled by the user, saved analyses may include the domain name, generated insights, and a timestamp. This data is private and accessible only to the authenticated user.",
+          "If enabled by the user, saved prospects may include the domain name, generated insights, and a timestamp. This data is private and accessible only to the authenticated user.",
         ],
       },
     ],
@@ -68,8 +68,8 @@ export const privacySections = [
     items: [
       "Generate AI-based business insights",
       "Display results within the extension",
-      "Run user-requested batch analyses",
-      "Save user-requested analyses",
+      "Run user-requested batch prospecting",
+      "Save user-requested prospects",
       "Improve extension functionality and user experience",
     ],
     note: "SignalizeAI does not track browsing history, and we do not sell, share, or use data for advertising or tracking.",
@@ -80,7 +80,7 @@ export const privacySections = [
     title: "AI Processing",
     intro: "SignalizeAI uses a third-party AI API to generate insights.",
     items: [
-      "Only extracted website text is sent for analysis",
+      "Only extracted website text is sent to generate prospect data",
       "No personal user data is sent to the AI service",
       "API requests are rate-limited and secured server-side",
       "AI responses are generated on-demand and are not used to train models",
@@ -103,14 +103,14 @@ export const privacySections = [
     title: "Permissions Explanation",
     intro: "SignalizeAI requests the following permissions only for core functionality:",
     permissions: [
-      { title: "activeTab", desc: "Access the active tab when the user runs an analysis" },
+      { title: "activeTab", desc: "Access the active tab when the user runs a prospecting request" },
       { title: "tabs", desc: "Identify the active tab and read its URL for context" },
       { title: "scripting", desc: "Inject the content extraction script into the active tab" },
       { title: "storage", desc: "Save user preferences" },
-      { title: "sidePanel / sidebar_action", desc: "Display analysis UI (Chrome side panel, Firefox sidebar)" },
+      { title: "sidePanel / sidebar_action", desc: "Display prospecting UI (Chrome side panel, Firefox sidebar)" },
       {
         title: "host permissions",
-        desc: "Allow requests to Supabase, SignalizeAI API environments, and user-requested analysis targets across domains",
+        desc: "Allow requests to Supabase, SignalizeAI API environments, and user-requested prospect targets across domains",
       },
     ],
   },
@@ -120,7 +120,7 @@ export const privacySections = [
     title: "Data Retention & Deletion",
     intro: "We adhere to strict data retention policies:",
     items: [
-      "Users may delete specific saved analyses at any time via the extension interface.",
+      "Users may delete specific saved prospects at any time via the extension interface.",
       "Users may sign out to remove extension access to their account.",
       "Upon full account deletion request, all user data is permanently removed from our systems.",
     ],

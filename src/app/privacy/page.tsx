@@ -31,7 +31,7 @@ export default function PrivacyPage() {
                 This page explains what SignalizeAI processes, what can be stored in your account, and how permissions are used across Chrome and Firefox.
               </p>
               <p className="mt-4 max-w-3xl text-base leading-8 text-slate-500 dark:text-white/52">
-                The product is designed for analysis of publicly available business websites. It does not access private pages, form entries, cookies, or session data.
+                The product is designed to turn publicly available business websites into sales-ready prospect data. It does not access private pages, form entries, cookies, or session data.
               </p>
               <div className="mt-8 grid gap-3 md:grid-cols-2">
                 {heroCards.map((card) => (

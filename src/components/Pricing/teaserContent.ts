@@ -51,16 +51,16 @@ export const teaserMeta = {
 };
 
 export const teaserOfferMap: Record<string, string[]> = {
-  free: ["AI analysis 5/day", "Save up to 3 analyses"],
+  free: ["Generate insights for 5 prospects/day", "Save up to 3 prospects"],
   pro: [
-    "AI analysis 50/day",
-    "Batch analysis up to 10 URLs/run",
-    "Save up to 200 analyses",
+    "Generate insights for 50 prospects/day",
+    "Batch prospecting up to 10 URLs/run",
+    "Save up to 200 prospects",
   ],
   team: [
-    "AI analysis 500/day",
-    "Batch analysis up to 50 URLs/run",
-    "Save up to 5000 analyses",
+    "Generate insights for 500 prospects/day",
+    "Batch prospecting up to 50 URLs/run",
+    "Save up to 5000 prospects",
   ],
 };
 

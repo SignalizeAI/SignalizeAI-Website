@@ -19,7 +19,7 @@ const About = () => {
             </span>
 
             <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-[42px] sm:leading-[1.1]">
-              Research faster without turning your workflow into tab chaos.
+              Prospect faster without turning your workflow into tab chaos.
             </h2>
 
             <p className="mt-6 max-w-[620px] text-base leading-8 text-slate-600 dark:text-white/65">
@@ -77,11 +77,11 @@ const About = () => {
               />
               <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
-                  Built for live research
+                  Built for live prospecting
                 </p>
                 <p className="mt-3 max-w-[320px] text-sm leading-7 text-white/80">
                   Use quick website checks when you are evaluating one account,
-                  or scale into batch analysis when the list is bigger.
+                  or scale into batch prospecting when the list is bigger.
                 </p>
               </div>
             </div>

@@ -15,9 +15,9 @@ interface PricingBoxProps {
 }
 
 const planDescriptions: Record<string, string> = {
-  free: "For individual reps testing quick website checks and lightweight saved research.",
-  pro: "For solo operators or small teams that need batch runs, saved analyses, and export.",
-  team: "For higher-volume teams running larger research lists with broader saved-analysis capacity.",
+  free: "For individual reps testing quick website checks and lightweight saved prospects.",
+  pro: "For solo operators or small teams that need batch prospecting, saved prospects, and export.",
+  team: "For higher-volume teams running larger target lists with broader saved prospect capacity.",
 };
 
 const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {

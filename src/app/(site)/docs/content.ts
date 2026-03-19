@@ -47,13 +47,13 @@ export const gettingStartedSteps = [
   {
     title: "Decide what happens next",
     description:
-      "Continue with batch analysis, save the result for follow-up, or move the insight into your outreach workflow.",
+      "Continue with batch prospecting, save the result for follow-up, or move the insight into your outreach workflow.",
   },
 ];
 
 export const workflowCards = [
   {
-    eyebrow: "Single analysis",
+    eyebrow: "Single prospect",
     title: "Quick website check",
     description:
       "Use this when you need a fast read on one account before outreach, discovery, or qualification.",
@@ -65,9 +65,9 @@ export const workflowCards = [
   },
   {
     eyebrow: "Scaled research",
-    title: "Batch analysis",
+    title: "Batch prospecting",
     description:
-      "Use this when manual tab-by-tab review is too slow and you need consistent analysis across a list.",
+      "Use this when manual tab-by-tab review is too slow and you need consistent prospect data across a list.",
     points: [
       "Use when: running prospecting sprints, territory sweeps, or list validation",
       "Expect: queue-style processing from pasted URLs or CSV inputs",
@@ -76,9 +76,9 @@ export const workflowCards = [
   },
   {
     eyebrow: "Ongoing workflow",
-    title: "Saved analyses",
+    title: "Saved prospects",
     description:
-      "Use this when research spans multiple sessions and you need continuity across follow-up work.",
+      "Use this when prospecting spans multiple sessions and you need continuity across follow-up work.",
     points: [
       "Use when: tracking accounts over days or handing context to teammates",
       "Expect: stored runs with search, filtering, and optional export",
@@ -116,7 +116,7 @@ export const outputCards = [
   {
     title: "Exportable working set",
     description:
-      "When supported, saved analyses can become a reusable set for filtering, export, and follow-up.",
+      "When supported, saved prospects can become a reusable set for filtering, export, and follow-up.",
   },
 ];
 
@@ -125,16 +125,16 @@ export const accessCards = [
     title: "Quick website check",
     availability: "Available to all users",
     description:
-      "The core single-page workflow for active-tab analysis and immediate context generation.",
+      "The core single-page workflow for active-tab prospecting and immediate context generation.",
   },
   {
-    title: "Batch analysis",
+    title: "Batch prospecting",
     availability: "Plan-dependent",
     description:
       "Used when you need to process multiple domains at once rather than manually review each site.",
   },
   {
-    title: "Saved analyses",
+    title: "Saved prospects",
     availability: "Plan-dependent",
     description:
       "Storage, organization features, and export access vary by plan and should be compared on the pricing page.",
@@ -142,21 +142,21 @@ export const accessCards = [
 ];
 
 export const privacyPoints = [
-  "SignalizeAI analyzes public website content on demand rather than monitoring general browsing.",
+  "SignalizeAI turns public website content into prospect data on demand rather than monitoring general browsing.",
   "The extension does not collect form inputs, cookies, or private account data.",
   "API keys stay server-side and requests are rate-limited.",
-  "Saved analyses are optional and tied to the authenticated user account.",
-  "Users can remove saved analyses through the product interface.",
+  "Saved prospects are optional and tied to the authenticated user account.",
+  "Users can remove saved prospects through the product interface.",
 ];
 
 export const permissions = [
   {
     title: "activeTab",
-    description: "Access the current tab only when you request analysis.",
+    description: "Access the current tab only when you request prospect data.",
   },
   {
     title: "tabs",
-    description: "Read the active page URL for analysis context.",
+    description: "Read the active page URL for prospect context.",
   },
   {
     title: "scripting",
@@ -173,7 +173,7 @@ export const permissions = [
   {
     title: "host permissions",
     description:
-      "Allow secure requests to SignalizeAI services, Supabase, and requested analysis targets.",
+      "Allow secure requests to SignalizeAI services, Supabase, and user-requested prospect targets.",
   },
 ];
 
@@ -189,13 +189,13 @@ export const troubleshootingCards = [
       "Try a stronger page source such as the homepage, product page, or pricing page where the business explains itself clearly.",
   },
   {
-    title: "Batch analysis is unavailable",
+    title: "Batch prospecting is unavailable",
     description:
-      "Batch analysis is not a universal feature. Check plan access if the workflow is not available in your account.",
+      "Batch prospecting is not a universal feature. Check plan access if the workflow is not available in your account.",
   },
   {
-    title: "Saved analyses are missing",
+    title: "Saved prospects are missing",
     description:
-      "Confirm you are signed in to the same account used when the analyses were created.",
+      "Confirm you are signed in to the same account used when the prospects were created.",
   },
 ];

@@ -7,12 +7,12 @@ export const principles = [
   {
     title: "Public content only",
     description:
-      "The product is built around analyzing visible website content on demand, not collecting private account data or passive browsing history.",
+      "The product is built around turning visible website content into sales-ready prospect data on demand, not collecting private account data or passive browsing history.",
   },
   {
     title: "Useful in real workflows",
     description:
-      "Single-page checks, batch analysis, saved analyses, and export support are all designed to fit real prospecting and outbound work.",
+      "Single-page checks, batch prospecting, saved prospects, and export support are all designed to fit real prospecting and outbound work.",
   },
 ];
 
@@ -30,6 +30,6 @@ export const audienceCards = [
   {
     title: "Researchers and agencies",
     description:
-      "Batch analysis and saved results help when prioritizing multiple accounts across a campaign, list, or segment.",
+      "Batch prospecting and saved results help when prioritizing multiple accounts across a campaign, list, or segment.",
   },
 ];

@@ -11,8 +11,8 @@ const TeaserSection = () => (
       <div className="mb-15">
         <SectionTitle
           subtitle="Pricing"
-          title="Simple plans that scale with your research volume"
-          paragraph="Start with quick website checks for free, then move into batch analysis, saved research, and export as your workflow gets heavier."
+          title="Simple plans that scale with your prospecting volume"
+          paragraph="Start with quick website checks for free, then move into batch prospecting, saved prospects, and export as your workflow gets heavier."
           center
         />
       </div>
