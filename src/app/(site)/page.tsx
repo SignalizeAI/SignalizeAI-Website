@@ -14,7 +14,9 @@ import PricingTeaserSection from "@/components/Pricing/TeaserSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SignalizeAI",
+  title: {
+    absolute: "SignalizeAI | Home",
+  },
   description:
     "Sell to any company. SignalizeAI gives you sales-ready insights and outreach in seconds.",
   icons: {
