@@ -8,7 +8,7 @@ export const initialFormState = {
 export const supportTopics = [
   {
     title: "Product support",
-    body: "Setup help, batch analysis questions, and troubleshooting.",
+    body: "Setup help, batch prospecting questions, and troubleshooting.",
   },
   {
     title: "Privacy and permissions",

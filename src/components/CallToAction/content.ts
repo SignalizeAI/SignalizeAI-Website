@@ -9,7 +9,7 @@ export const resourceCards = [
   {
     title: "Plans and limits",
     description:
-      "Compare analysis volume, batch limits, saved-analysis capacity, and export access.",
+      "Compare sales workflow volume, batch limits, saved-target capacity, and export access.",
     href: "/pricing",
     cta: "View pricing",
   },
@@ -24,6 +24,6 @@ export const resourceCards = [
 
 export const trustPoints = [
   "Public website content only",
-  "Batch analysis on supported plans",
-  "Saved analyses and export where available",
+  "Batch targeting on supported plans",
+  "Saved targets and export where available",
 ];

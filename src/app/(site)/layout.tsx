@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   description:
-    "SignalizeAI helps teams analyze public website content to extract fast, actionable sales intelligence.",
+    "Sell to any company. Get sales-ready insights and outreach in seconds.",
 };
 
 export default function SiteLayout({

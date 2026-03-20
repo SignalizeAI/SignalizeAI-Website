@@ -23,7 +23,7 @@ const DocsHero = () => (
             <span className="block bg-gradient-to-r from-primary via-blue-500 to-accent bg-clip-text text-transparent">without the marketing fluff.</span>
           </h1>
           <p className="mt-8 max-w-[720px] text-lg leading-8 text-slate-600 dark:text-white/68 sm:text-xl">
-            This guide explains how SignalizeAI works in practice: how to get started, when to use single-page analysis versus batch workflows, what the output means, and how privacy and access are handled.
+            This guide explains how SignalizeAI works in practice: how to get started, when to use single-page prospecting versus batch workflows, what the output means, and how privacy and access are handled.
           </p>
           <div className="mt-10 max-w-md sm:max-w-none">
             <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">

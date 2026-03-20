@@ -14,7 +14,7 @@ const DocsPrivacySection = () => (
     <div className="grid gap-0 lg:grid-cols-[1fr_1fr]">
       <div className="border-b border-gray-200 px-8 py-8 dark:border-white/10 md:px-10 lg:border-b-0 lg:border-r">
         <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">Privacy and security</span>
-        <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Built for on-demand analysis, not passive tracking</h2>
+        <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Built for on-demand prospecting, not passive tracking</h2>
         <div className="mt-6 space-y-4">{privacyPoints.map((point) => <div key={point} className="flex items-start gap-3"><CheckIcon /><p className="text-sm leading-7 text-slate-600 dark:text-white/65">{point}</p></div>)}</div>
         <div className="mt-8"><Link href="/privacy" className="inline-flex items-center rounded-2xl border border-gray-300 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-gray-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5">Read full privacy policy</Link></div>
       </div>

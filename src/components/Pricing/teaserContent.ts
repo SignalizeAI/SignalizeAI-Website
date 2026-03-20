@@ -1,9 +1,9 @@
 export const teaserPlanOrder = ["Free", "Pro", "Team"];
 
 export const teaserDescriptions: Record<string, string> = {
-  free: "Start with quick website checks and a small saved-analysis limit.",
-  pro: "Move into batch analysis, larger saved capacity, and export-ready workflow.",
-  team: "Run higher-volume research with broader limits for multi-user workflows.",
+  free: "Start with quick checks and a small saved-target limit.",
+  pro: "Run batch targeting with larger saved capacity and export-ready workflow.",
+  team: "Scale outbound faster with higher-volume limits for multi-user workflows.",
 };
 
 export const teaserMeta = {
@@ -51,16 +51,16 @@ export const teaserMeta = {
 };
 
 export const teaserOfferMap: Record<string, string[]> = {
-  free: ["AI analysis 5/day", "Save up to 3 analyses"],
+  free: ["Generate insights for 5 prospects/day", "Save up to 3 prospects"],
   pro: [
-    "AI analysis 50/day",
-    "Batch analysis up to 10 URLs/run",
-    "Save up to 200 analyses",
+    "Generate insights for 50 prospects/day",
+    "Batch prospecting up to 10 URLs/run",
+    "Save up to 200 prospects",
   ],
   team: [
-    "AI analysis 500/day",
-    "Batch analysis up to 50 URLs/run",
-    "Save up to 5000 analyses",
+    "Generate insights for 500 prospects/day",
+    "Batch prospecting up to 50 URLs/run",
+    "Save up to 5000 prospects",
   ],
 };
 
