@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 export interface PaymentData {
   amount: number;
@@ -24,6 +24,7 @@ export const notifyPaymentSuccess = () => {
 };
 
 export const fetchPaymentData = async (): Promise<PaymentData> => {
+  const supabase = getSupabaseClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();

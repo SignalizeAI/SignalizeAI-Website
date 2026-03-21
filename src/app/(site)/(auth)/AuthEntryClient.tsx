@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 type AuthEntryClientProps = {
   mode: "signin" | "signup";
@@ -16,6 +16,7 @@ export default function AuthEntryClient({ mode, isPopup = false, authState }: Au
 
   const handleGoogleAuth = async () => {
     try {
+      const supabase = getSupabaseClient();
       setLoading(true);
       const redirectParams = new URLSearchParams();
       if (isPopup) redirectParams.set("popup", "1");

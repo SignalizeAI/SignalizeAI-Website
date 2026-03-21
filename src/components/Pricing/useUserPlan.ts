@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const useUserPlan = (enabled: boolean) => {
   const [userPlan, setUserPlan] = useState("free");
@@ -11,6 +11,7 @@ const useUserPlan = (enabled: boolean) => {
 
     const checkUserPlan = async () => {
       try {
+        const supabase = getSupabaseClient();
         const {
           data: { session },
         } = await supabase.auth.getSession();

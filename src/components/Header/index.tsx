@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
 import { useExtensionInstallState } from "@/hooks/useExtensionInstallState";
 import { useWebsiteSessionState } from "@/hooks/useWebsiteSessionState";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 import DesktopNav from "./DesktopNav";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
@@ -28,6 +28,7 @@ const Header = () => {
   const ctaLabel = loading ? "Get Extension" : installed ? (signedIn ? "Sign out" : "Sign in") : "Get Extension";
   const handleCtaClick = async () => {
     if (installed && signedIn) {
+      const supabase = getSupabaseClient();
       window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
       await supabase.auth.signOut();
       return;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 import { fetchProspectRecord } from "./prospectData";
 import type { ProspectRecord } from "./prospectTypes";
 
@@ -16,6 +16,7 @@ export function useProspectPage(id: string) {
     let cancelled = false;
 
     const load = async () => {
+      const supabase = getSupabaseClient();
       const {
         data: { session },
       } = await supabase.auth.getSession();

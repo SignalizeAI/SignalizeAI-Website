@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const AUTH_STATE_KEY = "signalizeai:website-auth-state";
 
@@ -11,6 +11,7 @@ export function useWebsiteSessionState() {
 
   useEffect(() => {
     let mounted = true;
+    const supabase = getSupabaseClient();
 
     const resolveSessionState = async () => {
       const {

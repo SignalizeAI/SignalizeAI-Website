@@ -1,6 +1,7 @@
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 export const completeAuthCallback = async () => {
+  const supabase = getSupabaseClient();
   const hashParams = new URLSearchParams(window.location.hash.substring(1));
   const searchParams = new URLSearchParams(window.location.search);
   const accessToken = hashParams.get("access_token");
