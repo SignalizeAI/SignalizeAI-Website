@@ -2,7 +2,7 @@ import Contact from "@/components/Contact";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact | SignalizeAI",
+  title: "Contact",
   description:
     "Contact SignalizeAI for product support, privacy questions, workflow help, or team inquiries.",
 };

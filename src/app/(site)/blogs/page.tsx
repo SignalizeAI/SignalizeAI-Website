@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blogs | SignalizeAI",
+  title: "Blogs",
   description: "SignalizeAI blog updates and upcoming deep dives on selling, targeting, and outreach.",
 };
 

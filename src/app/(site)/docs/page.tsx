@@ -11,7 +11,7 @@ import {
 } from "./DocsSections";
 
 export const metadata: Metadata = {
-  title: "Documentation | SignalizeAI",
+  title: "Documentation",
   description:
     "SignalizeAI documentation for setup, workflows, outputs, access, privacy, and troubleshooting.",
 };

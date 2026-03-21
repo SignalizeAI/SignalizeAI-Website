@@ -3,7 +3,7 @@ import Link from "next/link";
 import { audienceCards, principles } from "./content";
 
 export const metadata: Metadata = {
-  title: "About | SignalizeAI",
+  title: "About",
   description:
     "Learn how SignalizeAI helps teams sell to any company with sales-ready insights and outreach.",
 };
