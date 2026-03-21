@@ -116,7 +116,7 @@ const Footer = () => {
                 key={link.label}
                 href={link.href}
                 prefetch={link.href === "/pricing" ? false : undefined}
-                className="text-xs text-slate-500 transition hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
+                className="text-xs text-slate-600 transition hover:text-slate-900 dark:text-white/70 dark:hover:text-white"
               >
                 {link.label}
               </Link>

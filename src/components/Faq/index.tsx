@@ -25,7 +25,7 @@ const faqItems = [
         No. SignalizeAI does not track you, run ads, or sell data. We respect{" "}
         <a
           href="/privacy"
-          className="text-[#00e5ff] underline hover:opacity-80"
+          className="text-blue-700 underline underline-offset-2 hover:text-blue-800 dark:text-[#00e5ff] dark:hover:text-[#6ff3ff]"
         >
           privacy
         </a>{" "}
@@ -43,7 +43,10 @@ const faqItems = [
     answer: (
       <>
         Start with the{" "}
-        <Link href="/docs" className="text-[#00e5ff] underline hover:opacity-80">
+        <Link
+          href="/docs"
+          className="text-blue-700 underline underline-offset-2 hover:text-blue-800 dark:text-[#00e5ff] dark:hover:text-[#6ff3ff]"
+        >
           documentation
         </Link>{" "}
         for setup and workflow details, then use Discord or email support if
