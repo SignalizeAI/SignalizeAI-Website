@@ -13,6 +13,8 @@ import MobileNav from "./MobileNav";
 import ThemeToggler from "./ThemeToggler";
 import useStickyHeader from "./useStickyHeader";
 
+const AUTH_STATE_KEY = "signalizeai:website-auth-state";
+
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,13 +28,15 @@ const Header = () => {
   const ctaLabel = loading ? "Get Extension" : installed ? (signedIn ? "Sign out" : "Sign in") : "Get Extension";
   const handleCtaClick = async () => {
     if (installed && signedIn) {
-      window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, "*");
+      window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
       await supabase.auth.signOut();
       return;
     }
     if (installed) {
+      const authState = crypto.randomUUID();
+      window.sessionStorage.setItem(AUTH_STATE_KEY, authState);
       const popup = window.open(
-        `${window.location.origin}/signin?popup=1`,
+        `${window.location.origin}/signin?popup=1&auth_state=${encodeURIComponent(authState)}`,
         "signalizeai-signin",
         "popup=yes,width=520,height=720,resizable=yes,scrollbars=yes",
       );

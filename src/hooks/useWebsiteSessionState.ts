@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabaseClient";
 
+const AUTH_STATE_KEY = "signalizeai:website-auth-state";
+
 export function useWebsiteSessionState() {
   const [signedIn, setSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -55,12 +57,16 @@ export function useWebsiteSessionState() {
 
     const handleMessage = async (event: MessageEvent) => {
       if (event.source !== window) return;
+      if (event.origin !== window.location.origin) return;
       if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
         setSignedIn(false);
         await supabase.auth.signOut();
         return;
       }
       if (event.data?.type === "SIGNALIZE_WEBSITE_AUTH_SUCCESS") {
+        const expectedState = window.sessionStorage.getItem(AUTH_STATE_KEY);
+        if (!expectedState || event.data?.state !== expectedState) return;
+        window.sessionStorage.removeItem(AUTH_STATE_KEY);
         void resolveSessionState();
       }
     };

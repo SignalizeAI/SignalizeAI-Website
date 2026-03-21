@@ -7,9 +7,10 @@ import { supabase } from "@/utils/supabaseClient";
 type AuthEntryClientProps = {
   mode: "signin" | "signup";
   isPopup?: boolean;
+  authState?: string;
 };
 
-export default function AuthEntryClient({ mode, isPopup = false }: AuthEntryClientProps) {
+export default function AuthEntryClient({ mode, isPopup = false, authState }: AuthEntryClientProps) {
   const [loading, setLoading] = useState(false);
   const isSignIn = mode === "signin";
 
@@ -18,6 +19,7 @@ export default function AuthEntryClient({ mode, isPopup = false }: AuthEntryClie
       setLoading(true);
       const redirectParams = new URLSearchParams();
       if (isPopup) redirectParams.set("popup", "1");
+      if (authState) redirectParams.set("auth_state", authState);
       await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {

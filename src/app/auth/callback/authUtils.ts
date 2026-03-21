@@ -6,6 +6,7 @@ export const completeAuthCallback = async () => {
   const accessToken = hashParams.get("access_token");
   const refreshToken = hashParams.get("refresh_token");
   const code = searchParams.get("code");
+  const authState = searchParams.get("auth_state") || hashParams.get("auth_state");
   const errorStr = searchParams.get("error") || hashParams.get("error");
 
   if (errorStr) {
@@ -67,13 +68,14 @@ export const completeAuthCallback = async () => {
       type: "SIGNALIZE_AUTH_SUCCESS",
       session: resolvedSession,
     },
-    "*",
+    window.location.origin,
   );
 
   if (window.opener && !window.opener.closed) {
     window.opener.postMessage(
       {
         type: "SIGNALIZE_WEBSITE_AUTH_SUCCESS",
+        state: authState,
       },
       window.location.origin,
     );

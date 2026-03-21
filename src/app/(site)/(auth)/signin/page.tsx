@@ -13,7 +13,9 @@ type SignInPageProps = {
 export default async function SignInPage({ searchParams }: SignInPageProps) {
   const params = searchParams ? await searchParams : undefined;
   const popup = params?.popup;
+  const authStateParam = params?.auth_state;
   const isPopup = popup === "1" || popup === "true";
+  const authState = typeof authStateParam === "string" ? authStateParam : undefined;
 
-  return <AuthEntryClient mode="signin" isPopup={isPopup} />;
+  return <AuthEntryClient mode="signin" isPopup={isPopup} authState={authState} />;
 }
