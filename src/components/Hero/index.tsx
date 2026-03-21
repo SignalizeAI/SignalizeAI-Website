@@ -112,17 +112,16 @@ const Hero = () => {
                     <div className="h-3 w-3 rounded-full bg-green-500/80" />
                   </div>
                 </div>
-                <div className="relative aspect-[16/8] w-full overflow-hidden">
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
                   <Image
-                    src="/images/hero/hero-image.jpeg"
-                    alt="SignalizeAI Dashboard"
+                    src="/images/hero/hero-image.png"
+                    alt="SignalizeAI Hero Image"
                     fill
                     sizes="(max-width: 1023px) 100vw, 1000px"
                     quality={80}
-                    className="object-cover object-top opacity-90 transition-opacity hover:opacity-100"
+                    className="object-cover object-center opacity-90 transition-opacity hover:opacity-100"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-100 dark:from-[#111111] via-transparent to-transparent opacity-60" />
                 </div>
               </div>
             </div>

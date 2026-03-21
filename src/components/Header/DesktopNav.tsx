@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef, useState } from "react";
-import type { MouseEvent } from "react";
 import Link from "next/link";
 import ChevronIcon from "./ChevronIcon";
 import menuData from "./menuData";
@@ -14,34 +12,10 @@ type DesktopNavProps = {
 };
 
 const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
-  const [markerStyle, setMarkerStyle] = useState({ left: 0, width: 0, opacity: 0 });
-  const navRef = useRef<HTMLUListElement>(null);
-
-  const handleMouseEnter = (
-    event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
-  ) => {
-    if (!navRef.current) return;
-    const parentRect = navRef.current.getBoundingClientRect();
-    const targetRect = event.currentTarget.getBoundingClientRect();
-    setMarkerStyle({
-      left: targetRect.left - parentRect.left,
-      width: targetRect.width,
-      opacity: 1,
-    });
-  };
-
   return (
     <nav className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
       <div className="relative">
-        <div
-          className="marker-transition marker-glow pointer-events-none absolute bottom-1 left-0 top-1 z-0 rounded-full bg-gray-100 dark:bg-white/10"
-          style={markerStyle}
-        />
-        <ul
-          ref={navRef}
-          className="relative z-10 flex items-center rounded-full border border-gray-200 bg-white p-1.5 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none"
-          onMouseLeave={() => setMarkerStyle((prev) => ({ ...prev, opacity: 0 }))}
-        >
+        <ul className="relative z-10 flex items-center rounded-full border border-gray-200 bg-white p-1.5 shadow-sm dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           {menuData.map((menuItem, index) => {
             if (menuItem.title === "Home" && isHomePage) return null;
             const active = isMenuActive(pathname, menuItem);
@@ -49,8 +23,8 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
               ? "border border-amber-200/80 bg-amber-50 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-100 dark:border-amber-400/20 dark:bg-amber-300/10 dark:text-amber-100 dark:hover:border-amber-300/30 dark:hover:bg-amber-300/15"
               : "";
             const idleClass = sticky
-              ? "text-slate-600 hover:text-black dark:text-white/70 dark:hover:text-white"
-              : "text-slate-800 hover:text-black dark:text-white/80 dark:hover:text-white";
+              ? "text-slate-600 hover:bg-gray-100 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
+              : "text-slate-800 hover:bg-gray-100 hover:text-black dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white";
             const textClass = active
               ? "text-slate-950 dark:text-white"
               : `${idleClass} ${highlightClass}`.trim();
@@ -61,7 +35,6 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                   <>
                     <button
                       type="button"
-                      onMouseEnter={handleMouseEnter}
                       className={`flex items-center gap-1 rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${menuItem.highlight ? highlightClass : textClass}`}
                     >
                       {menuItem.title}
@@ -91,7 +64,6 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                     href={menuItem.path || "#"}
                     prefetch={menuItem.prefetch}
                     onClick={(event) => handleSmoothScroll(event, menuItem.path || "")}
-                    onMouseEnter={handleMouseEnter}
                     className={`block rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${
                       active
                         ? "bg-gray-100 text-slate-950 dark:bg-white/10 dark:text-white"
