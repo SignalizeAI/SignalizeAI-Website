@@ -3,7 +3,7 @@ import NotFound from "@/components/NotFound";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 Page | SignalizeAI",
+  title: "404 Page",
   description: "The page could not be found on SignalizeAI.",
 };
 

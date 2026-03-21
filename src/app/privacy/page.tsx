@@ -7,7 +7,7 @@ import PrivacySection from "./PrivacySection";
 import { heroCards, privacySections, tocItems } from "./content";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | SignalizeAI",
+  title: "Privacy Policy",
   description: "Privacy Policy for the SignalizeAI Chrome and Firefox extension.",
 };
 

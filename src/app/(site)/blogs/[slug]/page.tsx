@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const runtime = "edge";
 
 export const metadata: Metadata = {
-  title: "Blog Post | SignalizeAI",
+  title: "Blog Post",
   description: "SignalizeAI articles on selling workflows, targeting, and outreach.",
 };
 
