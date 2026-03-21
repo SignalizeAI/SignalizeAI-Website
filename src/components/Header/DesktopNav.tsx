@@ -17,6 +17,11 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
   const [hoveredSubmenu, setHoveredSubmenu] = useState<number | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
+  const toggleSubmenu = (index: number) => {
+    setHoveredSubmenu(null);
+    setOpenSubmenu((current) => (current === index ? null : index));
+  };
+
   useEffect(() => {
     const handlePointerDown = (event: MouseEvent) => {
       if (!navRef.current?.contains(event.target as Node)) {
@@ -69,11 +74,7 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                   <>
                     <button
                       type="button"
-                      onClick={() =>
-                        setOpenSubmenu((current) =>
-                          current === index ? null : index,
-                        )
-                      }
+                      onClick={() => toggleSubmenu(index)}
                       onMouseEnter={() => setHoveredSubmenu(index)}
                       aria-expanded={openSubmenu === index}
                       aria-haspopup="menu"
