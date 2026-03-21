@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import AuthEntryClient from "../AuthEntryClient";
 
+export const runtime = "edge";
+
 export const metadata: Metadata = {
   title: "Sign In",
   description: "Sign in to your SignalizeAI account.",

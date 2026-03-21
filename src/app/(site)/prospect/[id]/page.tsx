@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ProspectPageClient from "./ProspectPageClient";
 
+export const runtime = "edge";
+
 export const metadata: Metadata = {
   title: "Prospect",
   description: "View a saved prospect in the SignalizeAI dashboard.",
