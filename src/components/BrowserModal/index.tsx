@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useExtensionInstallState } from "@/hooks/useExtensionInstallState";
 
 interface BrowserModalProps {
   isOpen: boolean;
@@ -25,6 +26,8 @@ const browserOptions = [
 ];
 
 const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
+  const { installed, browser } = useExtensionInstallState();
+
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -64,34 +67,67 @@ const BrowserModal = ({ isOpen, onClose }: BrowserModalProps) => {
             </p>
           </div>
           <div className="space-y-3">
-            {browserOptions.map((browser) => (
-              <Link
-                key={browser.name}
-                href={browser.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={onClose}
-                className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:hover:border-accent"
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
-                  <Image src={browser.icon} alt="" width={48} height={48} className="h-12 w-12" />
-                </div>
-                <div className="flex-1 text-left">
-                  <h4 className="font-semibold text-slate-900 group-hover:text-primary dark:text-white dark:group-hover:text-accent">
-                    {browser.name}
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-white/65">{browser.storeLabel}</p>
-                </div>
-                <svg
-                  className="h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            {browserOptions.map((browserOption) => {
+              const disabled =
+                (installed && browser === "firefox" && browserOption.name === "Mozilla Firefox") ||
+                (installed && browser === "chrome" && browserOption.name === "Google Chrome");
+              const description =
+                installed && browser === "firefox" && browserOption.name === "Google Chrome"
+                  ? "Try on Chrome instead"
+                  : installed && browser === "chrome" && browserOption.name === "Google Chrome"
+                    ? "Installed on Chrome"
+                  : disabled
+                    ? "Installed on Firefox"
+                    : browserOption.storeLabel;
+
+              const inner = (
+                <>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg">
+                    <Image src={browserOption.icon} alt="" width={48} height={48} className="h-12 w-12" />
+                  </div>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-semibold text-slate-900 group-hover:text-primary dark:text-white dark:group-hover:text-accent">
+                      {browserOption.name}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-white/65">{description}</p>
+                  </div>
+                  {disabled ? null : (
+                    <svg
+                      className="h-5 w-5 text-gray-400 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  )}
+                </>
+              );
+
+              if (disabled) {
+                return (
+                  <div
+                    key={browserOption.name}
+                    className="flex items-center gap-4 rounded-xl border-2 border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-400/20 dark:bg-emerald-400/12"
+                  >
+                    {inner}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={browserOption.name}
+                  href={browserOption.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className="group flex items-center gap-4 rounded-xl border-2 border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:hover:border-accent"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            ))}
+                  {inner}
+                </Link>
+              );
+            })}
           </div>
           <p className="mt-6 text-center text-xs text-gray-500 dark:text-gray-400">
             Both versions offer the same features and functionality

@@ -22,18 +22,20 @@ const statusCopy = {
 
 export default function AuthCallbackPage() {
   const [status, setStatus] = useState<keyof typeof statusCopy>("loading");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const handleAuth = async () => {
       try {
-        await completeAuthCallback();
+        const redirectTarget = await completeAuthCallback();
         setStatus("success");
         setTimeout(() => {
           if (window.opener) window.close();
-          else window.location.href = "/pricing";
+          else window.location.href = redirectTarget;
         }, 600);
       } catch (error) {
         console.error("Auth error:", error);
+        setErrorMessage(error instanceof Error ? error.message : "Unknown authentication error");
         setStatus("error");
       }
     };
@@ -68,6 +70,7 @@ export default function AuthCallbackPage() {
             {status === "success" ? <span className="text-accent">{statusCopy[status].title}</span> : statusCopy[status].title}
           </h2>
           <p className="text-sm text-gray-400">{statusCopy[status].description}</p>
+          {status === "error" && errorMessage ? <p className="text-xs text-red-300">{errorMessage}</p> : null}
         </div>
       </div>
     </main>

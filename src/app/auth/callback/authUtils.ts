@@ -1,27 +1,6 @@
-import { AuthClient } from "@supabase/auth-js";
-
-const createSupabaseClient = () => {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-  const baseUrl = new URL(url);
-
-  return {
-    auth: new AuthClient({
-      url: new URL("auth/v1", baseUrl).href,
-      headers: {
-        Authorization: `Bearer ${key}`,
-        apikey: key,
-      },
-      storageKey: `sb-${baseUrl.hostname.split(".")[0]}-auth-token`,
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: false,
-    }),
-  };
-};
+import { supabase } from "@/utils/supabaseClient";
 
 export const completeAuthCallback = async () => {
-  const supabase = createSupabaseClient();
   const hashParams = new URLSearchParams(window.location.hash.substring(1));
   const searchParams = new URLSearchParams(window.location.search);
   const accessToken = hashParams.get("access_token");
@@ -33,34 +12,72 @@ export const completeAuthCallback = async () => {
     throw new Error(searchParams.get("error_description") || hashParams.get("error_description") || errorStr);
   }
 
+  let resolvedSession: {
+    access_token: string;
+    refresh_token: string;
+  } | null = null;
+
   if (accessToken && refreshToken) {
-    const { error } = await supabase.auth.setSession({
+    const { data, error } = await supabase.auth.setSession({
       access_token: accessToken,
       refresh_token: refreshToken,
     });
     if (error) throw error;
+    resolvedSession = data.session
+      ? {
+          access_token: data.session.access_token,
+          refresh_token: data.session.refresh_token,
+        }
+      : null;
   } else if (code) {
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (error) throw error;
+    resolvedSession = data.session
+      ? {
+          access_token: data.session.access_token,
+          refresh_token: data.session.refresh_token,
+        }
+      : null;
   }
 
-  const {
-    data: { session },
-    error,
-  } = await supabase.auth.getSession();
+  if (!resolvedSession) {
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
 
-  if (error || !session) {
-    throw error || new Error("Failed to fetch session after auth");
+    if (error || !session) {
+      throw error || new Error("Failed to fetch session after auth");
+    }
+
+    resolvedSession = {
+      access_token: session.access_token,
+      refresh_token: session.refresh_token,
+    };
   }
+
+  const redirectTarget =
+    searchParams.get("next") ||
+    hashParams.get("next") ||
+    searchParams.get("redirect") ||
+    "/";
 
   window.postMessage(
     {
       type: "SIGNALIZE_AUTH_SUCCESS",
-      session: {
-        access_token: session.access_token,
-        refresh_token: session.refresh_token,
-      },
+      session: resolvedSession,
     },
     "*",
   );
+
+  if (window.opener && !window.opener.closed) {
+    window.opener.postMessage(
+      {
+        type: "SIGNALIZE_WEBSITE_AUTH_SUCCESS",
+      },
+      window.location.origin,
+    );
+  }
+
+  return redirectTarget.startsWith("/") ? redirectTarget : "/";
 };

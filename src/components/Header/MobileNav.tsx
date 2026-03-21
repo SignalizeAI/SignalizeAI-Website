@@ -13,6 +13,8 @@ type MobileNavProps = {
   isHomePage: boolean;
   openModal: () => void;
   pathname: string;
+  ctaLabel: string | null;
+  onCtaClick: () => void;
 };
 
 const MobileNav = ({
@@ -21,6 +23,8 @@ const MobileNav = ({
   isHomePage,
   openModal,
   pathname,
+  ctaLabel,
+  onCtaClick,
 }: MobileNavProps) => {
   const [submenuOpen, setSubmenuOpen] = useState(-1);
 
@@ -100,18 +104,20 @@ const MobileNav = ({
                 </li>
               );
             })}
-            <li className="border-t border-gray-100 pt-3 dark:border-white/10">
-              <button
-                type="button"
-                onClick={() => {
-                  closeMenu();
-                  openModal();
-                }}
-                className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] px-4 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
-              >
-                Install extension
-              </button>
-            </li>
+            {ctaLabel ? (
+              <li className="border-t border-gray-100 pt-3 dark:border-white/10">
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeMenu();
+                    onCtaClick();
+                  }}
+                  className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] px-4 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+                >
+                  {ctaLabel}
+                </button>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>

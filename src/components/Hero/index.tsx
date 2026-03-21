@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { heroUsers, installLinks } from "./content";
+import { heroUsers } from "./content";
+import HeroInstallButtons from "./HeroInstallButtons";
 
 const Hero = () => {
   return (
@@ -38,29 +39,7 @@ const Hero = () => {
               </p>
 
               <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
-                <div className="flex w-full flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                  {installLinks.map((browser) => (
-                    <Link
-                      key={browser.label}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={browser.href}
-                      className={browser.className}
-                    >
-                      <Image
-                        src={browser.icon}
-                        alt=""
-                        width={22}
-                        height={22}
-                        className="h-5 w-5 transition-transform group-hover:rotate-12 sm:h-5.5 sm:w-5.5"
-                      />
-                      {browser.label}
-                      {browser.glow && (
-                        <div className="absolute inset-0 -z-10 rounded-2xl bg-primary/20 blur-xl opacity-0 transition-opacity group-hover:opacity-100" />
-                      )}
-                    </Link>
-                  ))}
-                </div>
+                <HeroInstallButtons />
 
                 <div className="mt-2 sm:mt-4 flex justify-center">
                   <Link

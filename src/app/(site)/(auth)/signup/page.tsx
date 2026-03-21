@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import AuthEntryClient from "../AuthEntryClient";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignUpPage() {
-  return null;
+  return <AuthEntryClient mode="signup" />;
 }
