@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { PropsWithChildren } from "react";
+import ThemeSyncBridge from "@/components/ThemeSyncBridge";
 
 export default function Providers({ children }: PropsWithChildren) {
   return (
@@ -10,6 +11,7 @@ export default function Providers({ children }: PropsWithChildren) {
       enableSystem={true}
       defaultTheme="dark"
     >
+      <ThemeSyncBridge />
       {children}
     </ThemeProvider>
   );

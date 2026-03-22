@@ -2,10 +2,22 @@ import { useTheme } from "next-themes";
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
+  const handleClick = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    window.postMessage(
+      {
+        type: "SIGNALIZE_WEBSITE_THEME_CHANGED",
+        theme: nextTheme,
+      },
+      window.location.origin,
+    );
+  };
+
   return (
     <button
       aria-label="theme toggler"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={handleClick}
       className="flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition duration-300 hover:bg-gray-100 hover:text-black dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
     >
       <span>
