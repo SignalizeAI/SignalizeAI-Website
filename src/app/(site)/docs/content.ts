@@ -9,8 +9,8 @@ export const docsNav = [
 
 export const heroFacts = [
   { label: "Format", value: "Product docs" },
-  { label: "Focus", value: "Usage + safeguards" },
-  { label: "Scope", value: "Single + batch workflows" },
+  { label: "Focus", value: "Prospecting + outreach" },
+  { label: "Scope", value: "Single, batch, and saved workflows" },
 ];
 
 export const browserLinks = [
@@ -47,7 +47,7 @@ export const gettingStartedSteps = [
   {
     title: "Decide what happens next",
     description:
-      "Continue with batch prospecting, save the result for follow-up, or move the insight into your outreach workflow.",
+      "Generate outreach, save the prospect, open it on the website, or keep moving through batch prospecting.",
   },
 ];
 
@@ -60,7 +60,7 @@ export const workflowCards = [
     points: [
       "Use when: you are evaluating a single company page in real time",
       "Expect: a short brief in seconds from public, visible page content",
-      "Output: summary, target customer signal, value proposition, and readiness cues",
+      "Output: summary, target customer signal, value proposition, readiness cues, and suggested outreach direction",
     ],
   },
   {
@@ -71,18 +71,18 @@ export const workflowCards = [
     points: [
       "Use when: running prospecting sprints, territory sweeps, or list validation",
       "Expect: queue-style processing from pasted URLs or CSV inputs",
-      "Output: standardized per-domain briefs for fast comparison and triage",
+      "Output: standardized per-domain briefs with optional outreach and follow-up generation for fast comparison and triage",
     ],
   },
   {
     eyebrow: "Ongoing workflow",
     title: "Saved prospects",
     description:
-      "Use this when prospecting spans multiple sessions and you need continuity across follow-up work.",
+      "Use this when prospecting spans multiple sessions and you need a reusable record across the extension and website.",
     points: [
-      "Use when: tracking accounts over days or handing context to teammates",
-      "Expect: stored runs with search, filtering, and optional export",
-      "Output: a reusable working set for follow-up, reporting, and prioritization",
+      "Use when: tracking accounts over days, revisiting outreach, or handing context to teammates",
+      "Expect: stored runs with status, outreach emails, follow-ups, search, filtering, and optional export",
+      "Output: a reusable working set you can reopen in the website prospect page for follow-up and prioritization",
     ],
   },
 ];
@@ -109,6 +109,16 @@ export const outputCards = [
       "The role most likely to care about the problem or budget signaled by the site.",
   },
   {
+    title: "Suggested outreach",
+    description:
+      "A recommended persona, goal, angle, suggested message, and AI-generated outreach emails built from the prospect data.",
+  },
+  {
+    title: "Follow-up emails",
+    description:
+      "Additional follow-up messages generated after the opening outreach so the prospect can move from first touch to sequence.",
+  },
+  {
     title: "Readiness signal",
     description:
       "A directional indicator for how ready the account appears for outreach and why.",
@@ -116,7 +126,7 @@ export const outputCards = [
   {
     title: "Exportable working set",
     description:
-      "When supported, saved prospects can become a reusable set for filtering, export, and follow-up.",
+      "When supported, saved prospects can become a reusable set for filtering, export, website prospect views, and follow-up.",
   },
 ];
 
@@ -125,19 +135,19 @@ export const accessCards = [
     title: "Quick website check",
     availability: "Available to all users",
     description:
-      "The core single-page workflow for active-tab prospecting and immediate context generation.",
+      "The core single-page workflow for active-tab prospecting, immediate context generation, and outreach direction.",
   },
   {
     title: "Batch prospecting",
     availability: "Plan-dependent",
     description:
-      "Used when you need to process multiple domains at once rather than manually review each site.",
+      "Used when you need to process multiple domains at once and generate prospect data or outreach across a list.",
   },
   {
     title: "Saved prospects",
     availability: "Plan-dependent",
     description:
-      "Storage, organization features, and export access vary by plan and should be compared on the pricing page.",
+      "Saved prospect capacity, organization features, and export access vary by plan. Website prospect pages are available for saved prospects.",
   },
 ];
 
@@ -197,5 +207,10 @@ export const troubleshootingCards = [
     title: "Saved prospects are missing",
     description:
       "Confirm you are signed in to the same account used when the prospects were created.",
+  },
+  {
+    title: "Outreach or follow-ups are missing",
+    description:
+      "Open the saved prospect again and generate them from the current view. Saved prospects keep outreach and follow-ups once they are generated.",
   },
 ];

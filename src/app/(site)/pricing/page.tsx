@@ -4,7 +4,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Compare SignalizeAI plans for prospect volume, batch prospecting, saved prospects, search, filtering, and export.",
+    "Compare SignalizeAI plans for prospect volume, batch prospecting, saved prospects, website prospect pages, outreach workflows, and export.",
 };
 
 const PricingPage = () => {

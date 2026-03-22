@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Price } from "@/types/price";
-import { supabase } from "@/utils/supabaseClient";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const getButtonConfig = (product: Price, currentPlan: string, userEmail: string | null) => {
   const planName = product.nickname?.toLowerCase() || "";
@@ -35,6 +35,7 @@ const usePricingBoxState = (product: Price, currentPlan: string) => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
+        const supabase = getSupabaseClient();
         const {
           data: { session },
         } = await supabase.auth.getSession();
@@ -66,9 +67,10 @@ const usePricingBoxState = (product: Price, currentPlan: string) => {
 
   const handleSignIn = async () => {
     try {
+      const supabase = getSupabaseClient();
       await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}/?redirect=pricing` },
+        options: { redirectTo: `${window.location.origin}/auth/callback?next=/pricing` },
       });
     } catch (error) {
       console.error("Sign-in error:", error);

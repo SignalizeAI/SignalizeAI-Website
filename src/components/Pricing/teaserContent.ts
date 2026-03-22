@@ -1,9 +1,9 @@
 export const teaserPlanOrder = ["Free", "Pro", "Team"];
 
 export const teaserDescriptions: Record<string, string> = {
-  free: "Start with quick checks and a small saved-target limit.",
-  pro: "Run batch targeting with larger saved capacity and export-ready workflow.",
-  team: "Scale outbound faster with higher-volume limits for multi-user workflows.",
+  free: "Start with quick checks, saved prospects, and lightweight outreach.",
+  pro: "Run batch prospecting with larger saved capacity, website prospect access, and export-ready workflow.",
+  team: "Scale outbound faster with higher-volume prospecting, outreach, and follow-up workflows.",
 };
 
 export const teaserMeta = {
@@ -51,22 +51,29 @@ export const teaserMeta = {
 };
 
 export const teaserOfferMap: Record<string, string[]> = {
-  free: ["Generate insights for 5 prospects/day", "Save up to 3 prospects"],
+  free: [
+    "Generate insights for 5 prospects/day",
+    "Save up to 3 prospects",
+    "Generate outreach emails and follow-ups",
+    "Open saved prospects on the website",
+  ],
   pro: [
     "Generate insights for 50 prospects/day",
-    "Batch prospecting up to 10 URLs/run",
     "Save up to 200 prospects",
+    "Batch prospecting up to 10 URLs/run",
+    "Open saved prospects on the website",
   ],
   team: [
     "Generate insights for 500 prospects/day",
-    "Batch prospecting up to 50 URLs/run",
     "Save up to 5000 prospects",
+    "Batch prospecting up to 50 URLs/run",
+    "Open saved prospects on the website",
   ],
 };
 
 export const pricingHighlights = [
   "Full plan-by-plan comparison",
   "Billing and subscription actions",
-  "Exact limits for batch, saves, and export",
+  "Exact limits for batch, saves, website prospect access, and export",
   "Dedicated page without homepage clutter",
 ];

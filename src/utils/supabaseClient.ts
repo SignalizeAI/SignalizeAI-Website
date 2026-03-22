@@ -1,54 +1,26 @@
-import { AuthClient } from "@supabase/auth-js";
+"use client";
 
-let authClientInstance: InstanceType<typeof AuthClient> | null = null;
+import { createClient } from "@supabase/supabase-js";
 
-const getSupabaseConfig = () => {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let browserClient: ReturnType<typeof createClient> | null = null;
+const FALLBACK_SUPABASE_URL = "https://qcvnfvbzxbnrquxtjihp.supabase.co";
+const FALLBACK_SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjdm5mdmJ6eGJucnF1eHRqaWhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyOTc5MTEsImV4cCI6MjA4NzY1NzkxMX0.7KZQLgHx76DYhDu-PMvCsbR_Gw105zio6SHjhqOY55Q";
 
-  if (!url || !key) {
-    return null;
-  }
+export function getSupabaseClient() {
+  if (browserClient) return browserClient;
 
-  const baseUrl = new URL(url);
-  return {
-    authUrl: new URL("auth/v1", baseUrl).href,
-    headers: {
-      Authorization: `Bearer ${key}`,
-      apikey: key,
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || FALLBACK_SUPABASE_URL;
+  const supabaseAnonKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || FALLBACK_SUPABASE_ANON_KEY;
+
+  browserClient = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+      persistSession: true,
     },
-    storageKey: `sb-${baseUrl.hostname.split(".")[0]}-auth-token`,
-  };
-};
+  });
 
-function getSupabaseClient() {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  if (!authClientInstance) {
-    const config = getSupabaseConfig();
-
-    if (config) {
-      authClientInstance = new AuthClient({
-        url: config.authUrl,
-        headers: config.headers,
-        storageKey: config.storageKey,
-        autoRefreshToken: true,
-        persistSession: true,
-        detectSessionInUrl: true,
-      });
-    }
-  }
-
-  return authClientInstance;
+  return browserClient;
 }
-
-export const supabase = {
-  get auth() {
-    return getSupabaseClient() || {
-      getSession: async () => ({ data: { session: null } }),
-      signInWithOAuth: async () => ({ data: null, error: null }),
-    };
-  },
-};

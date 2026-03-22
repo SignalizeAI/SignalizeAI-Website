@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
+import { useExtensionInstallState } from "@/hooks/useExtensionInstallState";
+import { useWebsiteSessionState } from "@/hooks/useWebsiteSessionState";
+import { getSupabaseClient } from "@/utils/supabaseClient";
 import DesktopNav from "./DesktopNav";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
@@ -12,9 +16,28 @@ import useStickyHeader from "./useStickyHeader";
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
   const sticky = useStickyHeader(50);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const hideAuthCta = pathname === "/signin";
+  const { installed } = useExtensionInstallState();
+  const { signedIn, loading } = useWebsiteSessionState();
+
+  const ctaLabel = loading ? "Get Extension" : installed ? (signedIn ? "Sign out" : "Sign in") : "Get Extension";
+  const handleCtaClick = async () => {
+    if (installed && signedIn) {
+      const supabase = getSupabaseClient();
+      window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
+      await supabase.auth.signOut();
+      return;
+    }
+    if (installed) {
+      router.push("/signin");
+      return;
+    }
+    setModalOpen(true);
+  };
 
   return (
     <>
@@ -72,16 +95,18 @@ const Header = () => {
           <div className="hidden gap-2 lg:flex">
             <ThemeToggler />
           </div>
-          <button
-            onClick={() => setModalOpen(true)}
-            className={`hidden items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
-              sticky
-                ? "bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-md dark:shadow-[0_0_12px_rgba(6,182,212,0.2)]"
-                : "border border-transparent bg-slate-900 hover:bg-slate-800 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20"
-            }`}
-          >
-            Get Extension
-          </button>
+          {!hideAuthCta ? (
+            <button
+              onClick={() => void handleCtaClick()}
+              className={`hidden items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
+                sticky
+                  ? "bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-md dark:shadow-[0_0_12px_rgba(6,182,212,0.2)]"
+                  : "border border-transparent bg-slate-900 hover:bg-slate-800 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20"
+              }`}
+            >
+              {ctaLabel}
+            </button>
+          ) : null}
           <div className="text-slate-800 dark:text-white lg:hidden">
             <ThemeToggler />
           </div>
@@ -115,6 +140,8 @@ const Header = () => {
           isHomePage={isHomePage}
           openModal={() => setModalOpen(true)}
           pathname={pathname}
+          ctaLabel={hideAuthCta ? null : ctaLabel}
+          onCtaClick={() => void handleCtaClick()}
         />
       </header>
 

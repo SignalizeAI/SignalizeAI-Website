@@ -7,8 +7,10 @@ export const pricingData: Price[] = [
     nickname: "Free",
     offers: [
       "Generate insights for 5 prospects/day",
-      { text: "Batch prospecting", available: false },
+      "Generate outreach emails and follow-ups",
       "Save up to 3 prospects",
+      { text: "Batch prospecting", available: false },
+      "Open saved prospects on the website",
       {
         text: "Detailed save, search & filter prospects",
         available: false,
@@ -25,8 +27,9 @@ export const pricingData: Price[] = [
     offers: [
       "All Pro features",
       "Generate insights for 500 prospects/day",
-      "Batch prospecting up to 50 URLs/run",
       "Save up to 5000 prospects",
+      "Batch prospecting up to 50 URLs/run",
+      "Open saved prospects on the website",
       "Detailed save, search & filter prospects",
       "CSV & Excel export",
       "Priority email support",
@@ -38,9 +41,11 @@ export const pricingData: Price[] = [
     unit_amount: 1500,
     nickname: "Pro",
     offers: [
+      "All Free features",
       "Generate insights for 50 prospects/day",
-      "Batch prospecting up to 10 URLs/run",
       "Save up to 200 prospects",
+      "Batch prospecting up to 10 URLs/run",
+      "Open saved prospects on the website",
       "Detailed save, search & filter prospects",
       "CSV & Excel export",
       "Priority email support",

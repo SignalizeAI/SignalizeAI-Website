@@ -1,314 +1,133 @@
 # SignalizeAI Website
 
-A modern, responsive website for **SignalizeAI** — a Chrome and Firefox extension built to help teams sell to any company with sales-ready insights and outreach.
+Marketing site, pricing surface, auth entry point, and saved-prospect website dashboard for SignalizeAI.
 
-## 📋 Table of Contents
+## What This App Does
 
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Development](#development)
-  - [Build](#build)
-- [Project Structure](#project-structure)
-- [Key Technologies](#key-technologies)
-- [Authentication & Database](#authentication--database)
-- [Payment Integration](#payment-integration)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+The website handles four main jobs:
 
-## 🎯 About the Project
+- marketing pages for the product
+- pricing and upgrade flows
+- Supabase-based website sign-in
+- saved prospect pages at `/prospect/[id]`
 
-SignalizeAI is a Chrome and Firefox extension that helps teams turn company websites into sales-ready insights and outreach in seconds. This repository contains the official website and documentation portal for the product.
+The website also syncs with the browser extension for:
 
-The website serves as the main landing page, marketing material, documentation hub, and user authentication gateway for the SignalizeAI platform.
+- auth state
+- install detection
+- prospect status updates
+- saved prospect content refresh
+- theme sync
 
-## ✨ Features
+## Core Routes
 
-- **Modern Landing Page**: Engaging hero section with call-to-action buttons
-- **Product Showcase**: Detailed features section highlighting SignalizeAI capabilities
-- **Pricing Plans**: Multiple subscription tiers with Stripe integration
-- **Blog System**: MDX-based blog for articles and updates
-- **Documentation**: Comprehensive docs section for users
-- **Authentication**: NextAuth integration for user sign-up and login
-- **Dark Mode**: Full dark/light theme support with next-themes
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Email Notifications**: Newsletter subscription and contact forms
-- **Database Integration**: Supabase for data persistence
-- **Contact Form**: Lead capture with email notifications via Nodemailer
+- `/` — landing page
+- `/pricing` — plans and upgrade UI
+- `/signin` and `/signup` — website auth entry
+- `/auth/callback` — Supabase auth callback
+- `/prospect/[id]` — saved prospect dashboard page
+- `/docs`, `/about`, `/contact`, `/privacy`
+- `/payment-success`
 
-## 🛠 Tech Stack
+## Prospect Page Features
 
-### Frontend
-- **Next.js 15.5** - React framework with App Router
-- **React 18.3** - UI library
-- **TypeScript** - Type-safe development
-- **Tailwind CSS 4.1** - Utility-first CSS framework
-- **Tailgrids 2.2** - Pre-built Tailwind components
+The website prospect page mirrors the extension’s saved prospect experience and supports:
 
-### Backend & Services
-- **NextAuth.js 4.24** - Authentication and authorization
-- **Supabase** - PostgreSQL database and auth
-- **Stripe** - Payment processing
-- **Nodemailer** - Email service
-- **Axios** - HTTP client
+- prospect snapshot and strategy sections
+- outreach email generation
+- follow-up generation
+- copy actions for suggested message and emails
+- status updates
+- live sync with the open extension
 
-### Content & Blog
-- **Remark** - Markdown processor
-- **gray-matter** - YAML frontmatter parser
-- **Prism.js** - Code syntax highlighting
+## Tech Stack
 
-### Development Tools
-- **TypeScript** - Type checking
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
-- **Tailwindcss/PostCSS** - CSS processing
-- **Cloudflare Next on Pages** - Deployment support
+- Next.js 15 App Router
+- React 18
+- Tailwind CSS 4
+- Supabase browser auth and client reads
+- Stripe pricing UI
+- Cloudflare Pages deployment target
 
-### UI/UX
-- **next-themes** - Theme management
-- **react-hot-toast** - Toast notifications
-- **Lenis** - Smooth scrolling
-- **date-fns** - Date utilities
+## Project Structure
 
-## 🚀 Getting Started
+```text
+SignalizeAI-Website/
+├── src/
+│   ├── app/
+│   │   ├── (site)/
+│   │   │   ├── (auth)/
+│   │   │   ├── pricing/
+│   │   │   ├── prospect/[id]/
+│   │   │   ├── docs/
+│   │   │   ├── about/
+│   │   │   ├── contact/
+│   │   │   └── privacy/
+│   │   ├── auth/callback/
+│   │   └── providers.tsx
+│   ├── components/
+│   ├── hooks/
+│   ├── stripe/
+│   └── utils/
+├── public/
+└── markdown/
+```
 
-### Prerequisites
+## Local Development
 
-- Node.js 20+
-- npm or yarn
-- Git
-- Supabase account (for database)
-- Stripe account (for payments)
+1. Install dependencies:
 
-### Installation
+```bash
+npm install
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd SignalizeAI-Website
-   ```
+2. Create `.env.local` with the public client values:
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_API_BASE_URL=https://dev-api.signalizeai.org
+```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Configure the following in `.env.local`:
-   - Supabase credentials
-   - NextAuth configuration
-   - Stripe keys
-   - Email service credentials
-   - Database URLs
+For production deploys, `NEXT_PUBLIC_API_BASE_URL` should point to:
 
-### Development
+```env
+NEXT_PUBLIC_API_BASE_URL=https://api.signalizeai.org
+```
 
-Start the development server:
+3. Start the website:
 
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+Local URL:
 
-### Build
-
-Build for production:
-
-```bash
-npm run build
+```text
+http://localhost:3000
 ```
 
-Start the production server:
+## Build And Checks
 
-```bash
-npm start
-```
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run lint`
 
-Lint the codebase:
+## Auth Notes
 
-```bash
-npm run lint
-```
+- Website auth uses Supabase OAuth with Google
+- The auth callback route is `/auth/callback`
+- Local testing requires localhost callback URLs in Supabase Redirect URLs
+- The extension and website communicate through a same-origin bridge on supported hosts
 
-## 📁 Project Structure
+## Deployment Notes
 
-```
-src/
-├── app/                      # Next.js App Router
-│   ├── (site)/              # Main site routes
-│   │   ├── (auth)/          # Authentication pages
-│   │   │   ├── signin/
-│   │   │   ├── signup/
-│   │   │   ├── forgot-password/
-│   │   │   └── reset-password/
-│   │   ├── about/           # About page
-│   │   ├── blogs/           # Blog pages
-│   │   ├── contact/         # Contact page
-│   │   ├── docs/            # Documentation
-│   │   ├── pricing/         # Pricing page
-│   │   └── privacy/         # Privacy policy
-│   ├── auth/                # Authentication routes
-│   ├── layout.tsx           # Root layout
-│   └── providers.tsx        # Context providers
-│
-├── components/              # Reusable React components
-│   ├── About/
-│   ├── Blog/                # Blog-related components
-│   ├── CallToAction/
-│   ├── Clients/
-│   ├── Common/              # Common UI components
-│   ├── Contact/
-│   ├── Faq/
-│   ├── Features/
-│   ├── Footer/
-│   ├── Header/
-│   ├── Hero/
-│   ├── Pricing/
-│   ├── Team/
-│   ├── Testimonials/
-│
-├── stripe/                  # Stripe configuration
-├── styles/                  # Global styles
-├── types/                   # TypeScript type definitions
-├── utils/                   # Helper utilities
-│   ├── markdownToHtml.ts
-│   ├── supabaseClient.ts
-│   ├── email.ts
-│   └── validateEmail.ts
-│
-└── globals.css              # Global styles
+- This app is built for Cloudflare Pages
+- Non-static app routes that need it export `runtime = "edge"`
+- Production domain is `https://signalizeai.org`
 
-public/                       # Static assets
-├── icons/
-├── images/                  # Images organized by section
-└── shapes/                  # SVG shapes
+## Support
 
-markdown/
-└── blogs/                   # MDX blog posts
-```
-
-## 🔑 Key Technologies
-
-### Next.js App Router
-- File-based routing in the `src/app` directory
-- Server and client components
-- Route groups for organizing related pages
-
-### Authentication (NextAuth.js)
-- User sign-up and login
-- Password reset functionality
-- Secure session management
-- OAuth support
-
-### Database (Supabase)
-- PostgreSQL database
-- Real-time capabilities
-- Row-level security policies
-- User authentication
-
-### Markdown/Blog System
-- MDX support for blog posts with frontmatter
-- `gray-matter` for parsing metadata
-- `remark` for markdown processing
-- Prism.js for code highlighting
-
-### Email Service
-- Nodemailer for transactional emails
-- Newsletter subscriptions
-- Contact form notifications
-- Password reset emails
-
-## 🔐 Authentication & Database
-
-- **NextAuth.js** handles user authentication
-- **Supabase** provides the database and real-time updates
-- Passwords are hashed using bcrypt
-- Email verification for account security
-- Protected routes and API endpoints
-
-## 💳 Payment Integration
-
-- **Stripe** for subscription management
-- Multiple pricing tiers available in `src/stripe/pricingData.ts`
-- Payment success confirmation page
-- Webhook handling for payment events
-
-## 🔧 Environment Variables
-
-Create a `.env.local` file with the following variables:
-
-```env
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-
-# NextAuth
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_secret_key
-
-# Stripe
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
-STRIPE_SECRET_KEY=your_secret_key
-
-# Email (Nodemailer)
-EMAIL_SERVER_HOST=your_email_host
-EMAIL_SERVER_PORT=your_port
-EMAIL_SERVER_USER=your_email
-EMAIL_SERVER_PASSWORD=your_password
-EMAIL_FROM=noreply@signalizeai.org
-
-# Database
-DATABASE_URL=your_database_url
-```
-
-## 🚢 Deployment
-
-The project is configured for deployment on multiple platforms:
-
-### Cloudflare Pages
-- Uses `@cloudflare/next-on-pages` for Cloudflare deployment
-- Compatible with Cloudflare Workers
-
-### Vercel
-- Optimized for Vercel deployment
-- Environment variables can be set in Vercel dashboard
-
-### Standard Node.js Hosting
-- Use `npm run build` then `npm start`
-- Set production environment variables
-
-## 🤝 Contributing
-
-1. Create a feature branch (`git checkout -b feature/amazing-feature`)
-2. Commit your changes (`git commit -m 'Add amazing feature'`)
-3. Push to the branch (`git push origin feature/amazing-feature`)
-4. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-Copyright (c) 2025 SignalizeAI
-
-## 📞 Contact
-
-For questions, support, or inquiries:
-- Website: [SignalizeAI](https://signalizeai.org)
+- Website: https://signalizeai.org
 - Email: support@signalizeai.org
-- Contact Form: Available on the website
-
----
-
-**Made with ❤️ by SignalizeAI**
