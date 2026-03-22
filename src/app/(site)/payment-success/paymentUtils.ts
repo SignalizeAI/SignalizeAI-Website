@@ -9,7 +9,7 @@ export interface PaymentData {
 
 export const notifyPaymentSuccess = () => {
   if (window.opener) {
-    window.opener.postMessage({ type: "PAYMENT_SUCCESS" }, "*");
+    window.opener.postMessage({ type: "PAYMENT_SUCCESS" }, window.location.origin);
   }
 
   if (typeof (window as any).chrome !== "undefined" && (window as any).chrome.runtime) {

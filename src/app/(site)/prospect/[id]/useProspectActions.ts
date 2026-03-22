@@ -42,7 +42,7 @@ export function useProspectActions(
         type: "SIGNALIZE_PROSPECT_CONTENT_UPDATED",
         savedId,
       },
-      "*",
+      window.location.origin,
     );
   };
 
@@ -98,7 +98,7 @@ export function useProspectActions(
           savedId: prospect.id,
           status: nextStatus,
         },
-        "*",
+        window.location.origin,
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to update prospect status");

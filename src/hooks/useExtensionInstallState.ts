@@ -22,13 +22,17 @@ export function useExtensionInstallState() {
     let timeoutId = 0;
     const handleMessage = (event: MessageEvent) => {
       if (event.source !== window) return;
+      if (event.origin !== window.location.origin) return;
       if (event.data?.type !== "SIGNALIZE_EXTENSION_CHECK_RESULT") return;
       setInstalled(Boolean(event.data.installed));
       window.clearTimeout(timeoutId);
     };
 
     window.addEventListener("message", handleMessage);
-    window.postMessage({ type: "SIGNALIZE_PAGE_EXTENSION_CHECK" }, "*");
+    window.postMessage(
+      { type: "SIGNALIZE_PAGE_EXTENSION_CHECK" },
+      window.location.origin,
+    );
 
     timeoutId = window.setTimeout(() => {
       setInstalled(false);

@@ -64,20 +64,11 @@ export const completeAuthCallback = async () => {
     searchParams.get("redirect") ||
     "/";
 
-  window.postMessage(
-    {
-      type: "SIGNALIZE_AUTH_SUCCESS",
-      session: resolvedSession,
-    },
-    window.location.origin,
-  );
-
   if (window.opener && !window.opener.closed) {
     window.opener.postMessage(
       {
         type: "SIGNALIZE_WEBSITE_AUTH_SUCCESS",
         state: authState,
-        session: resolvedSession,
       },
       window.location.origin,
     );

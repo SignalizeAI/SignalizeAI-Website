@@ -5,18 +5,10 @@ import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const AUTH_STATE_KEY = "signalizeai:website-auth-state";
 
-function syncWebsiteSessionToExtension(session: {
-  access_token: string;
-  refresh_token: string;
-} | null) {
-  if (!session) return;
+function notifyExtensionAuthStateChanged() {
   window.postMessage(
     {
-      type: "SIGNALIZE_AUTH_SUCCESS",
-      session: {
-        access_token: session.access_token,
-        refresh_token: session.refresh_token,
-      },
+      type: "SIGNALIZE_WEBSITE_AUTH_STATE_CHANGED",
     },
     window.location.origin,
   );
@@ -58,10 +50,7 @@ export function useWebsiteSessionState() {
 
       setSignedIn(true);
       setLoading(false);
-      syncWebsiteSessionToExtension({
-        access_token: session.access_token,
-        refresh_token: session.refresh_token,
-      });
+      notifyExtensionAuthStateChanged();
     };
 
     void resolveSessionState();
@@ -74,10 +63,6 @@ export function useWebsiteSessionState() {
         setLoading(false);
         return;
       }
-      syncWebsiteSessionToExtension({
-        access_token: session.access_token,
-        refresh_token: session.refresh_token,
-      });
       void resolveSessionState();
     });
 
@@ -87,15 +72,6 @@ export function useWebsiteSessionState() {
         const expectedState = window.sessionStorage.getItem(AUTH_STATE_KEY);
         if (!expectedState || event.data?.state !== expectedState) return;
         window.sessionStorage.removeItem(AUTH_STATE_KEY);
-        if (event.data?.session) {
-          window.postMessage(
-            {
-              type: "SIGNALIZE_AUTH_SUCCESS",
-              session: event.data.session,
-            },
-            window.location.origin,
-          );
-        }
         void resolveSessionState();
         return;
       }
