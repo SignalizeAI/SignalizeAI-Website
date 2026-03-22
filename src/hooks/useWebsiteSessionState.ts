@@ -5,6 +5,23 @@ import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const AUTH_STATE_KEY = "signalizeai:website-auth-state";
 
+function syncWebsiteSessionToExtension(session: {
+  access_token: string;
+  refresh_token: string;
+} | null) {
+  if (!session) return;
+  window.postMessage(
+    {
+      type: "SIGNALIZE_AUTH_SUCCESS",
+      session: {
+        access_token: session.access_token,
+        refresh_token: session.refresh_token,
+      },
+    },
+    window.location.origin,
+  );
+}
+
 export function useWebsiteSessionState() {
   const [signedIn, setSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -41,6 +58,10 @@ export function useWebsiteSessionState() {
 
       setSignedIn(true);
       setLoading(false);
+      syncWebsiteSessionToExtension({
+        access_token: session.access_token,
+        refresh_token: session.refresh_token,
+      });
     };
 
     void resolveSessionState();
@@ -53,6 +74,10 @@ export function useWebsiteSessionState() {
         setLoading(false);
         return;
       }
+      syncWebsiteSessionToExtension({
+        access_token: session.access_token,
+        refresh_token: session.refresh_token,
+      });
       void resolveSessionState();
     });
 
