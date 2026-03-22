@@ -16,12 +16,6 @@ const menuData: Menu[] = [
     prefetch: false,
   },
   {
-    id: 3,
-    title: "Docs",
-    path: "/docs",
-    newTab: false,
-  },
-  {
     id: 4,
     title: "Resources",
     newTab: false,
@@ -60,6 +54,12 @@ const menuData: Menu[] = [
         ),
       },
     ],
+  },
+  {
+    id: 3,
+    title: "Docs",
+    path: "/docs",
+    newTab: false,
   },
   {
     id: 5,
