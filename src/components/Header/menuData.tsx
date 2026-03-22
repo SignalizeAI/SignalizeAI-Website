@@ -57,14 +57,14 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Docs",
-    path: "/docs",
+    title: "About",
+    path: "/about",
     newTab: false,
   },
   {
     id: 5,
-    title: "About",
-    path: "/about",
+    title: "Docs",
+    path: "/docs",
     newTab: false,
   },
   {

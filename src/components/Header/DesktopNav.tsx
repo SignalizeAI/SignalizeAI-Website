@@ -78,10 +78,10 @@ const DesktopNav = ({ sticky, isHomePage, pathname }: DesktopNavProps) => {
                       onMouseEnter={() => setHoveredSubmenu(index)}
                       aria-expanded={openSubmenu === index}
                       aria-haspopup="menu"
-                      className={`flex items-center gap-1 rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${menuItem.highlight ? highlightClass : textClass}`}
+                      className={`relative rounded-full px-5 py-2 pr-8 text-sm font-medium transition-colors duration-200 ${menuItem.highlight ? highlightClass : textClass}`}
                     >
-                      {menuItem.title}
-                      <ChevronIcon className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                      <span>{menuItem.title}</span>
+                      <ChevronIcon className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-transform duration-200 group-hover:rotate-180" />
                     </button>
                     <div
                       className={`absolute left-0 top-full mt-2 w-[200px] rounded-2xl border border-gray-100 bg-white p-3 shadow-lg transition-all duration-300 dark:border-white/10 dark:bg-[#111111] dark:shadow-2xl ${
