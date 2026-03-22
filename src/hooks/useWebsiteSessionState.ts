@@ -57,18 +57,28 @@ export function useWebsiteSessionState() {
     });
 
     const handleMessage = async (event: MessageEvent) => {
-      if (event.source !== window) return;
       if (event.origin !== window.location.origin) return;
-      if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
-        setSignedIn(false);
-        await supabase.auth.signOut();
-        return;
-      }
       if (event.data?.type === "SIGNALIZE_WEBSITE_AUTH_SUCCESS") {
         const expectedState = window.sessionStorage.getItem(AUTH_STATE_KEY);
         if (!expectedState || event.data?.state !== expectedState) return;
         window.sessionStorage.removeItem(AUTH_STATE_KEY);
+        if (event.data?.session) {
+          window.postMessage(
+            {
+              type: "SIGNALIZE_AUTH_SUCCESS",
+              session: event.data.session,
+            },
+            window.location.origin,
+          );
+        }
         void resolveSessionState();
+        return;
+      }
+      if (event.source !== window) return;
+      if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
+        setSignedIn(false);
+        await supabase.auth.signOut();
+        return;
       }
     };
 

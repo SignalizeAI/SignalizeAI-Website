@@ -13,8 +13,6 @@ import MobileNav from "./MobileNav";
 import ThemeToggler from "./ThemeToggler";
 import useStickyHeader from "./useStickyHeader";
 
-const AUTH_STATE_KEY = "signalizeai:website-auth-state";
-
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,14 +32,7 @@ const Header = () => {
       return;
     }
     if (installed) {
-      const authState = crypto.randomUUID();
-      window.sessionStorage.setItem(AUTH_STATE_KEY, authState);
-      const popup = window.open(
-        `${window.location.origin}/signin?popup=1&auth_state=${encodeURIComponent(authState)}`,
-        "signalizeai-signin",
-        "popup=yes,width=520,height=720,resizable=yes,scrollbars=yes",
-      );
-      if (!popup) router.push("/signin");
+      router.push("/signin");
       return;
     }
     setModalOpen(true);

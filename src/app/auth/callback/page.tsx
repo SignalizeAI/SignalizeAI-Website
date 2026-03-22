@@ -30,8 +30,16 @@ export default function AuthCallbackPage() {
         const redirectTarget = await completeAuthCallback();
         setStatus("success");
         setTimeout(() => {
-          if (window.opener) window.close();
-          else window.location.href = redirectTarget;
+          if (window.opener) {
+            window.close();
+            window.setTimeout(() => {
+              if (window.closed) return;
+              window.open("", "_self");
+              window.close();
+            }, 150);
+            return;
+          }
+          window.location.href = redirectTarget;
         }, 600);
       } catch (error) {
         console.error("Auth error:", error);

@@ -77,6 +77,7 @@ export const completeAuthCallback = async () => {
       {
         type: "SIGNALIZE_WEBSITE_AUTH_SUCCESS",
         state: authState,
+        session: resolvedSession,
       },
       window.location.origin,
     );

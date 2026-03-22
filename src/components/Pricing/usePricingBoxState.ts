@@ -70,7 +70,7 @@ const usePricingBoxState = (product: Price, currentPlan: string) => {
       const supabase = getSupabaseClient();
       await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}/?redirect=pricing` },
+        options: { redirectTo: `${window.location.origin}/auth/callback?next=/pricing` },
       });
     } catch (error) {
       console.error("Sign-in error:", error);
