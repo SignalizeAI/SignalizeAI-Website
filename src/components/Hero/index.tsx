@@ -24,7 +24,7 @@ const Hero = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </span>
-                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.2.0 is now live</span>
+                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.3.0 is now live</span>
               </div>
 
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
