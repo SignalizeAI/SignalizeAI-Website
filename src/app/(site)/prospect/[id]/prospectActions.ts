@@ -28,17 +28,16 @@ function buildAnalysisPayload(prospect: ProspectRecord) {
     whatTheyDo: prospect.what_they_do || "",
     targetCustomer: prospect.target_customer || "",
     valueProposition: prospect.value_proposition || "",
-    salesAngle: prospect.sales_angle || "",
+    salesAngle: "",
     salesReadinessScore: prospect.sales_readiness_score || 0,
     bestSalesPersona: {
       persona: prospect.best_sales_persona || "",
       reason: prospect.best_sales_persona_reason || "",
     },
     recommendedOutreach: {
-      persona: prospect.recommended_outreach_persona || "",
       goal: prospect.recommended_outreach_goal || "",
       angle: prospect.recommended_outreach_angle || "",
-      message: prospect.recommended_outreach_message || "",
+      message: "",
     },
   };
 }

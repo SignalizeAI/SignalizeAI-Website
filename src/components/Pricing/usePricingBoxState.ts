@@ -33,22 +33,45 @@ const usePricingBoxState = (product: Price, currentPlan: string) => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const checkAuthStatus = async () => {
+    const supabase = getSupabaseClient();
+
+    const applySession = async () => {
       try {
-        const supabase = getSupabaseClient();
         const {
           data: { session },
         } = await supabase.auth.getSession();
         if (session?.user) {
           setUserEmail(session.user.email || null);
           setUserId(session.user.id || null);
+          return;
         }
+        setUserEmail(null);
+        setUserId(null);
       } catch (error) {
         console.error("Error checking auth status:", error);
       }
     };
 
-    void checkAuthStatus();
+    void applySession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
+      void applySession();
+    });
+
+    const handleFocus = () => {
+      void applySession();
+    };
+
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleFocus);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleFocus);
+    };
   }, []);
 
   const handleSubscription = async () => {

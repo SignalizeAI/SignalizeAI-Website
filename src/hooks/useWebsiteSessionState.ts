@@ -1,95 +1,143 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getSupabaseClient } from "@/utils/supabaseClient";
 
 const AUTH_STATE_KEY = "signalizeai:website-auth-state";
 
 function notifyExtensionAuthStateChanged() {
-  window.postMessage(
-    {
-      type: "SIGNALIZE_WEBSITE_AUTH_STATE_CHANGED",
-    },
-    window.location.origin,
-  );
+  window.postMessage({ type: "SIGNALIZE_WEBSITE_AUTH_STATE_CHANGED" }, window.location.origin);
 }
 
-export function useWebsiteSessionState() {
+function requestExtensionSessionSync() {
+  window.postMessage({ type: "SIGNALIZE_REQUEST_EXTENSION_SESSION_SYNC" }, window.location.origin);
+}
+
+export function useWebsiteSessionState(enabled = true) {
   const [signedIn, setSignedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(enabled);
 
   useEffect(() => {
+    if (!enabled) {
+      setSignedIn(false);
+      setLoading(false);
+      return;
+    }
+
     let mounted = true;
-    const supabase = getSupabaseClient();
+    let unsubscribe = () => {};
+    let removeWindowHandlers = () => {};
 
-    const resolveSessionState = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+    void (async () => {
+      try {
+        const { getSupabaseClient } = await import("@/utils/supabaseClient");
+        if (!mounted) return;
 
-      if (!mounted) return;
-      if (!session) {
-        setSignedIn(false);
-        setLoading(false);
-        return;
-      }
+        const supabase = getSupabaseClient();
 
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
+        const resolveSessionState = async () => {
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
 
-      if (!mounted) return;
-      if (error || !user) {
-        await supabase.auth.signOut();
+          if (!mounted) return;
+          if (!session) {
+            setSignedIn(false);
+            setLoading(false);
+            return;
+          }
+
+          const {
+            data: { user },
+            error,
+          } = await supabase.auth.getUser();
+
+          if (!mounted) return;
+          if (error || !user) {
+            await supabase.auth.signOut();
+            if (!mounted) return;
+            setSignedIn(false);
+            setLoading(false);
+            return;
+          }
+
+          setSignedIn(true);
+          setLoading(false);
+          notifyExtensionAuthStateChanged();
+        };
+
+        const handleMessage = async (event: MessageEvent) => {
+          if (event.origin !== window.location.origin) return;
+          if (event.data?.type === "SIGNALIZE_EXTENSION_SESSION_SYNC") {
+            const session = event.data?.session;
+            if (!session?.access_token || !session?.refresh_token) return;
+            try {
+              await supabase.auth.setSession({
+                access_token: session.access_token,
+                refresh_token: session.refresh_token,
+              });
+              void resolveSessionState();
+            } catch (error) {
+              console.error("Failed to apply extension session on website", error);
+            }
+            return;
+          }
+          if (event.data?.type === "SIGNALIZE_WEBSITE_AUTH_SUCCESS") {
+            const expectedState = window.sessionStorage.getItem(AUTH_STATE_KEY);
+            if (!expectedState || event.data?.state !== expectedState) return;
+            window.sessionStorage.removeItem(AUTH_STATE_KEY);
+            void resolveSessionState();
+            return;
+          }
+          if (event.source !== window) return;
+          if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
+            setSignedIn(false);
+            await supabase.auth.signOut();
+          }
+        };
+
+        const handleFocus = () => {
+          requestExtensionSessionSync();
+          void resolveSessionState();
+        };
+
+        window.addEventListener("message", handleMessage);
+        window.addEventListener("focus", handleFocus);
+        document.addEventListener("visibilitychange", handleFocus);
+
+        const {
+          data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+          if (!session) {
+            setSignedIn(false);
+            setLoading(false);
+            return;
+          }
+          void resolveSessionState();
+        });
+
+        unsubscribe = () => subscription.unsubscribe();
+        removeWindowHandlers = () => {
+          window.removeEventListener("message", handleMessage);
+          window.removeEventListener("focus", handleFocus);
+          document.removeEventListener("visibilitychange", handleFocus);
+        };
+
+        void resolveSessionState();
+        requestExtensionSessionSync();
+      } catch (error) {
+        console.error("Failed to initialize website session state", error);
         if (!mounted) return;
         setSignedIn(false);
         setLoading(false);
-        return;
       }
+    })();
 
-      setSignedIn(true);
-      setLoading(false);
-      notifyExtensionAuthStateChanged();
-    };
-
-    void resolveSessionState();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) {
-        setSignedIn(false);
-        setLoading(false);
-        return;
-      }
-      void resolveSessionState();
-    });
-
-    const handleMessage = async (event: MessageEvent) => {
-      if (event.origin !== window.location.origin) return;
-      if (event.data?.type === "SIGNALIZE_WEBSITE_AUTH_SUCCESS") {
-        const expectedState = window.sessionStorage.getItem(AUTH_STATE_KEY);
-        if (!expectedState || event.data?.state !== expectedState) return;
-        window.sessionStorage.removeItem(AUTH_STATE_KEY);
-        void resolveSessionState();
-        return;
-      }
-      if (event.source !== window) return;
-      if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
-        setSignedIn(false);
-        await supabase.auth.signOut();
-        return;
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
     return () => {
       mounted = false;
-      subscription.unsubscribe();
-      window.removeEventListener("message", handleMessage);
+      unsubscribe();
+      removeWindowHandlers();
     };
-  }, []);
+  }, [enabled]);
 
   return { signedIn, loading };
 }

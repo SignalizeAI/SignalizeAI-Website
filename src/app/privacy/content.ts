@@ -55,7 +55,7 @@ export const privacySections = [
       {
         title: "1.4 Saved Prospects (Optional)",
         paragraphs: [
-          "If enabled by the user, saved prospects may include the domain name, URL, generated prospect data, suggested message, outreach emails, follow-up emails, prospect status, and related timestamps. This data is private and accessible only to the authenticated user.",
+          "If enabled by the user, saved prospects may include the domain name, URL, generated prospect data, outreach emails, follow-up emails, prospect status, and related timestamps. This data is private and accessible only to the authenticated user.",
         ],
       },
     ],

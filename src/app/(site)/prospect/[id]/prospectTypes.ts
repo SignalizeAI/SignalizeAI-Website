@@ -32,12 +32,9 @@ export interface ProspectRecord {
   what_they_do?: string;
   target_customer?: string;
   value_proposition?: string;
-  sales_angle?: string;
   best_sales_persona?: string;
   best_sales_persona_reason?: string;
-  recommended_outreach_persona?: string;
   recommended_outreach_goal?: string;
   recommended_outreach_angle?: string;
-  recommended_outreach_message?: string;
   outreach_angles?: ProspectOutreachAngles | null;
 }

@@ -36,7 +36,7 @@ The website prospect page mirrors the extension’s saved prospect experience an
 - prospect snapshot and strategy sections
 - outreach email generation
 - follow-up generation
-- copy actions for suggested message and emails
+- copy actions for generated emails
 - status updates
 - live sync with the open extension
 
