@@ -3,17 +3,23 @@
 import { useEffect, useState } from "react";
 import { getSupabaseClient } from "@/utils/supabaseClient";
 import { fetchProspectRecord } from "./prospectData";
+import { buildProspectPreviewPath, decodeProspectDraft } from "./prospectDraft";
 import type { ProspectRecord } from "./prospectTypes";
 
 type LoadState = "loading" | "signed_out" | "ready" | "missing";
 
-export function useProspectPage(id: string) {
+export function useProspectPage(id: string, draft: string | null) {
   const [state, setState] = useState<LoadState>("loading");
   const [prospect, setProspect] = useState<ProspectRecord | null>(null);
-  const [session, setSession] = useState<{ accessToken: string; fullName: string } | null>(null);
+  const [session, setSession] = useState<{
+    accessToken: string;
+    fullName: string;
+    userId: string;
+  } | null>(null);
 
   useEffect(() => {
     let cancelled = false;
+    const draftProspect = decodeProspectDraft(draft);
 
     const load = async () => {
       const supabase = getSupabaseClient();
@@ -34,13 +40,25 @@ export function useProspectPage(id: string) {
           session.user.user_metadata?.name ||
           session.user.email ||
           "Your Name",
+        userId: session.user.id,
       });
+
+      if (id === "preview" && draftProspect) {
+        setProspect(draftProspect);
+        setState("ready");
+        return;
+      }
 
       const record = await fetchProspectRecord(id, session.access_token);
       if (cancelled) return;
 
       if (!record) {
-        setState("missing");
+        if (draftProspect) {
+          setProspect(draftProspect);
+          setState("ready");
+        } else {
+          setState("missing");
+        }
         return;
       }
 
@@ -52,16 +70,15 @@ export function useProspectPage(id: string) {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [draft, id]);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.source !== window) return;
       if (event.data?.type !== "SIGNALIZE_EXTENSION_PROSPECT_STATUS_UPDATED") return;
-      if (event.data.savedId !== id) return;
 
       setProspect((current) => {
-        if (!current) return current;
+        if (!current?.id || event.data.savedId !== current.id) return current;
         return {
           ...current,
           prospect_status: event.data.status,
@@ -73,19 +90,35 @@ export function useProspectPage(id: string) {
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [id]);
+  }, []);
 
   useEffect(() => {
-    if (!session?.accessToken) return;
+    if (!session?.accessToken || !prospect?.id) return;
     if (state !== "ready") return;
 
     let cancelled = false;
 
     const refreshProspect = async () => {
       if (document.hidden) return;
+      const currentSavedId = prospect.id;
+      if (!currentSavedId) return;
 
-      const record = await fetchProspectRecord(id, session.accessToken);
-      if (cancelled || !record) return;
+      const record = await fetchProspectRecord(currentSavedId, session.accessToken);
+      if (cancelled) return;
+
+      if (!record) {
+        setProspect((current) => {
+          if (!current?.id) return current;
+          const unsavedProspect = {
+            ...current,
+            id: undefined,
+            prospect_status: undefined,
+          };
+          window.history.replaceState({}, "", buildProspectPreviewPath(unsavedProspect));
+          return unsavedProspect;
+        });
+        return;
+      }
 
       setProspect((current) => {
         if (!current) return record;
@@ -110,7 +143,7 @@ export function useProspectPage(id: string) {
       window.removeEventListener("focus", handleFocus);
       document.removeEventListener("visibilitychange", handleFocus);
     };
-  }, [id, session?.accessToken, state]);
+  }, [prospect?.id, session?.accessToken, state]);
 
   return { state, prospect, setProspect, session };
 }

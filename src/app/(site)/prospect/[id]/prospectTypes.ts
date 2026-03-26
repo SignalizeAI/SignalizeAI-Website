@@ -22,7 +22,7 @@ export interface ProspectOutreachAngles {
 }
 
 export interface ProspectRecord {
-  id: string;
+  id?: string;
   title?: string;
   domain?: string;
   url?: string;

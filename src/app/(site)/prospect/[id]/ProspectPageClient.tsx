@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import ProspectHeader from "./ProspectHeader";
 import ProspectOutreachSection from "./ProspectOutreachSection";
 import ProspectSnapshotSection from "./ProspectSnapshotSection";
@@ -9,7 +10,9 @@ import { useProspectPage } from "./useProspectPage";
 import { useProspectActions } from "./useProspectActions";
 
 export default function ProspectPageClient({ id }: { id: string }) {
-  const { state, prospect, setProspect, session } = useProspectPage(id);
+  const searchParams = useSearchParams();
+  const draft = searchParams.get("draft");
+  const { state, prospect, setProspect, session } = useProspectPage(id, draft);
   const actions = useProspectActions(prospect, setProspect, session);
   const shellClassName =
     "mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 xl:max-w-[1400px] 2xl:max-w-[1600px]";
@@ -38,6 +41,10 @@ export default function ProspectPageClient({ id }: { id: string }) {
         <div className="space-y-8 rounded-[2.25rem] border border-slate-200 bg-slate-50/75 p-5 shadow-[0_30px_90px_-58px_rgba(15,23,42,0.28)] dark:border-white/10 dark:bg-white/[0.03] lg:p-8">
           <ProspectHeader
             prospect={prospect}
+            saveLoading={actions.saveLoading}
+            onSave={() =>
+              void (actions.isSaved ? actions.unsaveCurrentProspect() : actions.saveCurrentProspect())
+            }
             statusLoading={actions.statusLoading}
             onStatusChange={(status) => void actions.changeStatus(status)}
           />

@@ -1,14 +1,19 @@
+import ProspectSaveButton from "./ProspectSaveButton";
 import StatusDropdown from "./StatusDropdown";
 import type { ProspectRecord } from "./prospectTypes";
 
 type ProspectHeaderProps = {
   prospect: ProspectRecord;
+  saveLoading: boolean;
+  onSave: () => void;
   statusLoading: boolean;
   onStatusChange: (status: string) => void;
 };
 
 export default function ProspectHeader({
   prospect,
+  saveLoading,
+  onSave,
   statusLoading,
   onStatusChange,
 }: ProspectHeaderProps) {
@@ -35,6 +40,7 @@ export default function ProspectHeader({
               onChange={onStatusChange}
             />
           ) : null}
+          <ProspectSaveButton saved={Boolean(prospect.id)} loading={saveLoading} onClick={onSave} />
         </div>
       </div>
     </header>

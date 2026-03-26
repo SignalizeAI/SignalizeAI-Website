@@ -87,7 +87,7 @@ export default function ProspectOutreachSection({
         </div>
       ) : !recommended ? (
         <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-600 dark:text-white/66">
-          Generate outreach here and we’ll save the emails back to this prospect automatically so they’re ready the next time you open it.
+          Generate outreach emails here to review them in this section.
         </p>
       ) : null}
     </section>

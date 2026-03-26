@@ -1,50 +1,37 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { notifyProspectContentUpdated, notifyProspectStatusUpdated } from "./prospectBridge";
+import { buildProspectPreviewPath } from "./prospectDraft";
+import { deleteProspectRecord, type SessionUser } from "./prospectPersistence";
 import {
   generateProspectFollowUps,
   generateProspectOutreach,
+  saveProspect,
   updateProspectStatus,
 } from "./prospectActions";
 import { getRecommendedEmail } from "./prospectFormat";
 import type { ProspectRecord } from "./prospectTypes";
 
-type SessionState = {
-  accessToken: string;
-  fullName: string;
-};
-
 export function useProspectActions(
   prospect: ProspectRecord | null,
   setProspect: (value: ProspectRecord | null) => void,
-  session: SessionState | null,
+  session: SessionUser | null,
 ) {
+  const router = useRouter();
   const [outreachOpen, setOutreachOpen] = useState(Boolean(prospect?.outreach_angles?.angles?.length));
   const [outreachLoading, setOutreachLoading] = useState(false);
   const [followUpsLoading, setFollowUpsLoading] = useState(false);
   const [statusLoading, setStatusLoading] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const canShowFollowUps = useMemo(
-    () => Boolean(prospect?.outreach_angles?.angles?.length),
-    [prospect?.outreach_angles?.angles],
-  );
 
   useEffect(() => {
     if (prospect?.outreach_angles?.angles?.length) {
       setOutreachOpen(true);
     }
   }, [prospect?.outreach_angles]);
-
-  const notifyProspectContentUpdated = (savedId: string) => {
-    window.postMessage(
-      {
-        type: "SIGNALIZE_PROSPECT_CONTENT_UPDATED",
-        savedId,
-      },
-      window.location.origin,
-    );
-  };
 
   const openOutreach = async () => {
     if (!prospect || !session) return;
@@ -54,7 +41,9 @@ export function useProspectActions(
     try {
       const outreachAngles = await generateProspectOutreach(prospect, session);
       setProspect({ ...prospect, outreach_angles: outreachAngles });
-      notifyProspectContentUpdated(prospect.id);
+      if (prospect.id) {
+        notifyProspectContentUpdated(prospect.id);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to generate outreach emails");
       setOutreachOpen(false);
@@ -73,7 +62,9 @@ export function useProspectActions(
     try {
       const outreachAngles = await generateProspectFollowUps(prospect, openingEmail, session);
       setProspect({ ...prospect, outreach_angles: outreachAngles });
-      notifyProspectContentUpdated(prospect.id);
+      if (prospect.id) {
+        notifyProspectContentUpdated(prospect.id);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to generate follow-up emails");
     } finally {
@@ -81,25 +72,16 @@ export function useProspectActions(
     }
   };
 
-  const toggleOutreach = () => {
-    setOutreachOpen((current) => !current);
-  };
+  const toggleOutreach = () => setOutreachOpen((current) => !current);
 
   const changeStatus = async (nextStatus: string) => {
-    if (!prospect || !session || nextStatus === prospect.prospect_status) return;
+    if (!prospect?.id || !session || nextStatus === prospect.prospect_status) return;
     setError("");
     setStatusLoading(true);
     try {
       await updateProspectStatus(prospect.id, nextStatus, session);
       setProspect({ ...prospect, prospect_status: nextStatus });
-      window.postMessage(
-        {
-          type: "SIGNALIZE_PROSPECT_STATUS_UPDATED",
-          savedId: prospect.id,
-          status: nextStatus,
-        },
-        window.location.origin,
-      );
+      notifyProspectStatusUpdated(prospect.id, nextStatus);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to update prospect status");
     } finally {
@@ -107,15 +89,57 @@ export function useProspectActions(
     }
   };
 
+  const saveCurrentProspect = async () => {
+    if (!prospect || !session || prospect.id) return;
+    setError("");
+    setSaveLoading(true);
+    try {
+      const savedProspect = await saveProspect(prospect, session);
+      setProspect(savedProspect);
+      router.replace(`/prospect/${savedProspect.id}`);
+      notifyProspectContentUpdated(savedProspect.id!);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to save prospect");
+    } finally {
+      setSaveLoading(false);
+    }
+  };
+
+  const unsaveCurrentProspect = async () => {
+    if (!prospect?.id || !session) return;
+    setError("");
+    setSaveLoading(true);
+    try {
+      const savedId = prospect.id;
+      await deleteProspectRecord(savedId, session.accessToken);
+      const previewProspect = {
+        ...prospect,
+        id: undefined,
+        prospect_status: undefined,
+      };
+      setProspect(previewProspect);
+      router.replace(buildProspectPreviewPath(previewProspect));
+      notifyProspectContentUpdated(savedId);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to unsave prospect");
+    } finally {
+      setSaveLoading(false);
+    }
+  };
+
   return {
     error,
+    isSaved: Boolean(prospect?.id),
     outreachOpen,
     outreachLoading,
     openOutreach,
     toggleOutreach,
-    canShowFollowUps,
+    canShowFollowUps: Boolean(prospect?.outreach_angles?.angles?.length),
     followUpsLoading,
     openFollowUps,
+    saveLoading,
+    saveCurrentProspect,
+    unsaveCurrentProspect,
     statusLoading,
     changeStatus,
   };
