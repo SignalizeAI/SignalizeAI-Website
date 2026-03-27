@@ -7,22 +7,31 @@ const useStickyHeader = (threshold = 50) => {
 
   useEffect(() => {
     let ticking = false;
+    let frameId = 0;
 
     const updateSticky = () => {
-      setSticky(window.scrollY >= threshold);
+      const nextSticky = window.scrollY >= threshold;
+      setSticky((currentSticky) =>
+        currentSticky === nextSticky ? currentSticky : nextSticky,
+      );
       ticking = false;
     };
 
     const handleScroll = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(updateSticky);
+      frameId = window.requestAnimationFrame(updateSticky);
     };
 
     updateSticky();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, [threshold]);
 
   return sticky;
