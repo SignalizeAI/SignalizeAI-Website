@@ -15,18 +15,35 @@ export default function ScrollToTop() {
   };
 
   useEffect(() => {
-    // Button is displayed after scrolling for 500 pixels
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    let ticking = false;
+    let frameId = 0;
+
+    const updateVisibility = () => {
+      const nextVisible = window.scrollY > 300;
+      setIsVisible((currentVisible) =>
+        currentVisible === nextVisible ? currentVisible : nextVisible,
+      );
+      ticking = false;
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    const handleScroll = () => {
+      if (ticking) {
+        return;
+      }
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
+      ticking = true;
+      frameId = window.requestAnimationFrame(updateVisibility);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   return (
