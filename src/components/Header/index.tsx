@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
 import { useExtensionInstallState } from "@/hooks/useExtensionInstallState";
 import { useWebsiteSessionState } from "@/hooks/useWebsiteSessionState";
-import { getSupabaseClient } from "@/utils/supabaseClient";
 import DesktopNav from "./DesktopNav";
+import HeaderGlobalStyles from "./HeaderGlobalStyles";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 import ThemeToggler from "./ThemeToggler";
@@ -22,11 +22,13 @@ const Header = () => {
   const isHomePage = pathname === "/";
   const hideAuthCta = pathname === "/signin";
   const { installed } = useExtensionInstallState();
-  const { signedIn, loading } = useWebsiteSessionState();
+  const { signedIn, loading } = useWebsiteSessionState(installed);
 
-  const ctaLabel = loading ? "Get Extension" : installed ? (signedIn ? "Sign out" : "Sign in") : "Get Extension";
+  const ctaLabel = installed ? (loading ? "Sign in" : signedIn ? "Sign out" : "Sign in") : "Get Extension";
+
   const handleCtaClick = async () => {
     if (installed && signedIn) {
+      const { getSupabaseClient } = await import("@/utils/supabaseClient");
       const supabase = getSupabaseClient();
       window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
       await supabase.auth.signOut();
@@ -41,44 +43,7 @@ const Header = () => {
 
   return (
     <>
-      <style jsx global>{`
-        :root {
-          --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.1);
-          --ease-smooth: cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        @media (min-width: 1024px) {
-          .nav-morph {
-            transition:
-              top 0.5s var(--ease-smooth),
-              max-width 0.5s var(--ease-smooth),
-              width 0.5s var(--ease-smooth),
-              padding 0.5s var(--ease-smooth),
-              border-radius 0.5s var(--ease-smooth),
-              background-color 0.4s ease,
-              backdrop-filter 0.4s ease,
-              box-shadow 0.4s ease,
-              border 0.4s ease;
-          }
-        }
-        .marker-transition {
-          transition:
-            left 0.3s var(--ease-spring),
-            width 0.3s var(--ease-spring),
-            opacity 0.2s ease-out;
-        }
-        .marker-glow::after {
-          content: "";
-          position: absolute;
-          bottom: -3px;
-          left: 18%;
-          width: 64%;
-          height: 6px;
-          background: linear-gradient(90deg, rgba(26, 35, 126, 0.2), rgba(0, 229, 255, 0.2));
-          filter: blur(5px);
-          opacity: 0.35;
-          z-index: -1;
-        }
-      `}</style>
+      <HeaderGlobalStyles />
 
       <header
         className={`nav-morph fixed left-1/2 z-[999] flex w-full -translate-x-1/2 items-center justify-between border border-transparent bg-white/80 backdrop-blur-[10px] dark:bg-[#0a0a0a]/80 ${

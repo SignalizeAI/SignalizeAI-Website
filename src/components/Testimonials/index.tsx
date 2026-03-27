@@ -8,7 +8,7 @@
 //     name: "Priya Malhotra",
 //     designation: "Head of Sales, B2B SaaS",
 //     content:
-//       "SignalizeAI gives my reps a one-minute brief that feels like we hired a researcher for every account. The sales angles are spot on.",
+//       "SignalizeAI gives my reps a one-minute brief that feels like we hired a researcher for every account. The prospect guidance is spot on.",
 //     image: "/images/testimonials/author-01.png",
 //     star: 5,
 //   },

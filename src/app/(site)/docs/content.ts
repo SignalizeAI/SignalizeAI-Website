@@ -111,7 +111,7 @@ export const outputCards = [
   {
     title: "Suggested outreach",
     description:
-      "A recommended persona, goal, angle, suggested message, and AI-generated outreach emails built from the prospect data.",
+      "A goal, outreach angle, and AI-generated outreach emails built from the prospect data.",
   },
   {
     title: "Follow-up emails",

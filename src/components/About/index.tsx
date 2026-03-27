@@ -69,10 +69,11 @@ const About = () => {
             <div className="relative min-h-[420px] overflow-hidden rounded-[2.25rem] border border-gray-200 shadow-2xl dark:border-white/10">
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent z-10" />
               <Image
-                src="/images/about/about-image-01.jpg"
+                src="/images/about/about-image-01.webp"
                 alt="SignalizeAI workflow preview"
                 fill
                 sizes="(max-width: 1023px) 100vw, 50vw"
+                quality={68}
                 className="object-cover object-center"
               />
               <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
@@ -129,10 +130,11 @@ const About = () => {
 
               <div className="relative min-h-[180px] overflow-hidden rounded-[2rem] border border-gray-200 shadow-xl dark:border-white/10">
                 <Image
-                  src="/images/about/about-image-02.jpg"
+                  src="/images/about/about-image-02.webp"
                   alt="SignalizeAI research workflow"
                   fill
                   sizes="(max-width: 1023px) 100vw, 33vw"
+                  quality={66}
                   className="object-cover object-center opacity-85"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-accent/20" />

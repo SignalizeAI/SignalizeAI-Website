@@ -24,7 +24,7 @@ const Hero = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </span>
-                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.2.0 is now live</span>
+                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.3.0 is now live</span>
               </div>
 
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
@@ -59,12 +59,12 @@ const Hero = () => {
                   {heroUsers.map((i) => (
                     <div key={i} className="h-16 w-16 lg:h-20 lg:w-20 overflow-hidden rounded-full border-4 border-white dark:border-[#000000] bg-gray-100 dark:bg-gray-800 shadow-2xl relative z-0 hover:z-10 transition-all hover:scale-110 cursor-pointer">
                       <Image
-                        src={`/images/users/user-0${i}.png`}
+                        src={`/images/users/user-0${i}.webp`}
                         alt="User"
                         width={80}
                         height={80}
-                        sizes="80px"
-                        quality={70}
+                        sizes="(max-width: 1023px) 64px, 80px"
+                        quality={60}
                         className="h-full w-full object-cover"
                       />
                     </div>

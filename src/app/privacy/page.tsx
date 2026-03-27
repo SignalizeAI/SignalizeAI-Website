@@ -24,7 +24,7 @@ export default function PrivacyPage() {
             <div className="max-w-4xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-semibold text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
                 <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-current" /></span>
-                Last updated: March 22, 2026
+                Last updated: March 27, 2026
               </div>
               <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Privacy Policy</h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 dark:text-white/68 sm:text-lg sm:leading-9">

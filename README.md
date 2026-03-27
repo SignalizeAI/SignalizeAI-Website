@@ -1,87 +1,77 @@
 # SignalizeAI Website
 
-Marketing site, pricing surface, auth entry point, and saved-prospect website dashboard for SignalizeAI.
+SignalizeAI-Website is the public website, pricing surface, auth entry, and website-side prospect experience for SignalizeAI.
 
-## What This App Does
+Current version: `5.3.0`
 
-The website handles four main jobs:
+## What it does
 
-- marketing pages for the product
-- pricing and upgrade flows
-- Supabase-based website sign-in
-- saved prospect pages at `/prospect/[id]`
+- hosts the landing page and marketing content
+- shows pricing and upgrade flows
+- handles website sign-in through Supabase
+- renders prospect pages at `/prospect/[id]`
+- supports unsaved preview-style prospect pages and saved prospect pages
+- lets users save / unsave prospects from the website
+- shows status controls only for saved prospects
+- generates outreach emails and follow-up emails on the website
+- syncs auth, status, prospect content, install state, and theme with the extension
 
-The website also syncs with the browser extension for:
+## Main routes
 
-- auth state
-- install detection
-- prospect status updates
-- saved prospect content refresh
-- theme sync
-
-## Core Routes
-
-- `/` — landing page
-- `/pricing` — plans and upgrade UI
-- `/signin` and `/signup` — website auth entry
-- `/auth/callback` — Supabase auth callback
-- `/prospect/[id]` — saved prospect dashboard page
-- `/docs`, `/about`, `/contact`, `/privacy`
+- `/`
+- `/pricing`
+- `/signin`
+- `/signup`
+- `/auth/callback`
+- `/prospect/[id]`
+- `/docs`
+- `/about`
+- `/contact`
+- `/privacy`
 - `/payment-success`
 
-## Prospect Page Features
+## Prospect page behavior
 
-The website prospect page mirrors the extension’s saved prospect experience and supports:
+The website prospect page is the detailed website view for a prospect record.
 
-- prospect snapshot and strategy sections
-- outreach email generation
+It supports:
+
+- snapshot + strategy layout
+- outreach generation
 - follow-up generation
-- copy actions for suggested message and emails
-- status updates
-- live sync with the open extension
+- copy actions for every email
+- save / unsave
+- saved-only status editing
+- live sync back to the extension when the prospect changes
 
-## Tech Stack
+## Navbar behavior
 
-- Next.js 15 App Router
-- React 18
-- Tailwind CSS 4
-- Supabase browser auth and client reads
-- Stripe pricing UI
-- Cloudflare Pages deployment target
+The header CTA changes based on install + auth state:
 
-## Project Structure
+- `Get Extension`
+- `Sign in`
+- `Sign out`
 
-```text
-SignalizeAI-Website/
-├── src/
-│   ├── app/
-│   │   ├── (site)/
-│   │   │   ├── (auth)/
-│   │   │   ├── pricing/
-│   │   │   ├── prospect/[id]/
-│   │   │   ├── docs/
-│   │   │   ├── about/
-│   │   │   ├── contact/
-│   │   │   └── privacy/
-│   │   ├── auth/callback/
-│   │   └── providers.tsx
-│   ├── components/
-│   ├── hooks/
-│   ├── stripe/
-│   └── utils/
-├── public/
-└── markdown/
-```
+The sign-in CTA is hidden on `/signin`.
 
-## Local Development
+## Tech stack
 
-1. Install dependencies:
+- Next.js App Router
+- React
+- Tailwind CSS
+- Supabase browser auth
+- next-themes
+- Cloudflare Pages
+
+## Local development
+
+1. Install dependencies
 
 ```bash
 npm install
 ```
 
-2. Create `.env.local` with the public client values:
+2. Create `.env.local`
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -89,13 +79,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 NEXT_PUBLIC_API_BASE_URL=https://dev-api.signalizeai.org
 ```
 
-For production deploys, `NEXT_PUBLIC_API_BASE_URL` should point to:
+For production deploys:
 
 ```env
 NEXT_PUBLIC_API_BASE_URL=https://api.signalizeai.org
 ```
 
-3. Start the website:
+3. Start the app
 
 ```bash
 npm run dev
@@ -107,25 +97,25 @@ Local URL:
 http://localhost:3000
 ```
 
-## Build And Checks
+## Auth notes
+
+- website auth uses Supabase OAuth
+- the callback route is `/auth/callback`
+- localhost testing requires the localhost callback URLs in Supabase Redirect URLs
+- extension sync only works locally when the extension is built with the dev manifest
+
+## Scripts
 
 - `npm run dev`
 - `npm run build`
 - `npm run start`
 - `npm run lint`
 
-## Auth Notes
+## Deployment notes
 
-- Website auth uses Supabase OAuth with Google
-- The auth callback route is `/auth/callback`
-- Local testing requires localhost callback URLs in Supabase Redirect URLs
-- The extension and website communicate through a same-origin bridge on supported hosts
-
-## Deployment Notes
-
-- This app is built for Cloudflare Pages
-- Non-static app routes that need it export `runtime = "edge"`
-- Production domain is `https://signalizeai.org`
+- built for Cloudflare Pages
+- edge runtime is enabled on the routes that need it
+- production domain is `https://signalizeai.org`
 
 ## Support
 

@@ -1,9 +1,5 @@
+import { saveProspectRecord, updateProspectRow, updateSavedOutreachAngles, type SessionUser } from "./prospectPersistence";
 import type { AngleId, FollowUpTone, ProspectOutreachAngles, ProspectRecord } from "./prospectTypes";
-
-type SessionUser = {
-  accessToken: string;
-  fullName: string;
-};
 
 type OutreachResponse = {
   recommendedAngleId?: AngleId;
@@ -20,25 +16,22 @@ type FollowUpResponse = {
 };
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.signalizeai.org";
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 function buildAnalysisPayload(prospect: ProspectRecord) {
   return {
     whatTheyDo: prospect.what_they_do || "",
     targetCustomer: prospect.target_customer || "",
     valueProposition: prospect.value_proposition || "",
-    salesAngle: prospect.sales_angle || "",
+    salesAngle: "",
     salesReadinessScore: prospect.sales_readiness_score || 0,
     bestSalesPersona: {
       persona: prospect.best_sales_persona || "",
       reason: prospect.best_sales_persona_reason || "",
     },
     recommendedOutreach: {
-      persona: prospect.recommended_outreach_persona || "",
       goal: prospect.recommended_outreach_goal || "",
       angle: prospect.recommended_outreach_angle || "",
-      message: prospect.recommended_outreach_message || "",
+      message: "",
     },
   };
 }
@@ -74,41 +67,12 @@ async function postJson<T>(path: string, token: string, body: unknown): Promise<
   return response.json() as Promise<T>;
 }
 
-async function updateOutreachAngles(
-  prospectId: string,
-  accessToken: string,
-  outreachAngles: ProspectOutreachAngles,
-) {
-  await updateProspectRow(prospectId, accessToken, { outreach_angles: outreachAngles });
-}
-
-async function updateProspectRow(
-  prospectId: string,
-  accessToken: string,
-  payload: Record<string, unknown>,
-) {
-  const url = new URL("/rest/v1/saved_analyses", supabaseUrl);
-  url.searchParams.set("id", `eq.${prospectId}`);
-
-  const response = await fetch(url.toString(), {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-      apikey: supabaseAnonKey,
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(text || "Failed to update saved prospect");
-  }
-}
-
 export async function updateProspectStatus(prospectId: string, status: string, session: SessionUser) {
   await updateProspectRow(prospectId, session.accessToken, { prospect_status: status });
+}
+
+export async function saveProspect(prospect: ProspectRecord, session: SessionUser) {
+  return saveProspectRecord(prospect, session);
 }
 
 export async function generateProspectOutreach(prospect: ProspectRecord, session: SessionUser) {
@@ -124,7 +88,9 @@ export async function generateProspectOutreach(prospect: ProspectRecord, session
     angles: result.angles || [],
   };
 
-  await updateOutreachAngles(prospect.id, session.accessToken, outreachAngles);
+  if (prospect.id) {
+    await updateSavedOutreachAngles(prospect.id, session.accessToken, outreachAngles);
+  }
   return outreachAngles;
 }
 
@@ -148,6 +114,8 @@ export async function generateProspectFollowUps(
     follow_ups: { emails: result.emails || [] },
   };
 
-  await updateOutreachAngles(prospect.id, session.accessToken, outreachAngles);
+  if (prospect.id) {
+    await updateSavedOutreachAngles(prospect.id, session.accessToken, outreachAngles);
+  }
   return outreachAngles;
 }
