@@ -56,6 +56,7 @@ export const privacySections = [
         title: "1.4 Saved Prospects (Optional)",
         paragraphs: [
           "If enabled by the user, saved prospects may include the domain name, URL, generated prospect data, outreach emails, follow-up emails, prospect status, and related timestamps. This data is private and accessible only to the authenticated user.",
+          "Website prospect previews do not become saved records automatically. A prospect is stored only when the user explicitly saves it.",
         ],
       },
     ],
@@ -69,8 +70,8 @@ export const privacySections = [
       "Generate AI-based prospect data, outreach emails, and follow-up emails",
       "Display results within the extension and website prospect views",
       "Run user-requested batch prospecting",
-      "Save user-requested prospects",
-      "Sync saved prospect state such as status, saved content, and theme across the extension and website",
+      "Save or unsave user-requested prospects",
+      "Sync saved prospect state such as status, saved content, auth state, and theme across the extension and website",
       "Improve extension functionality and user experience",
     ],
     note: "SignalizeAI does not track browsing history, and we do not sell, share, or use data for advertising or tracking.",
@@ -121,7 +122,7 @@ export const privacySections = [
     title: "Data Retention & Deletion",
     intro: "We adhere to strict data retention policies:",
     items: [
-      "Users may delete specific saved prospects at any time via the extension interface.",
+      "Users may save or remove specific prospects at any time through the extension or website product interface.",
       "Users may update outreach content, follow-ups, and prospect status on saved prospects through product interfaces tied to their account.",
       "Users may sign out to remove extension access to their account.",
       "Upon full account deletion request, all user data is permanently removed from our systems.",
