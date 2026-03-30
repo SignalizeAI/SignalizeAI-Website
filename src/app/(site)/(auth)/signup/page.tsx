@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AuthEntryClient from "../AuthEntryClient";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function SignUpPage() {
-  return <AuthEntryClient mode="signup" />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white dark:bg-[#000000]" />}>
+      <AuthEntryClient mode="signup" />
+    </Suspense>
+  );
 }
