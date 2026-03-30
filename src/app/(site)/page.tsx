@@ -1,18 +1,12 @@
-import About from "@/components/About";
-// import HomeBlogSection from "@/components/Blog/HomeBlogSection";
-import CallToAction from "@/components/CallToAction";
-// import Clients from "@/components/Clients";
-import Contact from "@/components/Contact";
-import Faq from "@/components/Faq";
-import Features from "@/components/Features";
-import Hero from "@/components/Hero";
-import PricingTeaserSection from "@/components/Pricing/TeaserSection";
 import dynamic from "next/dynamic";
-// import Team from "@/components/Team";
-// import Testimonials from "@/components/Testimonials";
-// import { getAllPosts } from "@/utils/markdown";
 import { Metadata } from "next";
+import Hero from "@/components/Hero";
 
+const DeferredAbout = dynamic(() => import("@/components/About"));
+const DeferredFeatures = dynamic(() => import("@/components/Features"));
+const DeferredPricingTeaserSection = dynamic(() => import("@/components/Pricing/TeaserSection"));
+const DeferredCallToAction = dynamic(() => import("@/components/CallToAction"));
+const DeferredFaq = dynamic(() => import("@/components/Faq"));
 const DeferredContact = dynamic(() => import("@/components/Contact"));
 
 export const metadata: Metadata = {
@@ -34,17 +28,15 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  // const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
-
   return (
     <main>
       <Hero />
-      <About />
-      <Features />
-      <PricingTeaserSection />
-      <CallToAction />
+      <DeferredAbout />
+      <DeferredFeatures />
+      <DeferredPricingTeaserSection />
+      <DeferredCallToAction />
       {/* <Testimonials /> */}
-      <Faq />
+      <DeferredFaq />
       {/* <Team /> */}
       {/* <HomeBlogSection posts={posts} /> */}
       <DeferredContact />
