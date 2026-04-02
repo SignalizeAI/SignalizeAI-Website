@@ -2,7 +2,7 @@
 
 SignalizeAI-Website is the public website, pricing surface, auth entry, and website-side prospect experience for SignalizeAI.
 
-Current version: `5.3.0`
+Current version: `5.4.0`
 
 ## What it does
 
@@ -10,10 +10,12 @@ Current version: `5.3.0`
 - shows pricing and upgrade flows
 - handles website sign-in through Supabase
 - renders prospect pages at `/prospect/[id]`
+- renders the saved prospects workspace at `/prospects`
 - supports unsaved preview-style prospect pages and saved prospect pages
 - lets users save / unsave prospects from the website
 - shows status controls only for saved prospects
 - generates outreach emails and follow-up emails on the website
+- supports search, filter, CSV / Excel export, and multi-delete for saved prospects on the website
 - syncs auth, status, prospect content, install state, and theme with the extension
 
 ## Main routes
@@ -24,6 +26,7 @@ Current version: `5.3.0`
 - `/signup`
 - `/auth/callback`
 - `/prospect/[id]`
+- `/prospects`
 - `/docs`
 - `/about`
 - `/contact`
@@ -44,13 +47,27 @@ It supports:
 - saved-only status editing
 - live sync back to the extension when the prospect changes
 
+## Saved prospects workspace
+
+The `/prospects` page is the website-side saved prospects workspace.
+
+It supports:
+
+- search + status filtering
+- pagination
+- CSV / Excel export
+- single delete + multi-delete
+- live sync from extension saves and deletes
+- direct open into the full prospect page
+
 ## Navbar behavior
 
-The header CTA changes based on install + auth state:
+The header changes based on install + auth state:
 
-- `Get Extension`
-- `Sign in`
-- `Sign out`
+- `Get Extension` when the extension is not detected
+- `Sign in` when the website is signed out
+- avatar + user name when signed in
+- signed-in account menu links to `Saved Prospects` and `Sign out`
 
 The sign-in CTA is hidden on `/signin`.
 
