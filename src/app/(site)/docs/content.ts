@@ -81,8 +81,8 @@ export const workflowCards = [
       "Use this when prospecting spans multiple sessions and you need a reusable record across the extension and website.",
     points: [
       "Use when: tracking accounts over days, revisiting outreach, or handing context to teammates",
-      "Expect: stored runs with status, outreach emails, follow-ups, search, filtering, and optional export",
-      "Output: a reusable working set you can reopen in the website prospect page for follow-up and prioritization",
+      "Expect: stored runs with status, outreach emails, follow-ups, search, filtering, bulk delete, and optional export",
+      "Output: a reusable working set you can reopen in the website prospect page or manage inside the website saved prospects workspace",
     ],
   },
 ];
@@ -104,7 +104,7 @@ export const outputCards = [
       "The most obvious product or service angle surfaced from the public copy.",
   },
   {
-    title: "Recommended persona",
+    title: "Best persona recommendation",
     description:
       "The role most likely to care about the problem or budget signaled by the site.",
   },
@@ -126,7 +126,7 @@ export const outputCards = [
   {
     title: "Exportable working set",
     description:
-      "When supported, saved prospects can become a reusable set for filtering, export, website prospect views, and follow-up.",
+      "When supported, saved prospects can become a reusable set for filtering, export, website prospect views, the `/prospects` workspace, and follow-up.",
   },
 ];
 
@@ -147,7 +147,7 @@ export const accessCards = [
     title: "Saved prospects",
     availability: "Plan-dependent",
     description:
-      "Saved prospect capacity, organization features, and export access vary by plan. Website prospect pages are available for saved prospects.",
+      "Saved prospect capacity, organization features, `/prospects` workspace tools, and export access vary by plan. Website prospect pages are available for saved prospects.",
   },
 ];
 

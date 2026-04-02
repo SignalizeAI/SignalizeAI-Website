@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { MouseEvent } from "react";
 import Link from "next/link";
 import ChevronIcon from "./ChevronIcon";
+import MobileAccountMenu from "./MobileAccountMenu";
 import menuData from "./menuData";
 import { handleSmoothScroll, isMenuActive } from "./headerUtils";
 
@@ -15,6 +16,9 @@ type MobileNavProps = {
   pathname: string;
   ctaLabel: string | null;
   onCtaClick: () => void;
+  signedIn: boolean;
+  accountName: string | null;
+  avatarUrl: string | null;
 };
 
 const MobileNav = ({
@@ -25,6 +29,9 @@ const MobileNav = ({
   pathname,
   ctaLabel,
   onCtaClick,
+  signedIn,
+  accountName,
+  avatarUrl,
 }: MobileNavProps) => {
   const [submenuOpen, setSubmenuOpen] = useState(-1);
 
@@ -104,7 +111,17 @@ const MobileNav = ({
                 </li>
               );
             })}
-            {ctaLabel ? (
+            {signedIn && accountName ? (
+              <li>
+                <MobileAccountMenu
+                  name={accountName}
+                  avatarUrl={avatarUrl}
+                  onClose={closeMenu}
+                  onSignOut={onCtaClick}
+                />
+              </li>
+            ) : null}
+            {ctaLabel && !signedIn ? (
               <li className="border-t border-gray-100 pt-3 dark:border-white/10">
                 <button
                   type="button"

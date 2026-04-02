@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 
 const AUTH_STATE_KEY = "signalizeai:website-auth-state";
 
+type WebsiteUserProfile = {
+  name: string;
+  avatarUrl: string | null;
+};
+
 function notifyExtensionAuthStateChanged() {
   window.postMessage({ type: "SIGNALIZE_WEBSITE_AUTH_STATE_CHANGED" }, window.location.origin);
 }
@@ -15,11 +20,17 @@ function requestExtensionSessionSync() {
 export function useWebsiteSessionState(enabled = true) {
   const [signedIn, setSignedIn] = useState(false);
   const [loading, setLoading] = useState(enabled);
+  const [profile, setProfile] = useState<WebsiteUserProfile | null>(null);
+
+  const setSignedOutState = () => {
+    setSignedIn(false);
+    setProfile(null);
+    setLoading(false);
+  };
 
   useEffect(() => {
     if (!enabled) {
-      setSignedIn(false);
-      setLoading(false);
+      setSignedOutState();
       return;
     }
 
@@ -33,6 +44,24 @@ export function useWebsiteSessionState(enabled = true) {
         if (!mounted) return;
 
         const supabase = getSupabaseClient();
+        const buildProfile = (user: {
+          email?: string | null;
+          user_metadata?: Record<string, unknown>;
+        }): WebsiteUserProfile => ({
+          name:
+            String(
+              user.user_metadata?.full_name ||
+                user.user_metadata?.name ||
+                user.email ||
+                "Account",
+            ) || "Account",
+          avatarUrl:
+            typeof user.user_metadata?.avatar_url === "string"
+              ? user.user_metadata.avatar_url
+              : typeof user.user_metadata?.picture === "string"
+                ? user.user_metadata.picture
+                : null,
+        });
 
         const resolveSessionState = async () => {
           const {
@@ -41,8 +70,7 @@ export function useWebsiteSessionState(enabled = true) {
 
           if (!mounted) return;
           if (!session) {
-            setSignedIn(false);
-            setLoading(false);
+            setSignedOutState();
             return;
           }
 
@@ -55,12 +83,12 @@ export function useWebsiteSessionState(enabled = true) {
           if (error || !user) {
             await supabase.auth.signOut();
             if (!mounted) return;
-            setSignedIn(false);
-            setLoading(false);
+            setSignedOutState();
             return;
           }
 
           setSignedIn(true);
+          setProfile(buildProfile(user));
           setLoading(false);
           notifyExtensionAuthStateChanged();
         };
@@ -90,7 +118,7 @@ export function useWebsiteSessionState(enabled = true) {
           }
           if (event.source !== window) return;
           if (event.data?.type === "SIGNALIZE_EXTENSION_SIGNED_OUT") {
-            setSignedIn(false);
+            setSignedOutState();
             await supabase.auth.signOut();
           }
         };
@@ -108,8 +136,7 @@ export function useWebsiteSessionState(enabled = true) {
           data: { subscription },
         } = supabase.auth.onAuthStateChange((_event, session) => {
           if (!session) {
-            setSignedIn(false);
-            setLoading(false);
+            setSignedOutState();
             return;
           }
           void resolveSessionState();
@@ -127,8 +154,7 @@ export function useWebsiteSessionState(enabled = true) {
       } catch (error) {
         console.error("Failed to initialize website session state", error);
         if (!mounted) return;
-        setSignedIn(false);
-        setLoading(false);
+        setSignedOutState();
       }
     })();
 
@@ -139,5 +165,5 @@ export function useWebsiteSessionState(enabled = true) {
     };
   }, [enabled]);
 
-  return { signedIn, loading };
+  return { signedIn, loading, profile };
 }

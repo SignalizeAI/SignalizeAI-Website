@@ -36,6 +36,16 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [70, 75, 80],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
   },
   async headers() {
     return [
