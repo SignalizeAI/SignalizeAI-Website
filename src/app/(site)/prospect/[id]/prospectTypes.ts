@@ -26,6 +26,7 @@ export interface ProspectRecord {
   title?: string;
   domain?: string;
   url?: string;
+  created_at?: string;
   description?: string;
   prospect_status?: string;
   sales_readiness_score?: number;

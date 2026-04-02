@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import LazyBrowserModal from "@/components/BrowserModal/LazyBrowserModal";
 import { useExtensionInstallState } from "@/hooks/useExtensionInstallState";
 import { useWebsiteSessionState } from "@/hooks/useWebsiteSessionState";
+import AccountMenu from "./AccountMenu";
 import DesktopNav from "./DesktopNav";
 import HeaderGlobalStyles from "./HeaderGlobalStyles";
 import Logo from "./Logo";
@@ -22,16 +23,20 @@ const Header = () => {
   const isHomePage = pathname === "/";
   const hideAuthCta = pathname === "/signin";
   const { installed } = useExtensionInstallState();
-  const { signedIn, loading } = useWebsiteSessionState(installed);
+  const { signedIn, loading, profile } = useWebsiteSessionState(installed);
 
   const ctaLabel = installed ? (loading ? "Sign in" : signedIn ? "Sign out" : "Sign in") : "Get Extension";
 
+  const handleSignOut = async () => {
+    const { getSupabaseClient } = await import("@/utils/supabaseClient");
+    const supabase = getSupabaseClient();
+    window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
+    await supabase.auth.signOut();
+  };
+
   const handleCtaClick = async () => {
     if (installed && signedIn) {
-      const { getSupabaseClient } = await import("@/utils/supabaseClient");
-      const supabase = getSupabaseClient();
-      window.postMessage({ type: "SIGNALIZE_WEBSITE_SIGN_OUT" }, window.location.origin);
-      await supabase.auth.signOut();
+      await handleSignOut();
       return;
     }
     if (installed) {
@@ -60,7 +65,15 @@ const Header = () => {
           <div className="hidden gap-2 lg:flex">
             <ThemeToggler />
           </div>
-          {!hideAuthCta ? (
+          {!hideAuthCta && installed && signedIn && profile ? (
+            <AccountMenu
+              name={profile.name}
+              avatarUrl={profile.avatarUrl}
+              sticky={sticky}
+              onSignOut={() => void handleSignOut()}
+            />
+          ) : null}
+          {!hideAuthCta && (!installed || !signedIn || !profile) ? (
             <button
               onClick={() => void handleCtaClick()}
               className={`hidden items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg lg:flex ${
@@ -107,6 +120,9 @@ const Header = () => {
           pathname={pathname}
           ctaLabel={hideAuthCta ? null : ctaLabel}
           onCtaClick={() => void handleCtaClick()}
+          signedIn={signedIn}
+          accountName={profile?.name || null}
+          avatarUrl={profile?.avatarUrl || null}
         />
       </header>
 
