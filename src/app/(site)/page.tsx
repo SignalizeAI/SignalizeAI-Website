@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     absolute: "SignalizeAI | Home",
   },
   description:
-    "Sell to any company. SignalizeAI gives you sales-ready insights and outreach in seconds.",
+    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -67,11 +67,11 @@ export default function Home() {
         <h2>Key Capabilities</h2>
 
         <p>
-          SignalizeAI gives you sales-ready insights and outreach in seconds.
+          SignalizeAI helps you find the right angle faster.
         </p>
 
         <p>
-          That means faster targeting, sharper messaging, and less manual prep
+          That means clearer targeting, sharper messaging, and less manual prep
           before outreach.
         </p>
 

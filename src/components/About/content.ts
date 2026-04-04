@@ -9,7 +9,7 @@ export const workflowSteps = [
     label: "2",
     title: "Run SignalizeAI",
     description:
-      "Get sales-ready insights and outreach in seconds.",
+      "Get clear strategy, targeting, and outreach without guessing.",
   },
   {
     label: "3",

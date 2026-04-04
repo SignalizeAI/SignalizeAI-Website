@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     template: "%s | SignalizeAI",
   },
   description:
-    "Sell to any company. Get sales-ready insights and outreach in seconds.",
+    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
   openGraph: {
     title: "SignalizeAI",
     description:
-      "Sell to any company. Get sales-ready insights and outreach in seconds.",
+      "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
     url: "https://signalizeai.org",
     siteName: "SignalizeAI",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SignalizeAI",
     description:
-      "Sell to any company. Get sales-ready insights and outreach in seconds.",
+      "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
   },
   robots: {
     index: true,

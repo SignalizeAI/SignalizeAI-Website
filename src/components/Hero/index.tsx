@@ -28,14 +28,14 @@ const Hero = () => {
               </div>
 
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
-                Sell to any company <br className="hidden sm:block" />
+                Find the right angle to sell to any company <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-accent">
                   in seconds
                 </span>
               </h1>
 
               <p className="mx-auto mb-10 max-w-[650px] text-lg font-normal text-slate-600 dark:text-white/70 sm:text-xl sm:leading-relaxed">
-                Get sales-ready insights and outreach in seconds.
+                Get clear strategy, targeting, and outreach you can actually use without guessing.
               </p>
 
               <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
