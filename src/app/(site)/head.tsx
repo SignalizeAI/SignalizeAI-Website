@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <meta
         name="description"
-        content="Sell to any company. Get sales-ready insights and outreach in seconds."
+        content="Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing."
       />
     </>
   );

@@ -5,7 +5,7 @@ import { audienceCards, principles } from "./content";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn how SignalizeAI helps teams sell to any company with sales-ready insights and outreach.",
+    "Learn how SignalizeAI helps teams find the right angle to sell to any company with clear strategy, targeting, and outreach.",
 };
 
 const AboutPage = () => {

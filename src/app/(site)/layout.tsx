@@ -8,7 +8,7 @@ const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"));
 
 export const metadata: Metadata = {
   description:
-    "Sell to any company. Get sales-ready insights and outreach in seconds.",
+    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
 };
 
 export default function SiteLayout({

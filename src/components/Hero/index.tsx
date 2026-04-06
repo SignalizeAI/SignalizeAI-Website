@@ -3,6 +3,8 @@ import Link from "next/link";
 import { heroUsers } from "./content";
 import HeroInstallButtons from "./HeroInstallButtons";
 
+const HERO_VIDEO_URL = "https://www.youtube.com/embed/As31_p3I4jY?rel=0";
+
 const Hero = () => {
   return (
     <section
@@ -24,18 +26,18 @@ const Hero = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </span>
-                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.4.0 is now live</span>
+                <span className="text-sm font-medium text-slate-800 dark:text-white/90">SignalizeAI v5.4.1 is now live</span>
               </div>
 
               <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[64px] lg:leading-[1.1]">
-                Sell to any company <br className="hidden sm:block" />
+                Find the right angle to sell to any company <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-accent">
                   in seconds
                 </span>
               </h1>
 
               <p className="mx-auto mb-10 max-w-[650px] text-lg font-normal text-slate-600 dark:text-white/70 sm:text-xl sm:leading-relaxed">
-                Get sales-ready insights and outreach in seconds.
+                Get clear strategy, targeting, and outreach you can actually use without guessing.
               </p>
 
               <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
@@ -92,14 +94,14 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
-                  <Image
-                    src="/images/hero/hero-image.png"
-                    alt="SignalizeAI Hero Image"
-                    fill
-                    sizes="(max-width: 1023px) 100vw, 1000px"
-                    quality={80}
-                    className="object-cover object-center opacity-90 transition-opacity hover:opacity-100"
-                    priority
+                  <iframe
+                    src={HERO_VIDEO_URL}
+                    title="SignalizeAI demo video"
+                    className="absolute inset-0 h-full w-full"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   />
                 </div>
               </div>
