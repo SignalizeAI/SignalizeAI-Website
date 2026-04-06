@@ -3,6 +3,8 @@ import Link from "next/link";
 import { heroUsers } from "./content";
 import HeroInstallButtons from "./HeroInstallButtons";
 
+const HERO_VIDEO_URL = "https://www.youtube.com/embed/As31_p3I4jY?rel=0";
+
 const Hero = () => {
   return (
     <section
@@ -92,14 +94,14 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="relative aspect-[16/9] w-full overflow-hidden">
-                  <Image
-                    src="/images/hero/hero-image.png"
-                    alt="SignalizeAI Hero Image"
-                    fill
-                    sizes="(max-width: 1023px) 100vw, 1000px"
-                    quality={80}
-                    className="object-cover object-center opacity-90 transition-opacity hover:opacity-100"
-                    priority
+                  <iframe
+                    src={HERO_VIDEO_URL}
+                    title="SignalizeAI demo video"
+                    className="absolute inset-0 h-full w-full"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   />
                 </div>
               </div>
