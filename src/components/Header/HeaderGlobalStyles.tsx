@@ -35,7 +35,7 @@ export default function HeaderGlobalStyles() {
         left: 18%;
         width: 64%;
         height: 6px;
-        background: linear-gradient(90deg, rgba(26, 35, 126, 0.2), rgba(0, 229, 255, 0.2));
+        background: linear-gradient(90deg, rgba(59, 91, 253, 0.25), rgba(34, 211, 238, 0.25));
         filter: blur(5px);
         opacity: 0.35;
         z-index: -1;

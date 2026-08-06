@@ -23,7 +23,7 @@ const teaserPlans = teaserPlanOrder
   .filter((product): product is Price => Boolean(product));
 
 const PricingTeaser = () => (
-  <div className="relative overflow-hidden rounded-[2.8rem] border border-slate-200/80 bg-white/75 px-4 py-6 shadow-[0_35px_90px_-50px_rgba(15,23,42,0.22)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_35px_90px_-50px_rgba(0,0,0,0.75)] sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+  <div className="relative overflow-hidden rounded-2xl border border-black/8 bg-white/75 px-4 py-6 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03] sm:px-6 sm:py-8 lg:px-8 lg:py-10">
     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.1),transparent_28%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.14),transparent_28%)]" />
     <div className="relative">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
@@ -33,7 +33,7 @@ const PricingTeaser = () => (
           const priceDisplay = formatMonthlyPrice(product, true);
 
           return (
-            <div key={index} className={`relative h-full overflow-hidden rounded-[2rem] border p-8 shadow-lg transition duration-300 hover:-translate-y-1 ${meta.cardClassName}`}>
+            <div key={index} className={`relative h-full overflow-hidden rounded-2xl border p-8 transition duration-300 hover:-translate-y-1 ${meta.cardClassName}`}>
               {planName === "team" && (
                 <>
                   <div className="absolute left-0 top-0 h-28 w-28 rounded-full bg-primary/20 blur-3xl" />
@@ -51,9 +51,9 @@ const PricingTeaser = () => (
                   {meta.badge}
                 </span>
               </div>
-              <h3 className={`mt-6 text-3xl font-black tracking-tight ${meta.textClassName}`}>{priceDisplay}</h3>
+              <h3 className={`mt-6 display text-3xl font-extrabold ${meta.textClassName}`}>{priceDisplay}</h3>
               <p className={`mt-4 text-sm leading-7 ${meta.mutedTextClassName}`}>{teaserDescriptions[planName]}</p>
-              <div className={`mt-6 rounded-[1.5rem] border p-5 ${meta.surfaceClassName} ${meta.borderClassName}`}>
+              <div className={`mt-6 rounded-2xl border p-5 ${meta.surfaceClassName} ${meta.borderClassName}`}>
                 <div className="grid gap-3">
                   {teaserOfferMap[planName].map((offerText) => (
                     <div key={offerText} className={`flex items-start gap-3 text-sm leading-7 ${meta.mutedTextClassName}`}>
@@ -68,7 +68,7 @@ const PricingTeaser = () => (
         })}
       </div>
 
-      <div className="mx-auto mt-4 max-w-5xl overflow-hidden rounded-[2.4rem] border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-[#0a0a0a]">
+      <div className="mx-auto mt-4 max-w-5xl overflow-hidden rounded-2xl border border-black/8 bg-white dark:border-white/10 dark:bg-dark-2">
         <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="relative overflow-hidden px-8 py-8 sm:px-10 sm:py-10">
             <div className="absolute -left-16 top-0 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
@@ -77,17 +77,17 @@ const PricingTeaser = () => (
               <span className="inline-flex rounded-full border border-primary/15 bg-primary/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary dark:border-accent/20 dark:bg-accent/10 dark:text-accent">
                 Full comparison
               </span>
-              <h3 className="mt-5 text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+              <h3 className="mt-5 display text-3xl font-extrabold text-ink dark:text-white sm:text-4xl">
                 Need the exact plan details before you choose?
               </h3>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600 dark:text-white/65">
+              <p className="mt-4 max-w-2xl text-base leading-8 text-muted dark:text-white/65">
                 Open the dedicated pricing page for the full comparison, billing flow, and plan-specific detail without crowding the homepage.
               </p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {pricingHighlights.map((highlight) => (
                   <div
                     key={highlight}
-                    className="rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-white/70"
+                    className="rounded-2xl border border-black/8 bg-black/[0.02] px-4 py-3 text-sm font-medium text-muted dark:border-white/10 dark:bg-white/5 dark:text-white/70"
                   >
                     {highlight}
                   </div>
@@ -96,18 +96,18 @@ const PricingTeaser = () => (
             </div>
           </div>
 
-          <div className="border-t border-slate-200 bg-slate-950 px-8 py-8 text-white dark:border-white/10 dark:bg-white dark:text-slate-950 lg:border-l lg:border-t-0 sm:px-10 sm:py-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 dark:text-slate-600">
+          <div className="border-t border-black/8 bg-ink px-8 py-8 text-white dark:border-white/10 dark:bg-white dark:text-ink lg:border-l lg:border-t-0 sm:px-10 sm:py-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 dark:text-muted">
               Next step
             </p>
-            <h4 className="mt-4 text-2xl font-black tracking-tight">Open pricing and choose with confidence</h4>
-            <p className="mt-5 text-sm leading-7 text-white/70 dark:text-slate-600">
+            <h4 className="mt-4 display text-2xl font-extrabold">Open pricing and choose with confidence</h4>
+            <p className="mt-5 text-sm leading-7 text-white/70 dark:text-muted">
               Use the pricing page when you want the full plan breakdown, exact limits, and subscription flow in one place.
             </p>
             <Link
               href="/pricing"
               prefetch={false}
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 transition hover:scale-[1.02] hover:bg-slate-200 dark:bg-slate-950 dark:text-white dark:hover:bg-slate-800"
+              className="mt-8 inline-flex items-center justify-center rounded-2xl bg-white px-7 py-3.5 text-sm font-semibold text-ink transition hover:bg-black/[0.06] dark:bg-primary dark:text-white dark:hover:bg-primary-deep"
             >
               View all plans
             </Link>

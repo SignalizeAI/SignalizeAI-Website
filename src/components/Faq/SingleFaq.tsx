@@ -8,7 +8,7 @@ const SingleFaq = (props: SingleFaqProps) => {
   return (
     <>
       <div className="mb-12 flex lg:mb-17.5 group">
-        <div className="mr-4 flex h-12.5 w-full max-w-12.5 items-center justify-center rounded-xl bg-blue-100/50 dark:bg-gradient-to-br dark:from-[#3b82f6]/20 dark:to-[#00e5ff]/20 text-blue-600 dark:text-[#00e5ff] transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 dark:group-hover:from-[#3b82f6] dark:group-hover:to-[#00e5ff] group-hover:text-white sm:mr-6 sm:h-15 sm:max-w-15">
+        <div className="mr-4 flex h-12.5 w-full max-w-12.5 items-center justify-center rounded-xl bg-primary/10 dark:bg-accent/10 text-primary dark:text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-primary dark:group-hover:bg-accent dark:group-hover:text-dark group-hover:text-white sm:mr-6 sm:h-15 sm:max-w-15">
           <svg
             width="32"
             height="32"
@@ -21,10 +21,10 @@ const SingleFaq = (props: SingleFaqProps) => {
           </svg>
         </div>
         <div className="w-full">
-          <h3 className="mb-4 text-xl font-semibold text-slate-900 dark:text-white sm:text-2xl lg:text-xl xl:text-2xl transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-[#00e5ff]">
+          <h3 className="mb-4 text-xl font-semibold text-ink dark:text-white sm:text-2xl lg:text-xl xl:text-2xl transition-colors duration-300 group-hover:text-primary dark:group-hover:text-accent">
             {question}
           </h3>
-          <p className="text-base text-slate-600 dark:text-white/60 leading-relaxed">{answer}</p>
+          <p className="text-base text-muted dark:text-white/60 leading-relaxed">{answer}</p>
         </div>
       </div>
     </>

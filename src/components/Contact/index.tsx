@@ -12,7 +12,7 @@ const Contact = ({ variant = "home" }: { variant?: "home" | "page" }) => {
   return (
     <section
       id="contact"
-      className={`relative bg-gray-50 dark:bg-[#000000] ${
+      className={`relative bg-black/[0.02] dark:bg-dark ${
         isPageVariant ? "overflow-hidden pb-20 pt-28 md:pb-24 md:pt-32 lg:pb-28 lg:pt-36" : "py-16 md:py-20 lg:py-[120px]"
       }`}
     >
@@ -23,14 +23,14 @@ const Contact = ({ variant = "home" }: { variant?: "home" | "page" }) => {
         </>
       )}
       {!isPageVariant && (
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-t from-gray-100 to-gray-50 dark:from-[#000000] dark:to-[#0a0a0a]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-t from-black/[0.04] to-transparent dark:from-dark dark:to-dark" />
       )}
 
       <div className="container relative z-10 max-w-7xl px-4">
         {!isPageVariant && <ContactIntro />}
 
         {isPageVariant && (
-          <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-gray-200 bg-white/92 p-6 shadow-[0_32px_80px_-48px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-[#0b0b0b]/92 dark:shadow-[0_32px_80px_-48px_rgba(0,0,0,0.7)] sm:p-8 lg:p-10">
+          <div className="mx-auto max-w-7xl rounded-2xl border border-black/8 bg-white/92 p-6 shadow-[0_32px_80px_-48px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-dark-2/92 dark:shadow-[0_32px_80px_-48px_rgba(0,0,0,0.7)] sm:p-8 lg:p-10">
             <div className="grid h-full gap-8 xl:grid-cols-[minmax(0,0.82fr)_minmax(460px,1.18fr)]">
               <div className="space-y-8">
                 <ContactIntro variant="page" />

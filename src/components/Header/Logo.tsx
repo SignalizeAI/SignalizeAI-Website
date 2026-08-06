@@ -19,7 +19,7 @@ const Logo = () => (
         className="hidden object-contain dark:block"
       />
     </div>
-    <span className="text-lg font-bold tracking-tight text-slate-900 transition-all duration-300 dark:text-white">
+    <span className="text-lg font-bold tracking-tight text-ink transition-all duration-300 dark:text-white">
       Signalize<span className="text-primary dark:text-accent">AI</span>
     </span>
   </Link>

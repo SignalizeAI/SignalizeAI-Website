@@ -4,7 +4,7 @@ export const installLinks = [
     href: "https://chromewebstore.google.com/detail/nhgeihbbpdnhcfccedpnkionaofdpaib",
     icon: "/images/browser/chrome.svg",
     className:
-      "group relative flex w-full max-w-[280px] items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 text-base font-bold text-black shadow-xl ring-1 ring-gray-200 transition-all hover:scale-[1.02] active:scale-95 dark:bg-white dark:text-black dark:ring-0 sm:w-auto sm:max-w-none sm:px-8 sm:py-5 sm:text-lg",
+      "group relative flex w-full items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-primary-deep active:scale-[0.99] sm:w-auto sm:px-7",
     glow: true,
   },
   {
@@ -12,8 +12,40 @@ export const installLinks = [
     href: "https://addons.mozilla.org/en-US/firefox/addon/signalizeai/",
     icon: "/images/browser/firefox.svg",
     className:
-      "group relative flex w-full max-w-[280px] items-center justify-center gap-3 rounded-2xl border-2 border-slate-200 bg-black/5 px-6 py-4 text-base font-bold text-slate-900 backdrop-blur-lg transition-all hover:scale-[1.02] hover:border-slate-400 hover:bg-black/10 active:scale-95 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/10 sm:w-auto sm:max-w-none sm:px-8 sm:py-5 sm:text-lg",
+      "group relative flex w-full items-center justify-center gap-3 rounded-2xl border border-black/8 bg-white px-6 py-3.5 text-base font-semibold text-ink transition-all hover:border-primary/40 hover:bg-black/[0.02] active:scale-[0.99] dark:border-white/10 dark:bg-dark-2 dark:text-white dark:hover:border-accent/40 dark:hover:bg-dark-3 sm:w-auto sm:px-7",
   },
 ];
 
+/** Factual chips shown under the hero CTAs. No invented social proof. */
+export const heroTrustChips = [
+  "Chrome Web Store",
+  "Firefox Add-ons",
+  "Free plan available",
+];
+
+/** Mock of a real prospect record, mirroring the outputs listed in /docs. */
+export const heroProspectRecord = {
+  domain: "northwind-logistics.com",
+  status: "Analyzed",
+  fields: [
+    {
+      label: "Target customer",
+      value:
+        "Mid-market freight brokers and 3PLs running 50-500 loads a week.",
+    },
+    {
+      label: "Value proposition",
+      value:
+        "Cuts manual load matching by consolidating carrier capacity into one live board.",
+    },
+    {
+      label: "Best persona",
+      value: "VP Operations / Head of Carrier Sales",
+    },
+  ],
+  outreach:
+    "Noticed you position the live board around carrier capacity. Most brokers we talk to lose hours reconciling that by hand. Worth a look at how your team handles it today?",
+};
+
+/** Retained for the auth entry screen (`(auth)/AuthEntryClient.tsx`). */
 export const heroUsers = [1, 2, 3, 4, 5];
