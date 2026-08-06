@@ -3,34 +3,32 @@ import { heroHeadline, heroSubhead, heroTrustChips } from "./content";
 import HeroInstallButtons from "./HeroInstallButtons";
 import HeroProductMock from "./HeroProductMock";
 
-const HERO_VIDEO_URL = "https://www.youtube.com/embed/As31_p3I4jY?rel=0";
-
 const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-white pb-16 pt-[110px] dark:bg-dark md:pt-[140px] lg:pb-24 lg:pt-[170px]"
+      className="dark:bg-dark relative overflow-hidden bg-white pt-[110px] pb-16 md:pt-[140px] lg:pt-[170px] lg:pb-24"
     >
-      <div className="glow left-[-10%] top-[-12%] h-[420px] w-[560px] bg-primary/25" />
-      <div className="glow right-[-8%] top-[6%] h-[380px] w-[460px] bg-accent/20" />
+      <div className="glow bg-primary/25 top-[-12%] left-[-10%] h-[420px] w-[560px]" />
+      <div className="glow bg-accent/20 top-[6%] right-[-8%] h-[380px] w-[460px]" />
 
-      <div className="container relative">
+      <div className="relative container">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 xl:gap-16">
           {/* left column */}
           <div className="max-w-[640px]">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-black/[0.03] px-3 py-1.5 text-xs font-semibold text-ink/70 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="text-ink/70 inline-flex items-center gap-2 rounded-full border border-black/8 bg-black/[0.03] px-3 py-1.5 text-xs font-semibold dark:border-white/10 dark:bg-white/5 dark:text-white/70">
+              <span className="bg-accent h-1.5 w-1.5 rounded-full" />
               SignalizeAI v5.4.1 is now live
             </span>
 
-            <h1 className="display mt-6 text-balance text-[32px] font-extrabold leading-[1.12] text-ink dark:text-white sm:text-[42px] lg:text-[50px]">
+            <h1 className="display text-ink mt-6 text-[32px] leading-[1.12] font-extrabold text-balance sm:text-[42px] lg:text-[50px] dark:text-white">
               {heroHeadline.lead}{" "}
               <span className="text-primary dark:text-accent">
                 {heroHeadline.highlight}
               </span>
             </h1>
 
-            <p className="mt-6 max-w-[560px] text-base leading-8 text-muted dark:text-white/65 sm:text-lg">
+            <p className="text-muted mt-6 max-w-[560px] text-base leading-8 sm:text-lg dark:text-white/65">
               {heroSubhead}
             </p>
 
@@ -43,10 +41,10 @@ const Hero = () => {
               {heroTrustChips.map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center gap-2 rounded-full border border-black/8 px-3 py-1.5 text-xs font-medium text-muted dark:border-white/10 dark:text-white/60"
+                  className="text-muted inline-flex items-center gap-2 rounded-full border border-black/8 px-3 py-1.5 text-xs font-medium dark:border-white/10 dark:text-white/60"
                 >
                   <svg
-                    className="h-3.5 w-3.5 text-primary dark:text-accent"
+                    className="text-primary dark:text-accent h-3.5 w-3.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -69,7 +67,7 @@ const Hero = () => {
                 href="https://www.producthunt.com/products/signalizeai/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_campaign=product_review-badge-signalizeai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-muted underline-offset-4 transition hover:text-primary hover:underline dark:text-white/60 dark:hover:text-accent"
+                className="text-muted hover:text-primary dark:hover:text-accent inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 transition hover:underline dark:text-white/60"
               >
                 Review us on Product Hunt
                 <span aria-hidden="true">↗</span>
@@ -80,28 +78,6 @@ const Hero = () => {
           {/* right column: product visual */}
           <div className="flex justify-center lg:justify-end">
             <HeroProductMock />
-          </div>
-        </div>
-
-        {/* secondary: demo video, below the fold */}
-        <div className="mt-16 lg:mt-24">
-          <div className="mx-auto max-w-[900px]">
-            <p className="field-label mb-3 text-center text-muted dark:text-white/45">
-              Watch the walkthrough
-            </p>
-            <div className="overflow-hidden rounded-2xl border border-black/8 bg-white dark:border-white/10 dark:bg-dark-2">
-              <div className="relative aspect-video w-full">
-                <iframe
-                  src={HERO_VIDEO_URL}
-                  title="SignalizeAI demo video"
-                  className="absolute inset-0 h-full w-full"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
