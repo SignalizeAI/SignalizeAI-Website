@@ -16,35 +16,50 @@ export const installLinks = [
   },
 ];
 
+/**
+ * Hero headline and subhead. Kept here so copy changes do not touch layout.
+ * Claims must stay inside what the product actually does: scheduled re-checks
+ * of public pages while the browser is running. No real-time or email promises.
+ */
+export const heroHeadline = {
+  lead: "Know when your accounts change,",
+  highlight: "so you always have a reason to reach out.",
+};
+
+export const heroSubhead =
+  "Save the companies you sell to. SignalizeAI re-checks their pricing, careers, and homepage messaging on a schedule, then tells you what changed since last time with the outreach angle already written.";
+
 /** Factual chips shown under the hero CTAs. No invented social proof. */
 export const heroTrustChips = [
   "Chrome Web Store",
   "Firefox Add-ons",
+  "Public pages only",
   "Free plan available",
 ];
 
-/** Mock of a real prospect record, mirroring the outputs listed in /docs. */
+/** Mock of a change alert, mirroring the change types the product detects. */
 export const heroProspectRecord = {
   domain: "northwind-logistics.com",
-  status: "Analyzed",
+  status: "Change detected",
+  panelLabel: "Change detected",
   fields: [
     {
-      label: "Target customer",
+      label: "What changed",
       value:
-        "Mid-market freight brokers and 3PLs running 50-500 loads a week.",
+        "Pricing page: the Starter tier moved from $49 to $79 a month, and a new Enterprise tier appeared.",
     },
     {
-      label: "Value proposition",
+      label: "Also picked up",
       value:
-        "Cuts manual load matching by consolidating carrier capacity into one live board.",
+        "Careers page added two roles: Enterprise Account Executive and RevOps Manager.",
     },
     {
-      label: "Best persona",
-      value: "VP Operations / Head of Carrier Sales",
+      label: "Checked",
+      value: "6 days ago, then again today",
     },
   ],
   outreach:
-    "Noticed you position the live board around carrier capacity. Most brokers we talk to lose hours reconciling that by hand. Worth a look at how your team handles it today?",
+    "Saw you added an Enterprise tier and started hiring an Enterprise AE. Usually that means the old onboarding flow starts creaking. Worth comparing notes on how you are handling it?",
 };
 
 /** Retained for the auth entry screen (`(auth)/AuthEntryClient.tsx`). */

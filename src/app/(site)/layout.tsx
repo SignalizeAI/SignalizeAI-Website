@@ -8,7 +8,7 @@ const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"));
 
 export const metadata: Metadata = {
   description:
-    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
+    "Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time.",
 };
 
 export default function SiteLayout({

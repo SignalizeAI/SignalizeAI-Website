@@ -17,9 +17,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Sales-ready page brief",
+    title: "Account change detection",
     paragraph:
-      "Turn any company page into a sharp sales brief with positioning, buyer cues, and outreach context.",
+      "Saved accounts get re-checked on a schedule. You see what moved on pricing, hiring, or homepage messaging since the last check.",
     btn: "",
     btnLink: "",
   },
@@ -39,9 +39,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Targeting and pitch angle",
+    title: "Openers written from the change",
     paragraph:
-      "See who to target and how to frame your pitch so outreach lands faster.",
+      "Every detected change comes with a suggested first line, plus full outreach emails and follow-ups when you want them.",
     btn: "",
     btnLink: "",
   },
@@ -93,9 +93,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Who to target next",
+    title: "Sales brief on any site",
     paragraph:
-      "Spot sales readiness, best-fit persona, and the strongest reason to reach out now.",
+      "Run a check on any public company page for what they do, who they sell to, the best persona, and the angle to lead with.",
     btn: "",
     btnLink: "",
   },
@@ -127,9 +127,9 @@ const featuresData: Feature[] = [
         />
       </svg>
     ),
-    title: "Save, filter, and export",
+    title: "Build the list, then watch it",
     paragraph:
-      "Save high-fit accounts, filter fast, and export what your team needs to act.",
+      "Batch prospect a pasted list or CSV, save the accounts worth tracking, and export to CSV or Excel on supported plans.",
     btn: "",
     btnLink: "",
   },

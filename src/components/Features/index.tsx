@@ -13,8 +13,8 @@ const Features = () => {
         <div className="mb-16 lg:mb-24 flex justify-center">
           <SectionTitle
             subtitle="Capabilities"
-            title="What SignalizeAI gives you on every run"
-            paragraph="Move from raw website copy to a useful sales brief with summaries, targeting context, readiness signals, and saved or exportable research."
+            title="Change detection first, research underneath it"
+            paragraph="The brief is how you start an account. Watching it is how you keep a reason to reach out every month after that."
             center
             width="800px"
           />

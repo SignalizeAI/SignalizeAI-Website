@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <meta
         name="description"
-        content="Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing."
+        content="Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time."
       />
     </>
   );

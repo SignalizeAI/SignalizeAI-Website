@@ -1,15 +1,15 @@
 export const teaserPlanOrder = ["Free", "Pro", "Team"];
 
 export const teaserDescriptions: Record<string, string> = {
-  free: "Start with quick checks, saved prospects, and lightweight outreach.",
-  pro: "Run batch prospecting with larger saved capacity, website prospect access, and export-ready workflow.",
-  team: "Scale outbound faster with higher-volume prospecting, outreach, and follow-up workflows.",
+  free: "Watch 3 accounts with weekly checks, plus quick research and outreach drafts.",
+  pro: "Watch 100 accounts with checks every 48 hours, 90 days of history, batch prospecting, and export.",
+  team: "Watch 1000 accounts with daily checks, 365 days of history, and the largest batch and research limits.",
 };
 
 export const teaserMeta = {
   free: {
     eyebrow: "Starter",
-    summary: "Single-site checks",
+    summary: "3 watched accounts",
     badge: "Free",
     eyebrowClassName: "text-primary dark:text-accent",
     badgeClassName: "bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent",
@@ -22,7 +22,7 @@ export const teaserMeta = {
   },
   pro: {
     eyebrow: "Best for reps",
-    summary: "Batch + saved workflow",
+    summary: "100 watched, 48h checks",
     badge: "Popular",
     eyebrowClassName: "text-primary dark:text-accent",
     badgeClassName: "bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent",
@@ -36,7 +36,7 @@ export const teaserMeta = {
   },
   team: {
     eyebrow: "For teams",
-    summary: "Higher-volume research",
+    summary: "1000 watched, daily checks",
     badge: "Scale",
     eyebrowClassName: "text-cyan-300 dark:text-accent",
     badgeClassName: "bg-white/10 text-white dark:bg-accent/15 dark:text-accent",
@@ -52,28 +52,28 @@ export const teaserMeta = {
 
 export const teaserOfferMap: Record<string, string[]> = {
   free: [
+    "Watch up to 3 accounts, checked weekly",
     "Generate insights for 5 prospects/day",
-    "Save up to 3 prospects",
+    "Save up to 25 prospects",
     "Generate outreach emails and follow-ups",
-    "Open saved prospects on the website",
   ],
   pro: [
+    "Watch up to 100 accounts, checked every 48 hours",
+    "90 days of change history",
     "Generate insights for 50 prospects/day",
-    "Save up to 200 prospects",
     "Batch prospecting up to 10 URLs/run",
-    "Open saved prospects on the website",
   ],
   team: [
+    "Watch up to 1000 accounts, checked daily",
+    "365 days of change history",
     "Generate insights for 500 prospects/day",
-    "Save up to 5000 prospects",
     "Batch prospecting up to 50 URLs/run",
-    "Open saved prospects on the website",
   ],
 };
 
 export const pricingHighlights = [
   "Full plan-by-plan comparison",
   "Billing and subscription actions",
-  "Exact limits for batch, saves, website prospect access, and export",
+  "Exact limits for watched accounts, check frequency, history, batch, and export",
   "Dedicated page without homepage clutter",
 ];

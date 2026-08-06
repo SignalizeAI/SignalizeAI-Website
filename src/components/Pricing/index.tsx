@@ -11,8 +11,8 @@ const Pricing = () => (
       <div className="mb-15">
         <SectionTitle
           subtitle="Pricing"
-          title="Plans for every sales team"
-          paragraph="Choose based on daily prospect volume, batch capacity, saved prospect limits, website prospect access, outreach workflows, and whether your team needs search, filtering, and export."
+          title="Plans priced by how many accounts you watch"
+          paragraph="Choose based on how many accounts you want under watch, how often they get re-checked, how much change history you keep, and whether you need batch prospecting and export."
           center
         />
       </div>

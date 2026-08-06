@@ -9,8 +9,8 @@ export const docsNav = [
 
 export const heroFacts = [
   { label: "Format", value: "Product docs" },
-  { label: "Focus", value: "Prospecting + outreach" },
-  { label: "Scope", value: "Single, batch, and saved workflows" },
+  { label: "Focus", value: "Account monitoring + outreach" },
+  { label: "Scope", value: "Single, batch, saved, and watched workflows" },
 ];
 
 export const browserLinks = [
@@ -45,9 +45,14 @@ export const gettingStartedSteps = [
       "SignalizeAI reads visible page content on demand and converts it into a sales-focused brief instead of generic metadata.",
   },
   {
-    title: "Decide what happens next",
+    title: "Save the account to start watching it",
     description:
-      "Generate outreach, save the prospect, open it on the website, or keep moving through batch prospecting.",
+      "Saving stores the brief and a snapshot of the page content. That snapshot is the baseline every later check is compared against, so an account only gets change detection once it is saved.",
+  },
+  {
+    title: "Read the changes and reach out",
+    description:
+      "On its schedule, SignalizeAI re-reads your watched accounts and shows what moved since the last check, with a suggested opener you can edit.",
   },
 ];
 
@@ -72,6 +77,20 @@ export const workflowCards = [
       "Use when: running prospecting sprints, territory sweeps, or list validation",
       "Expect: queue-style processing from pasted URLs or CSV inputs",
       "Output: standardized per-domain briefs with optional outreach and follow-up generation for fast comparison and triage",
+    ],
+  },
+  {
+    eyebrow: "Ongoing monitoring",
+    title: "Account change detection",
+    description:
+      "Use this when you sell to a named list and need a fresh, specific reason to contact the same accounts again.",
+    points: [
+      "Use when: your accounts are already identified and the problem is what to say, not who to say it to",
+      "Expect: scheduled re-checks of saved accounts, run from your browser while it is open, at a frequency set by your plan",
+      "Output: a change record with the before and after text, the change type, and a one-line suggested opener",
+      "Detects: pricing page changes, new job postings on the careers page, rewritten homepage messaging, and new product pages",
+      "Does not detect: anything behind a login, inside images or PDFs, on sites that block automated requests, or announced somewhere other than the company website",
+      "Not real-time: there are no email alerts, no push notifications, and no guarantee that any individual scheduled check runs on time",
     ],
   },
   {
@@ -124,6 +143,11 @@ export const outputCards = [
       "A directional indicator for how ready the account appears for outreach and why.",
   },
   {
+    title: "Change record",
+    description:
+      "For watched accounts, the before and after text of what moved, the change type (pricing, hiring, messaging, or new page), and a one-line suggested opener built from it.",
+  },
+  {
     title: "Exportable working set",
     description:
       "When supported, saved prospects can become a reusable set for filtering, export, website prospect views, the `/prospects` workspace, and follow-up.",
@@ -144,6 +168,12 @@ export const accessCards = [
       "Used when you need to process multiple domains at once and generate prospect data or outreach across a list.",
   },
   {
+    title: "Account change detection",
+    availability: "All plans, at plan-dependent frequency",
+    description:
+      "Every plan can watch accounts. What changes by plan is how many accounts you can watch, how often they are re-checked (weekly on Free, every 48 hours on Pro, daily on Team), and how much change history is retained.",
+  },
+  {
     title: "Saved prospects",
     availability: "Plan-dependent",
     description:
@@ -152,7 +182,8 @@ export const accessCards = [
 ];
 
 export const privacyPoints = [
-  "SignalizeAI turns public website content into prospect data on demand rather than monitoring general browsing.",
+  "SignalizeAI turns public website content into prospect data rather than monitoring general browsing.",
+  "Scheduled checks only re-read the public pages of accounts you explicitly saved, and they run from your own browser rather than from our servers.",
   "The extension does not collect form inputs, cookies, or private account data.",
   "API keys stay server-side and requests are rate-limited.",
   "Saved prospects are optional and tied to the authenticated user account.",
@@ -207,6 +238,16 @@ export const troubleshootingCards = [
     title: "Saved prospects are missing",
     description:
       "Confirm you are signed in to the same account used when the prospects were created.",
+  },
+  {
+    title: "A watched account has not been checked recently",
+    description:
+      "Checks are scheduled and run inside the browser, so they only happen while the browser is open. If it has been closed, the check runs the next time the browser is running. Sites that block automated requests may also fail a check, which is recorded rather than reported as a change.",
+  },
+  {
+    title: "A reported change looks trivial",
+    description:
+      "Comparison is on public page text, so a small copy edit can register as a messaging change. Use the before and after shown on the change record to judge whether it is worth acting on, and dismiss the ones that are not.",
   },
   {
     title: "Outreach or follow-ups are missing",

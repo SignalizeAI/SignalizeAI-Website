@@ -6,9 +6,12 @@ export const pricingData: Price[] = [
     unit_amount: 0,
     nickname: "Free",
     offers: [
+      "Watch up to 3 accounts for changes",
+      "Weekly change checks",
+      { text: "Change history beyond the latest snapshot", available: false },
       "Generate insights for 5 prospects/day",
       "Generate outreach emails and follow-ups",
-      "Save up to 3 prospects",
+      "Save up to 25 prospects",
       { text: "Batch prospecting", available: false },
       "Open saved prospects on the website",
       {
@@ -26,6 +29,9 @@ export const pricingData: Price[] = [
     nickname: "Team",
     offers: [
       "All Pro features",
+      "Watch up to 1000 accounts for changes",
+      "Daily change checks",
+      "365 days of change history",
       "Generate insights for 500 prospects/day",
       "Save up to 5000 prospects",
       "Batch prospecting up to 50 URLs/run",
@@ -42,6 +48,9 @@ export const pricingData: Price[] = [
     nickname: "Pro",
     offers: [
       "All Free features",
+      "Watch up to 100 accounts for changes",
+      "Change checks every 48 hours",
+      "90 days of change history",
       "Generate insights for 50 prospects/day",
       "Save up to 200 prospects",
       "Batch prospecting up to 10 URLs/run",

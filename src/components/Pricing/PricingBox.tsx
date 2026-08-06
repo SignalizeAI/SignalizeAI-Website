@@ -15,9 +15,9 @@ interface PricingBoxProps {
 }
 
 const planDescriptions: Record<string, string> = {
-  free: "For individual reps testing quick website checks, saved prospects, and lightweight outreach.",
-  pro: "For solo operators or small teams that need batch prospecting, website prospect access, saved prospects, and export.",
-  team: "For higher-volume teams running larger target lists with broader saved prospect capacity and deeper outreach workflows.",
+  free: "For one person starting a watch list: 3 accounts checked weekly, plus quick research and outreach drafts.",
+  pro: "For anyone running outbound against a real account list: 100 watched accounts, checks every 48 hours, and 90 days of history.",
+  team: "For larger target lists: 1000 watched accounts, daily checks, a full year of change history, and the biggest batch limits.",
 };
 
 const PricingBox = ({ product, currentPlan, isHighlighted, onMouseEnter, onMouseLeave }: PricingBoxProps) => {

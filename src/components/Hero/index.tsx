@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { heroTrustChips } from "./content";
+import { heroHeadline, heroSubhead, heroTrustChips } from "./content";
 import HeroInstallButtons from "./HeroInstallButtons";
 import HeroProductMock from "./HeroProductMock";
 
@@ -23,14 +23,15 @@ const Hero = () => {
               SignalizeAI v5.4.1 is now live
             </span>
 
-            <h1 className="display mt-6 text-[34px] font-extrabold text-ink dark:text-white sm:text-5xl lg:text-[56px]">
-              Find the right angle to sell to any company{" "}
-              <span className="text-primary dark:text-accent">in seconds</span>
+            <h1 className="display mt-6 text-balance text-[32px] font-extrabold leading-[1.12] text-ink dark:text-white sm:text-[42px] lg:text-[50px]">
+              {heroHeadline.lead}{" "}
+              <span className="text-primary dark:text-accent">
+                {heroHeadline.highlight}
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-[520px] text-base leading-8 text-muted dark:text-white/65 sm:text-lg">
-              Get clear strategy, targeting, and outreach you can actually use
-              without guessing.
+            <p className="mt-6 max-w-[560px] text-base leading-8 text-muted dark:text-white/65 sm:text-lg">
+              {heroSubhead}
             </p>
 
             <div className="mt-9">

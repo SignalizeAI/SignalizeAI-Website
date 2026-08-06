@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     template: "%s | SignalizeAI",
   },
   description:
-    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
+    "Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time.",
   openGraph: {
     title: "SignalizeAI",
     description:
-      "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
+      "Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time.",
     url: "https://signalizeai.org",
     siteName: "SignalizeAI",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SignalizeAI",
     description:
-      "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
+      "Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time.",
   },
   robots: {
     index: true,

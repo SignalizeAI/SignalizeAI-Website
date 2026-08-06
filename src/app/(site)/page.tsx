@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     absolute: "SignalizeAI | Home",
   },
   description:
-    "Find the right angle to sell to any company in seconds. Get clear strategy, targeting, and outreach you can actually use without guessing.",
+    "Know when your target accounts change. SignalizeAI turns any company website into a sales brief, then re-checks it and tells you what changed since last time.",
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -55,31 +55,38 @@ export default function Home() {
         <h1>SignalizeAI</h1>
 
         <p>
-          SignalizeAI helps reps and GTM teams turn any business website into a
-          fast, sales-ready brief.
+          SignalizeAI is a B2B sales prospecting and account monitoring
+          extension for Chrome and Firefox. It turns any business website into
+          a sales brief, then watches that account for changes worth reaching
+          out about.
         </p>
 
+        <h2>Account change detection</h2>
+
         <p>
-          It surfaces who to target, how to frame outreach, and what matters
-          before you send the first message.
+          Save the companies you sell to and SignalizeAI re-checks their public
+          pages on a schedule, comparing each read against the last one. It
+          reports pricing page changes, new job postings, rewritten homepage
+          messaging, and new product pages, with a suggested outreach opener
+          written from the change.
         </p>
 
-        <h2>Key Capabilities</h2>
+        <h2>Company research and outreach</h2>
 
         <p>
-          SignalizeAI helps you find the right angle faster.
+          Run a check on any public company page for what they do, their target
+          customer, their value proposition, the buyer persona most likely to
+          care, and a suggested outreach angle. Generate cold outreach emails
+          and follow-up emails from the same record. Batch prospecting handles a
+          pasted list of URLs or a CSV and exports to CSV or Excel.
         </p>
 
-        <p>
-          That means clearer targeting, sharper messaging, and less manual prep
-          before outreach.
-        </p>
-
-        <h2>Who It Is For</h2>
+        <h2>Who it is for</h2>
 
         <p>
-          SignalizeAI is built for reps, founders, and GTM teams who need to
-          decide fast who to target and how to sell.
+          Founders selling their own product, first sales hires, SDRs and AEs at
+          small teams, and agency owners running outbound who already have a
+          named list of target accounts and no research team behind them.
         </p>
       </section>
     </main>

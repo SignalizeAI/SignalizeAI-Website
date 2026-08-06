@@ -1,7 +1,7 @@
 import { heroProspectRecord } from "./content";
 
 const HeroProductMock = () => {
-  const { domain, status, fields, outreach } = heroProspectRecord;
+  const { domain, status, panelLabel, fields, outreach } = heroProspectRecord;
 
   return (
     <div className="relative w-full max-w-[560px]">
@@ -14,7 +14,7 @@ const HeroProductMock = () => {
             <span className="h-2.5 w-2.5 rounded-full bg-black/12 dark:bg-white/15" />
           </div>
           <span className="field-label truncate text-muted dark:text-white/45">
-            Prospect record
+            {panelLabel}
           </span>
         </div>
 
@@ -52,7 +52,7 @@ const HeroProductMock = () => {
         <div className="border-t border-black/8 bg-black/[0.02] px-5 py-4 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="flex items-center justify-between gap-3">
             <p className="field-label text-muted dark:text-white/45">
-              Suggested outreach
+              Suggested opener
             </p>
             <span className="field-label rounded-md border border-black/8 px-1.5 py-0.5 text-muted dark:border-white/10 dark:text-white/45">
               Copy

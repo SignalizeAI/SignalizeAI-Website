@@ -56,8 +56,8 @@ const Footer = () => {
             </Link>
 
             <p className="mt-5 max-w-[460px] text-sm leading-7 text-muted dark:text-white/65">
-              Find the right angle to sell to any company faster with clear
-              strategy, targeting, and outreach from public website content.
+              Know when your accounts change, so you always have a reason to
+              reach out. Built on public website content only.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

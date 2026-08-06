@@ -19,14 +19,15 @@ const About = () => {
             </span>
 
             <h2 className="mt-6 display text-3xl font-extrabold text-ink dark:text-white sm:text-[42px] sm:leading-[1.1]">
-              Prospect faster without turning your workflow into tab chaos.
+              Research an account once. Then keep watching it.
             </h2>
 
             <p className="mt-6 max-w-[620px] text-base leading-8 text-muted dark:text-white/65">
-              SignalizeAI is built for sales and growth teams that need useful
-              context quickly. Instead of manually piecing together website
-              copy, positioning, and buyer signals, the extension gives you a
-              structured read on the business in a few seconds.
+              A one-off summary of a company goes stale the week after you read
+              it. SignalizeAI keeps a record of how each saved account looked
+              last time, so the next time something moves on their pricing,
+              careers, or homepage, you have a specific reason to email instead
+              of a generic one.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -78,25 +79,26 @@ const About = () => {
               />
               <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
-                  Built for live prospecting
+                  Built for a named account list
                 </p>
                 <p className="mt-3 max-w-[320px] text-sm leading-7 text-white/80">
-                  Use quick website checks when you are evaluating one account,
-                  or scale into batch prospecting when the list is bigger.
+                  Analyze one account when you are qualifying it, batch a whole
+                  list when you are building one, then watch the ones that
+                  matter.
                 </p>
               </div>
             </div>
 
             <div className="grid gap-4">
               <div className="rounded-2xl border border-black/8 bg-black/[0.02] p-6 dark:border-white/10 dark:bg-dark-2">
-                <span className="block text-5xl font-extrabold text-ink dark:text-white">
-                  &lt;5s
+                <span className="block text-4xl font-extrabold text-ink dark:text-white">
+                  4 signals
                 </span>
                 <span className="mt-2 block text-base font-semibold text-primary dark:text-accent">
-                  Typical time to insight
+                  Watched on every check
                 </span>
                 <span className="mt-2 block text-sm font-medium text-muted dark:text-white/50">
-                  From active page to sales-ready context
+                  Pricing, hiring, homepage messaging, and new pages
                 </span>
               </div>
 
