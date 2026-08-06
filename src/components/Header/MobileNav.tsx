@@ -47,19 +47,19 @@ const MobileNav = ({
           isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
         }`}
       >
-        <div className="w-full rounded-2xl border border-gray-100 bg-white p-4 shadow-xl dark:border-white/10 dark:bg-[#111111] dark:shadow-2xl">
+        <div className="w-full rounded-2xl border border-black/8 bg-white p-4 shadow-xl dark:border-white/10 dark:bg-dark-2 dark:shadow-2xl">
           <ul className="flex flex-col gap-2">
             {menuData.map((menuItem, index) => {
               if (menuItem.title === "Home" && isHomePage) return null;
               const active = isMenuActive(pathname, menuItem);
               const highlightClass = menuItem.highlight
-                ? "border border-amber-200/80 bg-amber-50 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-100 dark:border-amber-400/20 dark:bg-amber-300/10 dark:text-amber-100 dark:hover:border-amber-300/30 dark:hover:bg-amber-300/15"
+                ? "border border-primary/25 bg-primary/8 text-primary hover:border-primary/40 hover:bg-primary/12 dark:border-accent/25 dark:bg-accent/10 dark:text-accent dark:hover:border-accent/40 dark:hover:bg-accent/15"
                 : "";
               const itemClass = active
-                ? "bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white"
+                ? "bg-black/[0.05] text-ink dark:bg-white/10 dark:text-white"
                 : menuItem.highlight
                   ? highlightClass
-                  : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white";
+                  : "text-muted hover:bg-black/[0.03] hover:text-ink dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white";
 
               return (
                 <li key={index}>
@@ -88,7 +88,7 @@ const MobileNav = ({
                                 prefetch={subItem.prefetch}
                                 target={subItem.newTab ? "_blank" : "_self"}
                                 onClick={(event) => handleLinkClick(event, subItem.path || "")}
-                                className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-[#3b82f6] dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-[#00e5ff]"
+                                className="flex items-center gap-4 rounded-xl px-3 py-2 text-sm font-medium text-muted transition hover:bg-black/[0.03] hover:text-primary dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-accent"
                               >
                                 {subItem.icon && <span className="h-5 w-5 fill-current">{subItem.icon}</span>}
                                 {subItem.title}
@@ -122,14 +122,14 @@ const MobileNav = ({
               </li>
             ) : null}
             {ctaLabel && !signedIn ? (
-              <li className="border-t border-gray-100 pt-3 dark:border-white/10">
+              <li className="border-t border-black/8 pt-3 dark:border-white/10">
                 <button
                   type="button"
                   onClick={() => {
                     closeMenu();
                     onCtaClick();
                   }}
-                  className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#3b82f6] to-[#00e5ff] px-4 py-3 text-sm font-bold text-white transition hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+                  className="flex w-full items-center justify-center rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-primary-deep"
                 >
                   {ctaLabel}
                 </button>

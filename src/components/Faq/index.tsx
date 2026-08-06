@@ -25,7 +25,7 @@ const faqItems = [
         No. SignalizeAI does not track you, run ads, or sell data. We respect{" "}
         <a
           href="/privacy"
-          className="text-blue-700 underline underline-offset-2 hover:text-blue-800 dark:text-[#00e5ff] dark:hover:text-[#6ff3ff]"
+          className="text-primary underline underline-offset-2 hover:text-primary-deep dark:text-accent dark:hover:text-accent/80"
         >
           privacy
         </a>{" "}
@@ -45,7 +45,7 @@ const faqItems = [
         Start with the{" "}
         <Link
           href="/docs"
-          className="text-blue-700 underline underline-offset-2 hover:text-blue-800 dark:text-[#00e5ff] dark:hover:text-[#6ff3ff]"
+          className="text-primary underline underline-offset-2 hover:text-primary-deep dark:text-accent dark:hover:text-accent/80"
         >
           documentation
         </Link>{" "}
@@ -58,7 +58,7 @@ const faqItems = [
 
 const Faq = () => {
   return (
-    <section className="relative z-20 overflow-hidden bg-white dark:bg-[#0a0a0a] pt-16 pb-12 lg:pt-28 lg:pb-20">
+    <section className="relative z-20 overflow-hidden bg-white dark:bg-dark pt-16 pb-12 lg:pt-28 lg:pb-20">
       <div className="container">
         <SectionTitle
           subtitle="FAQ"

@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import Providers from "./providers";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -8,6 +8,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const displayFont = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +57,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       lang="en"
     >
-      <body suppressHydrationWarning className={`${inter.variable} bg-white text-dark dark:bg-[#000000] dark:text-white`}>
+      <body suppressHydrationWarning className={`${inter.variable} ${displayFont.variable} bg-white text-dark dark:bg-dark dark:text-white`}>
         <Providers>{children}</Providers>
       </body>
     </html>

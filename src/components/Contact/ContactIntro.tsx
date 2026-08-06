@@ -24,31 +24,31 @@ const ContactIntro = ({ variant = "home" }: { variant?: "home" | "page" }) => {
             Contact
           </span>
         )}
-        <h2 className="mb-5 mt-6 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+        <h2 className="mb-5 mt-6 text-3xl font-extrabold leading-tight tracking-tight text-ink dark:text-white sm:text-4xl">
           {title}
         </h2>
-        <p className="max-w-[560px] text-base leading-8 text-slate-600 dark:text-white/65">
+        <p className="max-w-[560px] text-base leading-8 text-muted dark:text-white/65">
           {description}
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
           {!isPageVariant && (
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+              className="inline-flex items-center justify-center rounded-2xl bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-deep dark:bg-white dark:text-ink dark:hover:bg-black/[0.06]"
             >
               Open contact page
             </Link>
           )}
           <Link
             href="/docs"
-            className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            className="inline-flex items-center justify-center rounded-2xl bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-deep dark:bg-white dark:text-ink dark:hover:bg-black/[0.06]"
           >
             {isPageVariant ? "Read docs first" : "Check docs first"}
           </Link>
           {isPageVariant && (
             <Link
               href="/privacy"
-              className="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-gray-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+              className="inline-flex items-center justify-center rounded-2xl border border-black/10 px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-primary/50 hover:bg-black/[0.02] dark:border-white/15 dark:text-white dark:hover:bg-white/5"
             >
               Privacy questions
             </Link>
@@ -59,10 +59,10 @@ const ContactIntro = ({ variant = "home" }: { variant?: "home" | "page" }) => {
         {supportTopics.map((topic) => (
           <div
             key={topic.title}
-            className="h-full min-h-[132px] rounded-[1.5rem] border border-gray-200 bg-gray-50/90 p-5 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-6"
+            className="h-full min-h-[132px] rounded-2xl border border-black/8 bg-black/[0.02] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-6"
           >
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{topic.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-white/65">{topic.body}</p>
+            <h3 className="text-lg font-bold text-ink dark:text-white">{topic.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-muted dark:text-white/65">{topic.body}</p>
           </div>
         ))}
       </div>
@@ -74,7 +74,7 @@ const ContactIntro = ({ variant = "home" }: { variant?: "home" | "page" }) => {
   }
 
   return (
-    <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-gray-200 bg-white p-8 shadow-2xl dark:border-white/10 dark:bg-[#0a0a0a] sm:p-10 lg:p-12">
+    <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-black/8 bg-white p-8 shadow-2xl dark:border-white/10 dark:bg-dark sm:p-10 lg:p-12">
       {introBody}
     </div>
   );

@@ -2,12 +2,12 @@ const OfferList = ({ text, available = true }: { text: string; available?: boole
   return (
     <div className={`mb-2 flex items-start gap-3 text-xs leading-snug break-words sm:text-sm ${
       available
-        ? "text-slate-800 dark:text-slate-200"
-        : "text-slate-700 dark:text-slate-300"
+        ? "text-ink dark:text-white/80"
+        : "text-muted dark:text-white/70"
     }`}>
       {available ? (
         <svg
-          className="mt-0.5 h-4 w-4 text-green-500"
+          className="mt-0.5 h-4 w-4 text-emerald-500"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -20,7 +20,7 @@ const OfferList = ({ text, available = true }: { text: string; available?: boole
         </svg>
       ) : (
         <svg
-          className="mt-0.5 h-4 w-4 text-gray-400"
+          className="mt-0.5 h-4 w-4 text-muted"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

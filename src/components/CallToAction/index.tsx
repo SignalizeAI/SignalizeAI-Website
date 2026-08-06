@@ -3,9 +3,9 @@ import { resourceCards, trustPoints } from "./content";
 
 const CallToAction = () => {
   return (
-    <section className="relative z-10 overflow-hidden bg-white py-16 dark:bg-[#000000] md:py-24 lg:py-28">
+    <section className="relative z-10 overflow-hidden bg-white py-16 dark:bg-dark md:py-24 lg:py-28">
       <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-[2.75rem] border border-gray-200 bg-gray-50/70 p-8 shadow-2xl backdrop-blur-sm dark:border-white/10 dark:bg-[#0a0a0a]/70 md:p-12 lg:p-16">
+        <div className="relative overflow-hidden rounded-2xl border border-black/8 bg-black/[0.02] p-8 dark:border-white/10 dark:bg-dark-2/60 md:p-12 lg:p-16">
           <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-primary/10 blur-[110px]" />
           <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-accent/10 blur-[110px]" />
 
@@ -15,14 +15,14 @@ const CallToAction = () => {
                 Resources
               </span>
 
-              <h2 className="mt-6 max-w-[12ch] text-3xl font-extrabold leading-[1.02] tracking-tight text-slate-900 dark:text-white sm:max-w-[15ch] sm:text-4xl lg:max-w-[11ch] lg:text-5xl">
+              <h2 className="mt-6 max-w-[12ch] display text-3xl font-extrabold text-ink dark:text-white sm:max-w-[15ch] sm:text-4xl lg:max-w-[11ch] lg:text-5xl">
                 Go deeper with the right
-                <span className="mt-2 block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="mt-2 block text-primary dark:text-accent">
                   docs, pricing, and support.
                 </span>
               </h2>
 
-              <p className="mt-6 max-w-[540px] text-lg leading-8 text-slate-600 dark:text-white/65">
+              <p className="mt-6 max-w-[540px] text-lg leading-8 text-muted dark:text-white/65">
                 Open the docs when you need workflow guidance, check pricing
                 when you want plan limits, and use support when you need direct
                 help with the product.
@@ -31,14 +31,14 @@ const CallToAction = () => {
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/docs"
-                  className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                  className="inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-deep"
                 >
                   Explore documentation
                 </Link>
                 <Link
                   href="/pricing"
                   prefetch={false}
-                  className="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-500 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+                  className="inline-flex items-center justify-center rounded-2xl border border-black/10 px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-primary/50 hover:bg-white dark:border-white/15 dark:text-white dark:hover:bg-white/5"
                 >
                   Compare plans
                 </Link>
@@ -62,7 +62,7 @@ const CallToAction = () => {
                         />
                       </svg>
                     </span>
-                    <p className="text-sm leading-7 text-slate-600 dark:text-white/65">
+                    <p className="text-sm leading-7 text-muted dark:text-white/65">
                       {point}
                     </p>
                   </div>
@@ -76,19 +76,19 @@ const CallToAction = () => {
                   key={card.title}
                   href={card.href}
                   prefetch={card.href === "/pricing" ? false : undefined}
-                  className="group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl dark:border-white/10 dark:bg-[#111111]"
+                  className="group relative overflow-hidden rounded-2xl border border-black/8 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 dark:border-white/10 dark:bg-dark-2 dark:hover:border-accent/40"
                 >
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent dark:via-accent/60" />
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                      <h3 className="text-2xl font-bold tracking-tight text-ink dark:text-white">
                         {card.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-white/65">
+                      <p className="mt-3 text-sm leading-7 text-muted dark:text-white/65">
                         {card.description}
                       </p>
                     </div>
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-white shadow-[0_20px_40px_-20px_rgba(26,35,126,0.5)] dark:text-black">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent">
                       <svg
                         className="h-5 w-5"
                         fill="none"

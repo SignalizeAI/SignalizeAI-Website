@@ -5,24 +5,24 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
   const { icon, title, paragraph, btn, btnLink } = feature;
   return (
     <div className="w-full px-4 md:w-1/2 lg:w-1/4">
-      <div className="group relative z-10 mb-12 h-full overflow-hidden rounded-[2.5rem] bg-white p-10 transition-all duration-500 hover:-translate-y-2 dark:bg-[#0a0a0a]">
+      <div className="group relative z-10 mb-8 h-full overflow-hidden rounded-2xl border border-black/8 bg-white p-8 transition-all duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-dark-2">
         {/* Neon Glow Border Effect */}
         <div className="pointer-events-none absolute -inset-px z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
           <div className="h-full w-full bg-gradient-to-br from-primary via-accent to-primary blur-[2px]" />
         </div>
 
         {/* Inner Card Surface */}
-        <div className="absolute inset-[1.5px] z-1 rounded-[calc(2.5rem-1px)] bg-white dark:bg-[#0d0d0d] transition-colors duration-500 group-hover:bg-gray-50/90 dark:group-hover:bg-[#111111]/90" />
+        <div className="absolute inset-[1.5px] z-1 rounded-[calc(1rem-1px)] bg-white dark:bg-dark-2 transition-colors duration-500 group-hover:bg-black/[0.02] dark:group-hover:bg-dark-3" />
 
         {/* Content Layer */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Advanced Organic Icon Shape */}
-          <div className="relative mb-12 flex h-20 w-20 items-center justify-center">
+          <div className="relative mb-8 flex h-16 w-16 items-center justify-center">
             {/* Background Aura */}
             <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-primary to-accent opacity-20 blur-2xl transition-opacity group-hover:opacity-40" />
 
             {/* Morphing Icon Container */}
-            <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-gradient-to-br from-primary to-accent text-white shadow-[0_20px_40px_-10px_rgba(26,35,126,0.3)] transition-all duration-1000 group-hover:rounded-2xl group-hover:rotate-12 group-hover:scale-110">
+            <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-gradient-to-br from-primary to-accent text-white shadow-none transition-all duration-1000 group-hover:rounded-2xl group-hover:rotate-12 group-hover:scale-110">
               <div className="absolute inset-0 bg-white/10 group-hover:bg-transparent transition-colors" />
               <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-110">
                 {icon}
@@ -30,11 +30,11 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
             </div>
           </div>
 
-          <h3 className="mb-5 text-2xl font-black tracking-tight text-slate-900 dark:text-white transition-colors duration-300">
+          <h3 className="mb-5 display text-2xl font-extrabold text-ink dark:text-white transition-colors duration-300">
             {title}
           </h3>
 
-          <p className="mb-10 flex-grow text-[17px] font-medium leading-[1.65] text-slate-500 dark:text-gray-400">
+          <p className="mb-10 flex-grow text-[17px] font-medium leading-[1.65] text-muted dark:text-muted">
             {paragraph}
           </p>
 
@@ -49,7 +49,7 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
               </svg>
             </Link>
           ) : (
-            <div className="h-1.5 w-16 overflow-hidden rounded-full bg-gray-100 dark:bg-white/5">
+            <div className="h-1.5 w-16 overflow-hidden rounded-full bg-black/[0.04] dark:bg-white/5">
               <div className="h-full w-1/3 bg-gradient-to-r from-primary to-accent transition-all duration-1000 group-hover:w-full" />
             </div>
           )}

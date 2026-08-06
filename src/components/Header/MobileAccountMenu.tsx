@@ -26,9 +26,9 @@ export default function MobileAccountMenu({
   onSignOut,
 }: MobileAccountMenuProps) {
   return (
-    <div className="border-t border-gray-100 pt-3 dark:border-white/10">
-      <div className="mb-3 flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-3 dark:bg-white/5">
-        <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] text-xs font-bold text-white">
+    <div className="border-t border-black/8 pt-3 dark:border-white/10">
+      <div className="mb-3 flex items-center gap-3 rounded-xl bg-black/[0.02] px-3 py-3 dark:bg-white/5">
+        <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-primary text-xs font-bold text-white">
           {avatarUrl ? (
             <Image
               src={avatarUrl}
@@ -41,7 +41,7 @@ export default function MobileAccountMenu({
             <span>{getInitials(name)}</span>
           )}
         </div>
-        <div className="min-w-0 truncate text-sm font-semibold text-slate-900 dark:text-white">
+        <div className="min-w-0 truncate text-sm font-semibold text-ink dark:text-white">
           {name}
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function MobileAccountMenu({
         <Link
           href="/prospects"
           onClick={onClose}
-          className="flex rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 dark:text-white/78 dark:hover:bg-white/5 dark:hover:text-white"
+          className="flex rounded-xl px-4 py-3 text-sm font-medium text-muted transition hover:bg-black/[0.03] hover:text-ink dark:text-white/78 dark:hover:bg-white/5 dark:hover:text-white"
         >
           Saved Prospects
         </Link>

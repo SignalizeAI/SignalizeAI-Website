@@ -4,10 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #1A237E;
-  --color-accent: #00E5FF;
-  --color-dark: #121212;
-  --color-dark-2: #1E1E1E;
+  /* brand: modernized from the old navy+cyan, kept recognizable */
+  --color-primary: #3b5bfd;
+  /* confident indigo-blue */
+  --color-primary-deep: #2338c9;
+  --color-accent: #22d3ee;
+  /* refined signal cyan */
+  --color-signal: #86efac;
+  /* success/limit indicator */
+  --color-dark: #0b0d12;
+  /* near-black, slight blue bias */
+  --color-dark-2: #12151d;
+  /* raised surface */
+  --color-dark-3: #1a1e29;
+  /* border-ish surface */
+  --color-ink: #0b0d12;
+  --color-muted: #5b6472;
+
+  /* overridden at <body> by the next/font Plus Jakarta Sans variable */
+  --font-display: var(--font-inter), sans-serif;
 }
 
 /*
@@ -31,6 +46,34 @@
 
 body {
   font-family: var(--font-inter), sans-serif;
+}
+
+.display {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Ambient radial glow. Always inside an `overflow-hidden` parent. */
+.glow {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+
+.dark .glow {
+  opacity: 0.4;
+}
+
+.field-label {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .sticky-menu .navbar-logo {

@@ -26,7 +26,7 @@ const SocialIcon = ({ label }: { label: (typeof socialLinks)[number]["label"] })
 
 const Footer = () => {
   return (
-    <footer className="relative z-10 overflow-hidden border-t border-gray-200 bg-white pt-20 pb-10 dark:border-white/10 dark:bg-[#050505] lg:pt-24">
+    <footer className="relative z-10 overflow-hidden border-t border-black/8 bg-white pt-20 pb-10 dark:border-white/10 dark:bg-dark lg:pt-24">
       <div className="absolute left-0 top-0 h-72 w-72 -translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-[120px]" />
       <div className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/4 translate-y-1/4 rounded-full bg-accent/10 blur-[120px]" />
 
@@ -50,12 +50,12 @@ const Footer = () => {
                   className="hidden object-contain dark:block"
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+              <span className="text-xl font-bold tracking-tight text-ink dark:text-white">
                 Signalize<span className="text-primary dark:text-accent">AI</span>
               </span>
             </Link>
 
-            <p className="mt-5 max-w-[460px] text-sm leading-7 text-slate-600 dark:text-white/65">
+            <p className="mt-5 max-w-[460px] text-sm leading-7 text-muted dark:text-white/65">
               Find the right angle to sell to any company faster with clear
               strategy, targeting, and outreach from public website content.
             </p>
@@ -68,12 +68,12 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-slate-600 transition dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:border-white dark:hover:bg-white dark:hover:text-[#0a0a0a] ${
+                  className={`flex h-11 w-11 items-center justify-center rounded-full border border-black/8 bg-black/[0.02] text-muted transition dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:border-white dark:hover:bg-white dark:hover:text-dark ${
                     link.variant === "primary"
                       ? "hover:border-primary hover:bg-primary hover:text-white"
                       : link.variant === "dark"
-                        ? "hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-                        : "hover:border-accent hover:bg-accent hover:text-slate-950"
+                        ? "hover:border-ink hover:bg-ink hover:text-white"
+                        : "hover:border-accent hover:bg-accent hover:text-ink"
                   }`}
                 >
                   <SocialIcon label={link.label} />
@@ -95,7 +95,7 @@ const Footer = () => {
                     prefetch={link.href === "/pricing" ? false : undefined}
                     target={link.external ? "_blank" : "_self"}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-sm text-slate-600 transition hover:text-slate-950 dark:text-white/65 dark:hover:text-white"
+                    className="text-sm text-muted transition hover:text-ink dark:text-white/65 dark:hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -105,8 +105,8 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-gray-200 pt-6 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-500 dark:text-white/60">
+        <div className="mt-14 flex flex-col gap-4 border-t border-black/8 pt-6 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted dark:text-white/60">
             &copy; {new Date().getFullYear()} SignalizeAI. All rights reserved.
           </p>
 
@@ -116,7 +116,7 @@ const Footer = () => {
                 key={link.label}
                 href={link.href}
                 prefetch={link.href === "/pricing" ? false : undefined}
-                className="text-xs text-slate-600 transition hover:text-slate-900 dark:text-white/70 dark:hover:text-white"
+                className="text-xs text-muted transition hover:text-ink dark:text-white/70 dark:hover:text-white"
               >
                 {link.label}
               </Link>
