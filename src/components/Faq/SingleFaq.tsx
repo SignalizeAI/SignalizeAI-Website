@@ -10,6 +10,7 @@ const SingleFaq = (props: SingleFaqProps) => {
       <div className="mb-12 flex lg:mb-17.5 group">
         <div className="mr-4 flex h-12.5 w-full max-w-12.5 items-center justify-center rounded-xl bg-primary/10 dark:bg-accent/10 text-primary dark:text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-primary dark:group-hover:bg-accent dark:group-hover:text-dark group-hover:text-white sm:mr-6 sm:h-15 sm:max-w-15">
           <svg
+            aria-hidden="true"
             width="32"
             height="32"
             viewBox="0 0 34 34"
