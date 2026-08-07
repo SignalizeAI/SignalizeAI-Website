@@ -23,6 +23,15 @@ export interface ProspectOutreachAngles {
 
 export interface ProspectRecord {
   id?: string;
+  /**
+   * Change detection, embedded from prospect_changes via its foreign key.
+   * `watch_enabled` and `last_checked_at` say whether the account is being
+   * monitored at all; `prospect_changes` is a count, not the rows, because the
+   * list only needs to know that something moved.
+   */
+  watch_enabled?: boolean | null;
+  last_checked_at?: string | null;
+  prospect_changes?: Array<{ count: number }>;
   title?: string;
   domain?: string;
   url?: string;

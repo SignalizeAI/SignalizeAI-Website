@@ -48,8 +48,16 @@ export async function fetchSavedProspectsPage(
       "description",
       "prospect_status",
       "created_at",
+      "watch_enabled",
+      "last_checked_at",
+      // A count of undismissed changes, embedded through the
+      // prospect_changes_saved_analysis_id_fkey relationship. The list only
+      // needs to know that something moved, so this stays a count rather than
+      // pulling every row for every prospect on the page.
+      "prospect_changes(count)",
     ].join(","),
   );
+  url.searchParams.set("prospect_changes.dismissed_at", "is.null");
   url.searchParams.set("order", "created_at.desc");
   url.searchParams.set("limit", String(query.pageSize));
   url.searchParams.set("offset", String((query.page - 1) * query.pageSize));

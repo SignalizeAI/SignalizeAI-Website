@@ -32,6 +32,12 @@ export default function SavedProspectCard({
 }) {
   const domain = prospect.domain || (prospect.url ? new URL(prospect.url).hostname : "");
 
+  // Change detection was only ever visible in the extension, so a prospect that
+  // had moved looked identical here to one that had not. The count is embedded
+  // by the query and excludes dismissed changes.
+  const changeCount = prospect.prospect_changes?.[0]?.count ?? 0;
+  const isWatched = Boolean(prospect.watch_enabled);
+
   return (
     <article
       className={`group relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-white/80 p-6 transition-all duration-300 dark:bg-white/[0.04] ${
@@ -89,7 +95,26 @@ export default function SavedProspectCard({
         </div>
 
         <div className="mb-6 flex items-center justify-between gap-3 border-b border-slate-100 pb-4 dark:border-white/5">
-          <SavedProspectStatusBadge status={prospect.prospect_status} />
+          <div className="flex min-w-0 items-center gap-2">
+            <SavedProspectStatusBadge status={prospect.prospect_status} />
+            {changeCount > 0 ? (
+              <span
+                title={`${changeCount} change${changeCount === 1 ? "" : "s"} detected since you last dismissed`}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary dark:text-accent"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                {changeCount} change{changeCount === 1 ? "" : "s"}
+              </span>
+            ) : isWatched ? (
+              <span
+                title="Watched. Nothing has changed since the last check."
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:border-white/10 dark:text-white/30"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-300 dark:bg-white/20" />
+                Watched
+              </span>
+            ) : null}
+          </div>
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-white/20">
             {formatSavedDate(prospect.created_at)}
           </span>
