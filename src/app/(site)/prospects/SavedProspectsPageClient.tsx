@@ -104,7 +104,6 @@ export default function SavedProspectsPageClient() {
               deleting={deletingIds.length > 0}
               onToggleSelectAllVisible={toggleSelectAllVisible}
               onDeleteSelected={() => void handleDeleteSelected()}
-              onCancel={toggleSelectionMode}
             />
           ) : null}
 

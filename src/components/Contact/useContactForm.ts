@@ -7,7 +7,15 @@ import { initialFormState } from "./contactContent";
 
 export type SubmitStatus = "idle" | "loading" | "success" | "error";
 
-const apiBaseUrl = (
+/**
+ * Contact posts to the same Worker as everything else.
+ *
+ * It used to live in a separate Next.js app on Vercel whose only job was this
+ * one route. That app kept its own copy of the database credential, which went
+ * stale, so every submission 500'd before an email was sent and the form just
+ * showed a generic error. One backend means one place for a credential to rot.
+ */
+const contactApiBaseUrl = (
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.signalizeai.org"
 ).replace(/\/$/, "");
 
@@ -47,7 +55,7 @@ const useContactForm = () => {
     setStatus("loading");
 
     try {
-      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+      const response = await fetch(`${contactApiBaseUrl}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

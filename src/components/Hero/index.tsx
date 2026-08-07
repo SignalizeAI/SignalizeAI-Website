@@ -18,7 +18,7 @@ const Hero = () => {
           <div className="max-w-[640px]">
             <span className="text-ink/70 inline-flex items-center gap-2 rounded-full border border-black/8 bg-black/[0.03] px-3 py-1.5 text-xs font-semibold dark:border-white/10 dark:bg-white/5 dark:text-white/70">
               <span className="bg-accent h-1.5 w-1.5 rounded-full" />
-              SignalizeAI v5.4.1 is now live
+              SignalizeAI v5.5.0 is now live
             </span>
 
             <h1 className="display text-ink mt-6 text-[32px] leading-[1.12] font-extrabold text-balance sm:text-[42px] lg:text-[50px] dark:text-white">

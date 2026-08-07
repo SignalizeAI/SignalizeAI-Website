@@ -2,7 +2,7 @@
 
 SignalizeAI-Website is the public website, pricing surface, auth entry, and website-side prospect experience for SignalizeAI.
 
-Current version: `5.4.1`
+Current version: `5.5.0`
 
 ## What it does
 
