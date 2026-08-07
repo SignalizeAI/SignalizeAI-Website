@@ -8,17 +8,23 @@
   --color-primary: #3b5bfd;
   /* confident indigo-blue */
   --color-primary-deep: #2338c9;
+  /* Shared with the extension accent and taken from the app icon. If this
+     changes, change --accent-color in the extension's theme.css in the same
+     commit or the two surfaces stop matching. */
   --color-accent: #22d3ee;
-  /* refined signal cyan */
   --color-signal: #86efac;
   /* success/limit indicator */
-  --color-dark: #0b0d12;
-  /* near-black, slight blue bias */
-  --color-dark-2: #12151d;
+  /* Neutral charcoal, matched byte for byte to the extension's ground tokens
+     (--bg-primary / --bg-secondary / --bg-tertiary in sidepanel-styles/theme.css).
+     These carried a blue bias, so the side panel open next to the site read as
+     two different products. Neutral also measures slightly better: white text
+     goes 19.43 -> 19.79, 18.25 -> 18.71 and 16.64 -> 17.36 against these. */
+  --color-dark: #0a0a0b;
   /* raised surface */
-  --color-dark-3: #1a1e29;
+  --color-dark-2: #121214;
   /* border-ish surface */
-  --color-ink: #0b0d12;
+  --color-dark-3: #1a1a1d;
+  --color-ink: #0a0a0b;
   --color-muted: #5b6472;
 
   /* overridden at <body> by the next/font Plus Jakarta Sans variable */
