@@ -4,14 +4,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* brand: modernized from the old navy+cyan, kept recognizable */
-  --color-primary: #3b5bfd;
-  /* confident indigo-blue */
-  --color-primary-deep: #2338c9;
-  /* Shared with the extension accent and taken from the app icon. If this
-     changes, change --accent-color in the extension's theme.css in the same
-     commit or the two surfaces stop matching. */
-  --color-accent: #22d3ee;
+  /* Both values are sampled from the app icon: #12376a is the mean of the navy
+     triangle, #27d1de the mean of the cyan arcs. Navy carries light surfaces
+     (11.3:1 on paper, 11.8:1 with white on it) and cyan carries dark ones. The
+     old #3b5bfd was close to the mark but not from it, and only reached 5.1:1
+     under white. */
+  --color-primary: #12376a;
+  --color-primary-deep: #0e2c54;
+  /* Shared with the extension's dark-theme accent. If this changes, change
+     --accent-color in the extension's theme.css in the same commit or the two
+     surfaces stop matching. */
+  --color-accent: #27d1de;
   --color-signal: #86efac;
   /* success/limit indicator */
   /* Neutral charcoal, matched byte for byte to the extension's ground tokens
